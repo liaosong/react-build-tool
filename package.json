@@ -10,9 +10,23 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.1.19",
+    "babel-loader": "^6.1.0",
     "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
     "gulp": "^3.9.0",
+    "gulp-util": "^3.0.7",
     "webpack": "^1.12.4",
     "webpack-dev-server": "^1.12.1"
+  },
+  "keywords": [
+    "react",
+    "es6",
+    "flux",
+    "build",
+    "webpack"
+  ],
+  "dependencies": {
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2"
   }
 }
