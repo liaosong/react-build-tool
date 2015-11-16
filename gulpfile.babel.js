@@ -9,10 +9,11 @@ const PATHS = {
   src: 'app',
   html: ['app/*.html', 'app/*/*.html'],
   dist: 'dist/',
-  js: ['app/*.js', 'app/*/*.js'],
+  js: ['app/js/*.js', 'app/js/*/*.js'],
   all_sass: ['app/styles/*.scss', 'app/styles/*/*.scss'], //scss watch的文件
   module_sass: 'app/styles/*.scss', //scss相应的模块文件
   module_js: {app:'./app/app.js', index:'./app/inde.js'}, //页面对应的js文件
+  img: ['./app/images/**']
 
 };
 
@@ -22,7 +23,9 @@ gulp.task('sass', function(){
     .pipe(gulp.dest(PATHS.dist));
 });
 gulp.task("copy", function(){
-  gulp.src(PATHS.html)
+  gulp.src(PATHS.html, {base: PATHS.src})
+    .pipe(gulp.dest(PATHS.dist));
+  gulp.src(PATHS.img, {base: PATHS.src})
     .pipe(gulp.dest(PATHS.dist));
 });
 //for production build
