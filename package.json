@@ -1,7 +1,7 @@
 {
   "name": "react-build-tool",
   "version": "1.0.0",
-  "description": "",
+  "description": "a tool to build a react project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,6 +14,8 @@
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "gulp": "^3.9.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-sass": "^2.1.0",
     "gulp-util": "^3.0.7",
     "webpack": "^1.12.4",
     "webpack-dev-server": "^1.12.1"
