@@ -1,7 +1,18 @@
-@import 'test/test';
+@import './share/global';
 
-.test{
-  .aa{
-    background-color: #888;
+header{
+  height: 60px;
+  background-color: #000;
+
+  .s-logo{
+    background-image: url(../images/logo.png);
+    height: 100%;
+    line-height: 100%;
+    background-repeat: no-repeat;
+    margin-left: 30px;
+  }
+
+  .right-side{
+    float: right;
   }
 }
