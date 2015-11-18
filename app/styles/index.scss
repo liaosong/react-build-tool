@@ -1,18 +1,224 @@
 @import './share/global';
+@import './components/city-selecter';
+@import './components/footer';
+$header_height: 600px;
+$header_top_height: 60px;
 
 header{
-  height: 60px;
-  background-color: #000;
+  height: $header_height;
+  background-image: url(../images/banner_img.jpg);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  position: relative;
+
+  .title-welcome{
+    font-size: 72px;
+    color: #fff;
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .site-title{
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin-top: 18px;
+  }
+
+  .header-bottom{
+    height: 130px;
+    background-color: rgba(0,0,0,.6);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .search-and-tool{
+      margin-top: 30px;
+      height: 40px;
+
+      input{
+        height: 36px;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        padding-left: 10px;
+      }
+      button{
+        height: 40px;
+        font-size: 16px;
+        color: #fff;
+        border-radius: 3px;
+        background-color: #0af;
+        border: 1px solid #0af;
+      }
+      .search-input{
+        width: 511px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        outline: none;
+        font-size: 16px;
+      }
+      .city-selecter{
+        height: 38px;
+        border: 1px solid #fff;
+        margin-left: 2px;
+        line-height: 38px;
+        padding-left: 10px;
+        width: 148px;
+      }
+
+      .search-button{
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        margin-left: 2px;
+        width: 120px;
+        vertical-align: top;
+      }
+      .publish{
+        width: 120px;
+        vertical-align: top;
+      }
+      .text-split{
+        display: inline-block;
+        vertical-align: top;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        color: #b2b2b2;
+        width: 63px;
+        text-align: center;
+      }
+    }
+  }
+}
+.header-top{
+  height: $header_top_height;
 
   .s-logo{
     background-image: url(../images/logo.png);
     height: 100%;
-    line-height: 100%;
+    line-height: $header_top_height;
     background-repeat: no-repeat;
     margin-left: 30px;
+    float: left;
+    width: 160px;
   }
 
   .right-side{
     float: right;
+
+    li{
+      display: inline-block;
+      line-height: $header_top_height;
+      margin-right: 30px;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .apply-btn{
+      height: 34px;
+      width: 120px;
+      border: 2px solid #fff;
+      border-radius: 3px;
+      font-size: 14px;
+      color: #fff;
+      background-color: rgba(255, 255, 255, .2);
+      cursor: pointer;
+    }
   }
 }
+
+.hot-word-tool{
+  margin-top: 15px;
+  font-size: 14px;
+  color: #fff;
+
+  .tool-title,#hot_words{
+    display: inline-block;
+  }
+  .hot-word{
+    margin-right: 10px;
+  }
+}
+
+.companies{
+
+  section{
+    margin-top: 60px;
+    color: #4c4c4c;
+
+    .section-head{
+      font-size: 30px;
+    }
+
+    .section-title{
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  }
+
+
+  .load-more{
+    display: block;
+    width: 160px;
+    height: 40px;
+    margin: 60px auto 70px auto;
+    color: #0af;
+    background-color: #fff;
+    font-size: 14px;
+    border: 1px solid #0af;
+    outline: none;
+    border-radius: 3px;
+  }
+}
+
+
+//companies
+
+.company-list{
+  margin-top: 10px;
+
+
+  .company-item{
+    width: 485px;
+    height: 374px;
+    background-color: #fff;
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 30px;
+    overflow: hidden;
+
+    &:nth-child(odd){
+      margin-left: 0px;
+    }
+
+    .company-info{
+      padding: 20px;
+      background-color: #fff;
+    }
+    .company-img{
+      height: 240px;
+    }
+    .company-name{
+      font-size: 20px;
+      color: #333;
+    }
+    .company-tags{
+      font-size: 14px;
+      color: #808080;
+      padding-top: 15px;
+    }
+    .company-cases{
+      font-size: 14px;
+      color: #808080;
+      padding-top: 15px;
+
+      .cases-num{
+        color: #ff9801;
+      }
+    }
+  }
+
+
+}
+

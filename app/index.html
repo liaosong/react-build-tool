@@ -12,18 +12,62 @@
 
 </head>
 <body>
-  <header>
-    <div class="s-logo"></div>
-    <div class="right-side">
-      <ul>
-        <li><button></button></li>
-        <li>注册</li>
-        <li>登陆</li>
+  <header class="cleanfix">
+    <div class="header-top">
+      <div class="s-logo"></div>
+      <ul class="right-side">
+        <li><a href=""><button class="apply-btn">成为服务商</button></a></li>
+        <li><a href="">注册</a></li>
+        <li><a href="">登陆</a></li>
       </ul>
     </div>
+    <h1 class="title-welcome">欢迎光临</h1>
+    <p class="site-title">向超过190个国家的参展商提供优质的会展服务</p>
+    <div class="header-bottom">
+      <div class="w-1000 s-center">
+        <div class="search-and-tool">
+          <div id="search_bar" class="inline"></div>
+          <span class="text-split">或者</span>
+          <button class="publish">发布需求</button>
+        </div>
+        <div class="hot-word-tool">
+          <div class="tool-title">热门搜索：</div>
+          <div id="hot_words">
+
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
+  <div class="companies w-1000 s-center">
+    <!-- 一站式服务商 -->
+    <section class="type-full">
+      <h2 class="section-head text-center">会展服务商</h2>
+      <p class="section-title text-center">为您提供一站式会议展览活动的策划设计及搭建执行服务</p>
+      <div id="full_type_list">
+
+      </div>
+      <button class="load-more">加载更多</button>
+    </section>
+    <section class="type-factory">
+      <h2 class="section-head text-center">展厅展台搭建</h2>
+      <p class="section-title text-center">会展、展柜、展厅、舞台搭建工程</p>
+      <div id="factory_list">
+
+      </div>
+      <button class="load-more">加载更多</button>
+    </section>
+    <section class="type-hire">
+      <h2 class="section-head text-center">设备租赁</h2>
+      <p class="section-title text-center">灯光、音响、视频设备租赁</p>
+      <div id="hire_list">
+
+      </div>
+      <button class="load-more">加载更多</button>
+    </section>
+  </div>
   <div id="footer"></div>
-<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 
 </html>

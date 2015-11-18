@@ -1,0 +1,61 @@
+// footer
+
+$content_width: 1000px;
+footer{
+  background-color: #2b2d2e;
+  height: 360px;
+
+  .f-service-container{
+    margin: 0 auto;
+    padding: 50px 0;
+    width: $content_width;
+    text-align: center;
+    border-bottom: 1px solid #404040;
+
+    .service-item{
+      margin-left: 14px;
+
+      &:first-child{
+        margin-left: 0px;
+      }
+    }
+  }
+
+  .inline-flow{
+    display: inline-block;
+    vertical-align: top;
+  }
+  .f-about-us{
+    width: $content_width;
+    margin: 0 auto;
+    color: #fff;
+
+    h3{
+      margin-top: 50px;
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+
+    p{
+      font-size: 14px;
+
+      &:last-child{
+        margin-top:10px;
+      }
+    }
+
+    .concat-us{
+      width: 330px;
+    }
+
+    .company-info{
+      width: 470px;
+    }
+    .wechat-fllow{
+      width: 200px;
+    }
+  }
+
+
+}
+
