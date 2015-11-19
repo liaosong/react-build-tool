@@ -25,3 +25,5 @@ module_js: {index:'./app/js/index.js'}, //页面对应的js文件
 
 每个页面也对应一个特定的css文件,同样通过sass的加载器来加载依赖css文件。
 
+### 已知问题
+1. 当jsx编译失败之后webpack并没有报错，文件也没通过编译，问题已提交至[webpack](https://github.com/webpack/webpack/issues/1640)
