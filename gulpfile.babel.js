@@ -79,9 +79,7 @@ gulp.task("webpack", ['copy'], function(){
     if(err) throw new gulpUtil.PluginError("webpack", err);
     var jsonStats = stats.toJson();
     if(jsonStats.errors.length > 0) {
-      jsonStats.errors.forEach(function (err) {
-        console.error(err);
-      });
+      console.error(jsonStats.errors.join('\n\r'));
     }
     if(jsonStats.warnings.length > 0)
       console.log(jsonStats.warnings);
