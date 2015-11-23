@@ -72,7 +72,13 @@ class CompanyList extends React.Component {
   renderFactoryList(){
     return (
       <div className={classNames("factory-list")}>
-
+        <div className={classNames('factory-item')}>
+          <img className={classNames('factory-img')}/>
+          <div className={classNames('factory-info')}>
+            <div className={classNames('factory-name')}></div>
+            <div className={classNames('factory-cases')}>搭建案例展示：<span className={classNames("cases-num")}>67</span></div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -86,7 +92,15 @@ class CompanyList extends React.Component {
   }
 
   render() {
-    return this.renderFullCompanyList();
+    var companyType = this.props.type || 'error';
+
+    switch(companyType){
+      case 'full_company': return this.renderFullCompanyList(); break;
+      case 'factory': return this.renderFactoryList(); break;
+      case 'hire': return this.renderHireList(); break;
+      default: throw Error('CompanyList type error');
+    }
+
   }
 }
 
@@ -95,6 +109,8 @@ class CompanyList extends React.Component {
 
 ReactDom.render(<HotSearch/>, document.getElementById('hot_words'));
 ReactDom.render(<SearchBar/>, document.getElementById('search_bar'));
-ReactDom.render(<CompanyList/>, document.getElementById('full_type_list'));
+ReactDom.render(<CompanyList type={"full_company"}/>, document.getElementById('full_type_list'));
+ReactDom.render(<CompanyList type={"factory"}/>, document.getElementById('factory_list'));
+ReactDom.render(<CompanyList type={"hire"}/>, document.getElementById('hire_list'));
 ReactDom.render(<Footer/>, document.getElementById('footer'));
 

@@ -13,10 +13,13 @@ const PATHS = {
   src: 'app',
   html: ['app/*.html', 'app/*/*.html'],
   dist: 'dist/',
-  js: ['app/js/*.js', 'app/js/*/*.js'],
+  js: ['app/js/*.js', 'app/js/*/*.js', 'app/js/*.jsx', 'app/js/*/*.jsx'],
   all_sass: ['app/styles/*.scss', 'app/styles/*/*.scss'], //scss watch的文件
   module_sass: 'app/styles/*.scss', //scss相应的模块文件
-  module_js: {index:'./app/js/index.js'}, //页面对应的js文件
+  module_js: {index:'./app/js/index.js',
+    company_list: './app/js/company_list.js',
+    company_show: './app/js/company_show.js'
+  }, //页面对应的js文件
   img: ['./app/images/*.*', './app/images/*/*.*']
 
 };
@@ -72,8 +75,17 @@ gulp.task("webpack", ['copy'], function(){
         }
       ]
     }
-  }, function(err, status){
+  }, function(err, stats){
     if(err) throw new gulpUtil.PluginError("webpack", err);
+    var jsonStats = stats.toJson();
+    if(jsonStats.errors.length > 0) {
+      jsonStats.errors.forEach(function (err) {
+        console.error(err);
+      });
+    }
+    if(jsonStats.warnings.length > 0)
+      console.log(jsonStats.warnings);
+
   });
 });
 

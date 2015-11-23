@@ -1,0 +1,38 @@
+$header_top_height: 60px;
+
+.header-top{
+  height: $header_top_height;
+
+  .s-logo{
+    background-image: url(../images/logo.png);
+    height: 100%;
+    line-height: $header_top_height;
+    background-repeat: no-repeat;
+    margin-left: 30px;
+    float: left;
+    width: 160px;
+  }
+
+  .right-side{
+    float: right;
+
+    li{
+      display: inline-block;
+      line-height: $header_top_height;
+      margin-right: 30px;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .apply-btn{
+      height: 34px;
+      width: 120px;
+      border: 2px solid #fff;
+      border-radius: 3px;
+      font-size: 14px;
+      color: #fff;
+      background-color: rgba(255, 255, 255, .2);
+      cursor: pointer;
+    }
+  }
+}

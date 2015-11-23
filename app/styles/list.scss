@@ -1,0 +1,171 @@
+@import "share/global";
+@import "share/head";
+@import "components/pagination";
+@import './components/footer';
+
+.header-top{
+  background-color: #fff;
+  .s-logo{
+    background-image: url(../images/logo-back.png);
+  }
+  .right-side{
+    a{
+      color: #808080;
+    }
+    .apply-btn{
+      color: #3bf;
+      border-color: #3bf;
+    }
+  }
+}
+
+.search-container{
+  background-color: #fff;
+  border-top: 1px solid #e6e6e6;
+  padding-top: 29px;
+  padding-bottom: 10px;
+}
+
+.search-and-tool{
+  height: 40px;
+  padding-bottom: 30px;
+
+  input{
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding-left: 10px;
+  }
+  button{
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #0af;
+    border: 1px solid #0af;
+  }
+  .search-input{
+    width: 673px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    outline: none;
+    font-size: 16px;
+    border-right: none;
+    color: #b3b3b3;
+  }
+  .city-selecter{
+    height: 38px;
+    border: 1px solid #fff;
+    margin-left: 2px;
+    line-height: 38px;
+    padding-left: 10px;
+    width: 148px;
+  }
+
+  .search-button{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: 120px;
+    vertical-align: top;
+  }
+  .publish{
+    width: 120px;
+    vertical-align: top;
+  }
+  .text-split{
+    display: inline-block;
+    vertical-align: top;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #4c4c4c;
+    width: 63px;
+    text-align: center;
+  }
+}
+.filter-group {
+  height: 54px;
+  border-top: 1px solid #f4f4f4;
+  line-height: 54px;
+  
+  .filter-title{
+    display: inline-block;
+    color: #4c4c4c;
+    font-size: 14px;
+    
+  }
+  .filter-container{
+    display: inline-block;
+    vertical-align: top;
+    
+    .filter-item{
+      width: 46px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      display: inline-block;
+      color: #4c4c4c;
+      
+      &.active{
+        color: #0af;
+      }
+    }
+  }
+  
+}
+
+.list-container{
+  margin-top: 30px;
+
+  .search-result-num{
+    font-size: 14px;
+  }
+
+  .companies-list{
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 30px 20px;
+  }
+
+  .companies-item{
+
+    .company-name{
+      font-size: 20px;
+      color: #0af;
+
+    }
+
+    .company-body{
+      margin-top: 25px;
+    }
+
+    .company-description{
+      color: #808080;
+    }
+    .service-row{
+      margin-top: 35px;
+
+      span{
+        color: #333;
+        margin-right: 12px;
+        &:first-child{
+          margin-left: 8px;
+        }
+      }
+    }
+    .concat-and-case-row{
+      margin-top: 15px;
+
+      .concat-container{
+        width: 340px;
+      }
+      .cases-num{
+        color: #ff9801;
+      }
+    }
+    .inline-value{
+      margin-left: 8px;
+    }
+  }
+
+}

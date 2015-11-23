@@ -26,7 +26,18 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
   }
+  renderNoCity(){
+    return (
+      <form className={classNames('inline')}>
+        <input className={classNames('search-input')}/>
+        <button className={classNames('search-button')}>搜索</button>
+      </form>
+    );
+  }
   render() {
+    var noCity = (this.props.config && this.props.config.no_city) || false;
+
+    if(noCity) return this.renderNoCity();
     return (
       <form className={classNames('inline')}>
         <input className={classNames('search-input')}/>
