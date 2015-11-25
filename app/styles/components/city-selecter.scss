@@ -1,7 +1,50 @@
 .city-selecter{
   background-color: #fff;
+  position: relative;
 
   .city-container{
+    background-color: #fff;
+    width: 480px;
+    height: 150px;
+    margin-left: -11px;
+    padding: 5px 5px 15px 15px;
+    margin-top: 3px;
     display: none;
+
+    li{
+      width: 108px;
+      height: 38px;
+      display: block;
+      line-height: 38px;
+      text-align: center;
+      background-color: #e6e6e6;
+      color: #333333;
+      margin-right: 10px;
+      float: left;
+      margin-top: 10px;
+      cursor: pointer;
+      border: 1px solid #d9d9d9;
+
+      &.selected{
+        background-color: #00aaff;
+        color: #fff;
+      }
+
+    }
+  }
+  .show{
+    display: block;
+  }
+  .arrow{
+    width:0;
+    height:0;
+    border-width:10px 10px 0;
+    border-style:solid;
+    border-color:#aaa transparent transparent;/*灰 透明 透明 */
+    margin:40px auto;
+    position: absolute;
+    top: -26px;
+    right: 10px;
+    cursor: pointer;
   }
 }

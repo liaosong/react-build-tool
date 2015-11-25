@@ -6,9 +6,10 @@ import jade from 'gulp-jade';
 import sass from 'gulp-sass';
 import express from 'express';
 import livereload from 'gulp-livereload';
+import proxy from 'proxy-middleware';
 
 
-
+const PROXY_URL = '127.0.0.1:4000';
 const PATHS = {
   src: 'app',
   html: ['app/*.html', 'app/*/*.html'],
@@ -23,6 +24,7 @@ const PATHS = {
   img: ['./app/images/*.*', './app/images/*/*.*']
 
 };
+
 
 gulp.task('sass', function(){
   gulp.src(PATHS.module_sass, {base: PATHS.src})
@@ -97,10 +99,20 @@ gulp.task('watch', function(){
 
 gulp.task('express', function(){
   var app = express();
+
+  app.set('views', path.join(__dirname, 'dist'));
+  app.engine('.html', require('ejs').renderFile);
+  app.set('view engine', 'html');
   app.use("/js", express.static("dist/js"));
   app.use("/styles", express.static("dist/styles"));
   app.use("/images", express.static("dist/images"));
   app.use("/partials", express.static("dist/partials"));
   app.use("/fonts", express.static("dist/fonts"));
+
+  app.use('/', function(req, res){
+    res.render('index');
+  });
+  app.use('/api', proxy('http://' + PROXY_URL));
+
   app.listen(9001);
 });

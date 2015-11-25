@@ -91,5 +91,5 @@ ReactDom.render(<SearchBar config={searchBarConf}/>, document.getElementById('se
 ReactDom.render(<CompaniesFilter/>, document.getElementById('city_filter'));
 ReactDom.render(<CompaniesFilter/>, document.getElementById('type_filter'));
 ReactDom.render(<SearchList />, document.getElementById('search_list'));
-//ReactDom.render(<ReactPaginate total={450}/>, document.getElementById('pagination'));
+ReactDom.render(<ReactPaginate total={450}/>, document.getElementById('pagination'));
 ReactDom.render(<Footer/>, document.getElementById('footer'));

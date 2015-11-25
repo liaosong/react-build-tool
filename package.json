@@ -31,8 +31,13 @@
   ],
   "dependencies": {
     "classnames": "^2.2.0",
+    "ejs": "^2.3.4",
+    "proxy-middleware": "^0.15.0",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-intl": "^1.2.1",
+    "react-modal": "^0.6.1",
+    "react-onclickoutside": "^4.5.0",
     "react-paginate": "^0.4.1"
   }
 }

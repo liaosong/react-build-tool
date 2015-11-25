@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import Footer from './components/footer';
 import SearchBar from './components/search';
 import classNames from 'classnames';
+import {IntlProvider, FormattedNumber, FormattedPlural} from 'react-intl';
 
 
 class HotSearch extends React.Component {
@@ -105,10 +106,19 @@ class CompanyList extends React.Component {
 }
 
 
+class Publish extends React.Component{
 
+  render() {
+    return (
+        <button>发布需求</button>
+    );
+  }
+
+}
 
 ReactDom.render(<HotSearch/>, document.getElementById('hot_words'));
 ReactDom.render(<SearchBar/>, document.getElementById('search_bar'));
+ReactDom.render(<Publish/>, document.getElementById('publish'));
 ReactDom.render(<CompanyList type={"full_company"}/>, document.getElementById('full_type_list'));
 ReactDom.render(<CompanyList type={"factory"}/>, document.getElementById('factory_list'));
 ReactDom.render(<CompanyList type={"hire"}/>, document.getElementById('hire_list'));
