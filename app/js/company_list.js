@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import Footer from './components/footer';
 import SearchBar from './components/search';
 import classNames from 'classnames';
-import ReactPaginate from 'react-paginate';
+//import ReactPaginate from 'react-paginate';
 
 //var ReactPaginate = require('react-paginate');
 var searchBarConf = {

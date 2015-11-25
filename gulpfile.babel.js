@@ -7,9 +7,11 @@ import sass from 'gulp-sass';
 import express from 'express';
 import livereload from 'gulp-livereload';
 import proxy from 'proxy-middleware';
+import logger from 'morgan';
+import url from 'url';
 
 
-const PROXY_URL = '127.0.0.1:4000';
+const PROXY_URL = 'http://127.0.0.1:4000/api';
 const PATHS = {
   src: 'app',
   html: ['app/*.html', 'app/*/*.html'],
@@ -108,11 +110,16 @@ gulp.task('express', function(){
   app.use("/images", express.static("dist/images"));
   app.use("/partials", express.static("dist/partials"));
   app.use("/fonts", express.static("dist/fonts"));
+  app.use(logger('dev'));
+
+
+  var proxyOptions = url.parse(PROXY_URL);
+  proxyOptions.route = '/api';
+  app.use(proxy(proxyOptions));
 
   app.use('/', function(req, res){
     res.render('index');
   });
-  app.use('/api', proxy('http://' + PROXY_URL));
 
   app.listen(9001);
 });

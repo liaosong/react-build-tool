@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import $ from 'jquery';
 
 class CitySelecter extends React.Component {
   constructor(props) {
@@ -81,12 +82,15 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
   }
+  search(){
+    $.get('/api/companies').then(function(data){console.log(data)});
+  }
   renderNoCity(){
     return (
-      <form className={classNames('inline')}>
+      <div className={classNames('inline')}>
         <input className={classNames('search-input')}/>
         <button className={classNames('search-button')}>搜索</button>
-      </form>
+      </div>
     );
   }
   render() {
@@ -94,11 +98,11 @@ class SearchBar extends React.Component {
 
     if(noCity) return this.renderNoCity();
     return (
-      <form className={classNames('inline')}>
+      <div className={classNames('inline')} >
         <input className={classNames('search-input')}/>
         <CitySelecter/>
-        <button className={classNames('search-button')}>搜索</button>
-      </form>
+        <button className={classNames('search-button')} onClick={this.search.bind(this)}>搜索</button>
+      </div>
     );
   }
 }

@@ -19,7 +19,9 @@
     "gulp-livereload": "^3.8.1",
     "gulp-sass": "^2.1.0",
     "gulp-util": "^3.0.7",
+    "morgan": "^1.6.1",
     "webpack": "^1.12.4",
+    "proxy-middleware": "^0.15.0",
     "webpack-dev-server": "^1.12.1"
   },
   "keywords": [
@@ -32,7 +34,7 @@
   "dependencies": {
     "classnames": "^2.2.0",
     "ejs": "^2.3.4",
-    "proxy-middleware": "^0.15.0",
+    "jquery": "^2.1.4",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-intl": "^1.2.1",
