@@ -76,6 +76,7 @@ gulp.task("webpack", ['copy'], function(){
       loaders: [
         { test: /\.js|jsx$/,
           loader: 'babel-loader?presets[]=es2015&presets[]=react',
+          exclude: /node_modules/
         }
       ]
     }
@@ -118,7 +119,10 @@ gulp.task('express', function(){
   app.use(proxy(proxyOptions));
 
   app.use('/', function(req, res){
-    res.render('index');
+    var user = {"_id":"55e450bfa02797ea0448b171","__v":0,"status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.124Z","city":"","role":"system","salt":"105790163844","hashed_password":"d9f48810cafca7c591127d6f62dbf9cd230c93fc","phone_number":"18782972908","username":"","avatar":"uploads/image-1437896764820aa.jpg","email":"","name":"廖小松"};
+
+    //user = JSON.stringify(JSON.parse(user));
+    res.render('index',{user: user});
   });
 
   app.listen(9001);

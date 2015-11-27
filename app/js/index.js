@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import Header from './components/header';
 import Footer from './components/footer';
 import SearchBar from './components/search';
 import classNames from 'classnames';
@@ -11,7 +12,7 @@ class HotSearch extends React.Component {
     super(props);
   }
   render() {
-    var hotWords = ['设计搭建', '公关策划', '摄影摄像', 'AV租赁', '物流仓储', '礼仪模特', '植物鲜花'];
+    var hotWords = ['设计搭建', '公关策划', '摄影摄像', 'AV租赁', '物流仓储', '礼仪模特', '植物鲜花','成都'];
     var mapedWords = hotWords.map((word) => {
       return (
         <a className={classNames("hot-word")} key={word}>{word}</a>
@@ -115,6 +116,8 @@ class Publish extends React.Component{
   }
 
 }
+
+ReactDom.render(<Header/>, document.getElementById('app_header'));
 
 ReactDom.render(<HotSearch/>, document.getElementById('hot_words'));
 ReactDom.render(<SearchBar/>, document.getElementById('search_bar'));
