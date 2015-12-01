@@ -21,7 +21,9 @@ const PATHS = {
   module_sass: 'app/styles/*.scss', //scss相应的模块文件
   module_js: {index:'./app/js/index.js',
     company_list: './app/js/company_list.js',
-    company_show: './app/js/company_show.js'
+    company_show: './app/js/company_show.js',
+    user_home: './app/js/user_home.js',
+    register: './app/js/register.js'
   }, //页面对应的js文件
   img: ['./app/images/*.*', './app/images/*/*.*']
 
@@ -103,6 +105,8 @@ gulp.task('watch', function(){
 gulp.task('express', function(){
   var app = express();
 
+  var router = express.Router();
+
   app.set('views', path.join(__dirname, 'dist'));
   app.engine('.html', require('ejs').renderFile);
   app.set('view engine', 'html');
@@ -111,19 +115,32 @@ gulp.task('express', function(){
   app.use("/images", express.static("dist/images"));
   app.use("/partials", express.static("dist/partials"));
   app.use("/fonts", express.static("dist/fonts"));
+
+
   app.use(logger('dev'));
-
-
   var proxyOptions = url.parse(PROXY_URL);
   proxyOptions.route = '/api';
   app.use(proxy(proxyOptions));
 
-  app.use('/', function(req, res){
+  router.get('/', function(req, res){
     var user = {"_id":"55e450bfa02797ea0448b171","__v":0,"status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.124Z","city":"","role":"system","salt":"105790163844","hashed_password":"d9f48810cafca7c591127d6f62dbf9cd230c93fc","phone_number":"18782972908","username":"","avatar":"uploads/image-1437896764820aa.jpg","email":"","name":"廖小松"};
 
-    //user = JSON.stringify(JSON.parse(user));
     res.render('index',{user: user});
   });
+
+  router.get('/user_home', function(req, res){
+    var user = {"_id":"55e450bfa02797ea0448b171","__v":0,"status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.124Z","city":"","role":"system","salt":"105790163844","hashed_password":"d9f48810cafca7c591127d6f62dbf9cd230c93fc","phone_number":"18782972908","username":"","avatar":"uploads/image-1437896764820aa.jpg","email":"","name":"廖小松"};
+
+    res.render('user_home',{user: user});
+  })
+  router.get('/user/register', function(req, res){
+    res.render('register');
+  });
+  router.get('/company/register', function(req, res){
+    res.render('register');
+  });
+  app.use('/', router);
+
 
   app.listen(9001);
 });
