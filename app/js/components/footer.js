@@ -27,7 +27,7 @@ class Footer extends React.Component {
           </div>
           <div className={classNames("wechat-fllow", "inline-flow")}>
             <h3>请关注我们</h3>
-            <img src={"images/wechat.png"}/>
+            <img src={"/images/wechat.png"}/>
 
           </div>
         </div>

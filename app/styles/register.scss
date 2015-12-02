@@ -1,0 +1,127 @@
+@import "share/global";
+@import "share/head";
+@import "components/pagination";
+@import './components/footer';
+@import './components/header';
+
+.header-top{
+  background-color: #fff;
+  .s-logo{
+    background-image: url(../images/logo-back.png);
+  }
+  .system-info{
+    display: inline-block;
+    line-height: 60px;
+    font-size: 16px;
+    color: #4c4c4c;
+  }
+  .right-side{
+    a{
+      color: #808080;
+    }
+    .apply-btn{
+      color: #3bf;
+      border-color: #3bf;
+    }
+  }
+  .login-component{
+    a{
+      color: #09f;
+    }
+  }
+}
+
+.user-register{
+
+  .register-about{
+    background-color: #fff;
+    border-top: 1px solid #e6e6e6;
+    height: 140px;
+
+    .title{
+      margin-top: 50px;
+      font-size: 18px;
+      color: #4c4c4c;
+      text-align: center;
+    }
+
+    .for-company-register{
+      margin-top: 20px;
+      font-size: 14px;
+      color: #09f;
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+    }
+  }
+}
+
+.user-register-container{
+  margin-top: 50px;
+  margin-bottom: 70px;
+
+  button{
+    border-radius: 3px;
+    background-color: #0af;
+    color: #fff;
+    border: 1px solid #09f;
+  }
+  .captcha{
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 120px;
+    cursor: pointer;
+  }
+
+  .form-group{
+    margin-top: 30px;
+    .err-tips{
+      color: #f00;
+      margin-left: 15px;
+    }
+    label{
+      font-size: 16px;
+      color: #4c4c4c;
+      font-weight: bold;
+      display: block;
+    }
+    .code-button{
+      margin-left: 10px;
+      width: 120px;
+      height: 50px;
+    }
+    input{
+      margin-top: 10px;
+      padding-left: 10px;
+      height: 44px;
+      border: 2px solid #ccc;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+    .row-input{
+      width: 305px;
+    }
+    .part-row-input{
+      width: 175px;
+    }
+  }
+  .submit-group{
+    margin-top: 50px;
+
+    button{
+      width: 240px;
+      height: 50px;
+
+      font-size: 16px;
+
+    }
+
+    a{
+      margin-left: 15px;
+      color: #0af;
+    }
+  }
+}

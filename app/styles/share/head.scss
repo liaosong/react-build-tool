@@ -12,6 +12,16 @@ $header_top_height: 60px;
     float: left;
     width: 160px;
   }
+  .login-component{
+    display: inline-block;
+  }
+  .system-name, .tips{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .tips{
+    border-left: 1px solid #4c4c4c;
+  }
 
   .right-side{
     float: right;
