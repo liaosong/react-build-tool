@@ -1,18 +1,17 @@
 import { combineReducers } from 'redux';
 import {authService} from './header_reducer';
 
-function register(state, action){
+
+function companyRegister(state, action){
     if(!state){
         return {
-            registerType: 'user',
             currentUser: undefined,
+            company: undefined,
             step: 2
         }
     }
 
     switch (action.type){
-        case 'USER_REGISTER':
-            return Object.assign({}, state, {registerType: 'user'});
         case 'COMPANY_REGISTER':
             return Object.assign({}, state, {currentUser: action.currentUser, step: 2, company: action.company});
         case 'COMPANY_FILL_INFO':
@@ -24,7 +23,7 @@ function register(state, action){
 
 const Index = combineReducers({
     authService,
-    register
+    companyRegister
 });
 
 export default Index;

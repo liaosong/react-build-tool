@@ -16,14 +16,15 @@ const PATHS = {
   src: 'app',
   html: ['app/*.html', 'app/*/*.html'],
   dist: 'dist/',
-  js: ['app/js/*.js', 'app/js/*/*.js', 'app/js/*.jsx', 'app/js/*/*.jsx'],
+  js: ['app/js/*.js', 'app/js/*/*.js', 'app/js/*.jsx', 'app/js/*/*.jsx', 'app/js/*/*/*/*.js'],
   all_sass: ['app/styles/*.scss', 'app/styles/*/*.scss'], //scss watch的文件
   module_sass: 'app/styles/*.scss', //scss相应的模块文件
   module_js: {index:'./app/js/index.js',
     company_list: './app/js/company_list.js',
     company_show: './app/js/company_show.js',
     user_home: './app/js/user_home.js',
-    register: './app/js/register.js'
+    user_register: './app/js/user_register.js',
+    company_register: './app/js/company_register.js'
   }, //页面对应的js文件
   img: ['./app/images/*.*', './app/images/*/*.*']
 
@@ -123,21 +124,25 @@ gulp.task('express', function(){
   app.use(proxy(proxyOptions));
 
   router.get('/', function(req, res){
-    var user = {"_id":"55e450bfa02797ea0448b171","__v":0,"status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.124Z","city":"","role":"system","salt":"105790163844","hashed_password":"d9f48810cafca7c591127d6f62dbf9cd230c93fc","phone_number":"18782972908","username":"","avatar":"uploads/image-1437896764820aa.jpg","email":"","name":"廖小松"};
+    //var user = {"_id":"55e450bfa02797ea0448b171","__v":0,"status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.124Z","city":"","role":"system","salt":"105790163844","hashed_password":"d9f48810cafca7c591127d6f62dbf9cd230c93fc","phone_number":"18782972908","username":"","avatar":"uploads/image-1437896764820aa.jpg","email":"","name":"廖小松"};
+    //
+    //res.render('index',{user: user});
+    var user = {"_id":"55e450bfa02797ea0448b183","status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.153Z","phone_number":"17131338013","username":"","avatar":"","email":"","name":"流浪的鱼"};
 
-    res.render('index',{user: user});
+    res.render('user_home',{user: user});
   });
 
   router.get('/user_home', function(req, res){
-    var user = {"_id":"55e450bfa02797ea0448b171","__v":0,"status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.124Z","city":"","role":"system","salt":"105790163844","hashed_password":"d9f48810cafca7c591127d6f62dbf9cd230c93fc","phone_number":"18782972908","username":"","avatar":"uploads/image-1437896764820aa.jpg","email":"","name":"廖小松"};
+    var user = {"_id":"55e450bfa02797ea0448b183","status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.153Z","phone_number":"17131338013","username":"","avatar":"","email":"","name":"流浪的鱼"};
 
     res.render('user_home',{user: user});
   })
   router.get('/user/register', function(req, res){
-    res.render('register');
+    res.render('register', {type: 'user'});
   });
   router.get('/company/register', function(req, res){
-    res.render('register');
+    var company = {"_id":"5661032ac4bf605df8d5c738","owner":"5661032ac4bf605df8d5c737","__v":0,"email":"","contacts":"","status":"unfinished","area":"","city":"","province":"","created_at":"2015-12-04T03:06:18.863Z","company_img":"","_description":"","phone_number":"","address":"","company_address":"","services_type":[],"services":[],"category":[],"type":"junior","is_in_limit":true,"score":0,"calls_count":0,"visited_count":1,"name":""};
+    res.render('company_register', {company: company});
   });
   app.use('/', router);
 

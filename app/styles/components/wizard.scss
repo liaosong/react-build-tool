@@ -1,0 +1,58 @@
+
+/*wizard*/
+.wizard-container{
+  width: 600px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.apply-wizard{
+  width: 600px;
+  margin: 0 auto;
+}
+.apply-wizard>li{
+  float: left;
+}
+.apply-wizard>.step{
+  width: 200px;
+}
+.step-name, .step-number{
+  margin: 0 auto;
+  text-align: center;
+}
+.step>.step-number{
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #d9d9d9;
+  font-size: 16px;
+  color: #ccc;
+  line-height: 38px;
+  text-align: center;
+}
+.complete{
+  background-image: url(/images/complete_icon.png);
+}
+.step>.complete{
+  border: none;
+  width: 42px;
+  height: 42px;
+}
+.active>.step-number{
+  border-color: #09f;
+  color: #09f;
+}
+.active>.step-name{
+  color: #09f;
+}
+.apply-wizard>.line{
+  width: 158px;
+  margin-left: -79px;
+  margin-right: -79px;
+  border-top: 2px solid #d9d9d9;
+  margin-top: 21px;
+}
+.step-name{
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ccc;
+}

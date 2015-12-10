@@ -1,0 +1,30 @@
+.x-form{
+
+  padding: 0 20px;
+  .x-form-group{
+
+    height: 79px;
+    border-bottom: 1px solid #b2b2b2;
+
+    .x-label{
+      width: 200px;
+      display: inline-block;
+      line-height: 79px;
+      padding-left: 20px;
+      color: #808080;
+
+    }
+
+    .x-value{
+      width: 400px;
+      display: inline-block;
+      color: #333333;
+    }
+    .x-tips{
+      width: 140px;
+      display: inline-block;
+      color: #b2b2b2;
+      text-align: right;
+    }
+  }
+}

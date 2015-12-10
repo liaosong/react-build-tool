@@ -10,14 +10,15 @@ class CodeButton extends React.Component {
             codeSend: false,
             waiting: false
         }
+        this.timer = undefined;
     }
     disableBtn(){
         var count = 60;
-        var countdown = setInterval(() => {
+        this.timer = setInterval(() => {
             count -= 1;
 
             if(count === 0){
-                clearInterval(countdown);
+                clearInterval(this.timer);
                 this.setState({
                     buttonText: '重新获取验证码',
                     codeSend: false,
@@ -33,12 +34,16 @@ class CodeButton extends React.Component {
         }, 1000);
 
     }
+    componentWillUnmount(){
+        clearInterval(this.timer);
+    }
+
     getCode(){
         let {onGetCode} = this.props;
-        var phoneNumber = onGetCode();
+        var params = onGetCode();
 
         request.post('/api/send_security_code')
-            .send({phone_number: phoneNumber})
+            .send(params)
             .end((err, res) =>{
                 if(err){
                     this.setState({

@@ -4,10 +4,9 @@ import thunk from 'redux-thunk';
 import { compose, createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import IndexReducers from './reducers/index';
-import Index from './module/index';
+import UserRegister from './module/user_register';
 import { devTools, persistState } from 'redux-devtools';
 
-//let store = createStore(IndexReducers);
 const finalCreateStore = compose(
     // Enables your middleware:
     applyMiddleware(thunk), // any Redux middleware, e.g. redux-thunk
@@ -19,18 +18,10 @@ const finalCreateStore = compose(
 
 const store = finalCreateStore(IndexReducers);
 
-var currentUser = undefined;
-
-if(window.CURRENT_USER) {
-    currentUser = window.CURRENT_USER;
-}
 let rootElement = document.getElementById('container');
-console.log(currentUser);
 ReactDom.render(
-    // 为了解决 React 0.13 的问题，
-    // 一定要把 child 用函数包起来。
     <Provider store={store} >
-      <Index currentUser={currentUser}/>
+        <UserRegister />
     </Provider>,
     rootElement
 );

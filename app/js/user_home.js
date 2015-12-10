@@ -1,32 +1,30 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import thunk from 'redux-thunk';
-import { compose, createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import IndexReducers from './reducers/index';
-import UserHome from './module/user_home';
-import { devTools, persistState } from 'redux-devtools';
+import {configureStore} from './stores/config_store';
+import { ReduxRouter } from 'redux-router';
 
-const finalCreateStore = compose(
-    // Enables your middleware:
-    applyMiddleware(thunk), // any Redux middleware, e.g. redux-thunk
-    // Provides support for DevTools:
-    devTools()
-    // Lets you write ?debug_session=<name> in address bar to persist debug sessions
-    //persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
-)(createStore);
-
-const store = finalCreateStore(IndexReducers);
-
-var currentUser = undefined;
+var USER;
 
 if(window.CURRENT_USER) {
-    currentUser = window.CURRENT_USER;
+    USER = window.CURRENT_USER;
 }
+
+var initAuthServiceState = {
+    dialogOpen: false,
+    currentUser: USER
+}
+
+var initUserState = {
+    currentUser: USER
+}
+let store = configureStore();
 let rootElement = document.getElementById('container');
+
+
 ReactDom.render(
     <Provider store={store} >
-        <UserHome currentUser={currentUser}/>
+        <ReduxRouter></ReduxRouter>
     </Provider>,
     rootElement
 );

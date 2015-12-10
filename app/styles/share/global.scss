@@ -31,6 +31,9 @@ h1,h2,h3,h4,h5,p{
 .w-1000{
   width: 1000px;
 }
+.w-800{
+  width: 800px;
+}
 .s-center{
   margin: 0 auto;
 }
@@ -54,4 +57,19 @@ h1,h2,h3,h4,h5,p{
 
 .inline-b{
   display: inline-block;
+}
+li{
+  list-style: none;
+}
+.white-bg{
+  background-color: #fff;
+}
+
+.mr-20{
+  margin-right: 20px;
+}
+
+.required{
+  margin-left: 3px;
+  color: #f00;
 }

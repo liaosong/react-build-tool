@@ -2,6 +2,7 @@
 @import "share/head";
 @import "components/pagination";
 @import './components/footer';
+@import './components/x-form.scss';
 
 .header-top{
   background-color: #fff;
@@ -22,6 +23,63 @@
     .apply-btn{
       color: #3bf;
       border-color: #3bf;
+    }
+  }
+}
+
+.user-home-container{
+  margin-top: 30px;
+
+  .index-container{
+    width: 200px;
+    font-size: 16px;
+  }
+
+  a{
+    color: #808080;
+    &.active{
+      color: #4c4c4c;
+    }
+  }
+  .service-item{
+    margin-top: 20px;
+
+    &:first-child{
+      margin-top: 0px;
+    }
+
+
+  }
+
+  .content-container{
+    background-color: #fff;
+    width: 800px;
+  }
+}
+
+.user-info-container{
+  .info-indexs{
+    background-color: #edefed;
+    padding-left: 20px;
+
+    .info-index{
+      display: inline-block;
+
+
+      a{
+        display: block;
+        width: 120px;
+        height: 48px;
+        line-height: 50px;
+        text-align: center;
+        color: #808080;
+
+        &.active{
+          color: #09f;
+          border-bottom: 2px solid #09f;
+        }
+
+      }
     }
   }
 }

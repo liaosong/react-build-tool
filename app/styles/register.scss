@@ -3,6 +3,8 @@
 @import "components/pagination";
 @import './components/footer';
 @import './components/header';
+@import './components/wizard';
+@import './components/select';
 
 .header-top{
   background-color: #fff;
@@ -73,7 +75,12 @@
     width: 120px;
     cursor: pointer;
   }
-
+  .form-group-height{
+    height: 81px;
+  }
+  .row-group{
+    width: 320px;
+  }
   .form-group{
     margin-top: 30px;
     .err-tips{
@@ -100,6 +107,19 @@
       -moz-border-radius: 3px;
       border-radius: 3px;
       font-size: 14px;
+      color: #4c4c4c;
+    }
+    .Select{
+
+      input{
+        margin-top: 0px;
+        padding-left: 0px;
+        border: none;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        font-size: 14px;
+      }
     }
     .row-input{
       width: 305px;
@@ -123,5 +143,49 @@
       margin-left: 15px;
       color: #0af;
     }
+  }
+}
+
+.white-bg{
+  border-top: 1px solid #e5e5e5;
+}
+
+
+.company-register{
+  .user-register-container{
+    margin-top: 40px;
+  }
+
+  .select-city{
+    width: 190px;
+  }
+  .Select{
+    margin-top: 10px;
+    .Select-control{
+      height: 50px;
+      border: 2px solid #ccc;
+
+    }
+    .Select-placeholder{
+      line-height: 46px;
+      color: #4c4c4c;
+    }
+    .Select-clear{
+      display: none;
+    }
+
+    margin-right: 20px;
+  }
+  .step-3{
+    padding-top: 100px;
+    margin-top: 0px;
+    padding-bottom: 150px;
+  }
+
+  .check-tips{
+    text-align: center;
+    font-size: 18px;
+    color: #4c4c4c;
+
   }
 }

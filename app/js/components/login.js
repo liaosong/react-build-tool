@@ -81,6 +81,12 @@ class Login extends React.Component{
         }
         return false;
     }
+    handleModalCloseRequest(){
+        const { dispatch } = this.props;
+        dispatch({
+            type: 'LOGIN_DIALOG_CLOSE'
+        });
+    }
 
     render(){
         var {dispatch} = this.props;
@@ -88,7 +94,7 @@ class Login extends React.Component{
         return (
             <div className="login-component">
                 <a href="javascript:;" onClick={(e) => dispatch({type:'OPEN_LOGIN_DIALOG'})}>{loginText}</a>
-                <Modal isOpen={this.props.dialogOpen} style={this.state.dialogStyle}>
+                <Modal isOpen={this.props.dialogOpen} style={this.state.dialogStyle} onRequestClose={this.handleModalCloseRequest.bind(this)}>
                     <div className="login-container">
                         <div className="logo"></div>
                         <form method="POST" onSubmit={this.login.bind(this)} noValidate>
@@ -103,7 +109,7 @@ class Login extends React.Component{
                         <hr/>
                         <div className="reg-ref">
                             <span>还没有账号？</span>
-                            <a href="">注册</a>
+                            <a href={this.props.registerUrl}>注册</a>
                         </div>
                     </div>
                 </Modal>

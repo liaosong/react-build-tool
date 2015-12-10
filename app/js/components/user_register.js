@@ -141,9 +141,10 @@ class UserRegister extends React.Component{
 
     onGetCode(){
         let phoneNumber = this.refs.phoneNumber.value;
+        let captcha = this.refs.captcha.value;
         let res = this.phoneNumberCheck();
 
-        if(res) return phoneNumber;
+        if(res && this.state.captchaCorrect) return {phone_number: phoneNumber, captcha: captcha};
         return false;
     }
 

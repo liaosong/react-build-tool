@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux';
 import {authService} from './header_reducer';
+import {routerStateReducer} from 'redux-router';
 
-function register(state, action){
+function userHome(state, action){
     if(!state){
         return {
-            registerType: 'user',
-            currentUser: undefined,
-            step: 2
+            currentUser: undefined
         }
     }
 
@@ -23,8 +22,9 @@ function register(state, action){
 
 
 const Index = combineReducers({
-    authService,
-    register
+    authService: authService,
+    userHome: userHome,
+    router: routerStateReducer
 });
 
 export default Index;

@@ -62,7 +62,7 @@ class Header extends React.Component {
                     <span className="tips">
                         已有参展商账号？
                     </span>
-                    <Login loginText="立即登陆"></Login>
+                    <Login loginText="立即登陆" registerUrl={this.props.registerUrl}></Login>
                 </div>
             </div>
         );
@@ -73,11 +73,27 @@ class Header extends React.Component {
         dispatch(logout());
     }
 
+    renderCompanyRegister(){
+        return (
+            <div className="header-top">
+                <div className="s-logo"></div>
+                <div className="system-info">
+                    <span className="system-name">服务商管理系统</span>
+                    <span className="tips">
+                        已有服务商账号？
+                    </span>
+                    <Login loginText="立即登陆" registerUrl={this.props.registerUrl}></Login>
+                </div>
+            </div>
+        );
+    }
+
     render() {
         var {currentUser, dispatch, type} = this.props;
         if(currentUser && type == 'user') return this.renderUserHome();
         if(currentUser && type == 'company') return this.renderCompanyHome();
         if(type == 'user-register') return this.renderUserRegister();
+        if(type == 'company-register') return this.renderCompanyRegister();
         if(currentUser) return this.renderLogin();
         return (
             <div className="header-top">
@@ -86,7 +102,7 @@ class Header extends React.Component {
                     <li><a href=""><button className="apply-btn">成为服务商</button></a></li>
                     <li><a href="">注册</a></li>
                     <li>
-                        <Login></Login>
+                        <Login registerUrl={this.props.registerUrl}></Login>
                     </li>
                 </ul>
 
