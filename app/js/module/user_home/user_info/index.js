@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, IndexLink} from 'react-router';
+import {pushState} from 'redux-router';
 
-export class UserInfo extends React.Component {
-    constructor(props){
-        super(props);
+class UserInfo extends React.Component {
+    constructor(props, context){
+        super(props, context);
     }
     render(){
         const links = [
@@ -16,7 +17,7 @@ export class UserInfo extends React.Component {
                 </li>
         );
         return (
-            <div className="w-800 user-info-container">
+            <div className="w-800 module-container">
                 <ul className="info-indexs">
                     <li className="info-index">
                         <IndexLink activeClassName="active" to="/user_info">基础信息</IndexLink>
@@ -31,3 +32,9 @@ export class UserInfo extends React.Component {
         );
     }
 }
+function mapStateToProps(state){
+    return state;
+}
+export default connect(mapStateToProps, {
+    pushState
+})(UserInfo);

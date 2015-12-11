@@ -26,5 +26,41 @@
       color: #b2b2b2;
       text-align: right;
     }
+    .x-form-control{
+      width: 240px;
+      height: 42px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+    input{
+      padding-left: 10px;
+    }
+  }
+
+  .x-btn-group{
+    margin-top: 40px;
+    margin-bottom: 60px;
+
+    button {
+      height: 40px;
+      width: 160px;
+      outline: none;
+      border: 1px solid #09f;
+      border-radius: 3px;
+    }
+
+    .x-edit-btn{
+      color: #09f;
+      background-color: #ffffff;
+    }
+    .x-cancel-btn{
+      color: #09f;
+      background-color: #ffffff;
+    }
+    .x-save-btn{
+      color: #fff;
+      background-color: #09f;
+    }
   }
 }

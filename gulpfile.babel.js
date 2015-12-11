@@ -132,7 +132,7 @@ gulp.task('express', function(){
     res.render('user_home',{user: user});
   });
 
-  router.get('/user_home', function(req, res){
+  router.all('/user_home/*', function(req, res){
     var user = {"_id":"55e450bfa02797ea0448b183","status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.153Z","phone_number":"17131338013","username":"","avatar":"","email":"","name":"流浪的鱼"};
 
     res.render('user_home',{user: user});

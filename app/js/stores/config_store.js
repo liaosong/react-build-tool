@@ -14,10 +14,9 @@ const createHistoryWithBasename = (historyOptions) => {
 }
 
 const finalCreateStore = compose(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, createLogger()),
     reduxReactRouter({ routes: routes,
         createHistory: createHistoryWithBasename }),
-    applyMiddleware(createLogger()),
     devTools()
 )(createStore);
 

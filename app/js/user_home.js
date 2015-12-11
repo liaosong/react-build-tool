@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import {configureStore} from './stores/config_store';
 import { ReduxRouter } from 'redux-router';
 
+
 var USER;
 
 if(window.CURRENT_USER) {
@@ -18,7 +19,10 @@ var initAuthServiceState = {
 var initUserState = {
     currentUser: USER
 }
-let store = configureStore();
+let store = configureStore({
+    authService: initAuthServiceState,
+    userHome: initUserState
+});
 let rootElement = document.getElementById('container');
 
 

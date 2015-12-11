@@ -12,13 +12,6 @@ import {pushState} from 'redux-router';
 class UserHome extends React.Component {
     constructor(props){
         super(props);
-        //var {currentUser, dispatch} = this.props;
-        //if(currentUser){
-        //    dispatch({
-        //        type: 'INIT_AUTH',
-        //        currentUser: currentUser
-        //    });
-        //}
     }
     render() {
         console.log(this.props);
