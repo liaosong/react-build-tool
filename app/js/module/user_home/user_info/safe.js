@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {pushState} from 'redux-router';
+import * as UserActionCreators from '../../../actions/user_actions';
 
-export class UserInfoSafe extends React.Component {
+class UserInfoSafe extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -10,24 +12,40 @@ export class UserInfoSafe extends React.Component {
     }
 
     onEdit(){
-        this.setState({
-            change: true
-        });
+        var {pwdEdit} = this.props;
+        pwdEdit();
     }
 
     onCancel(){
-        this.setState({
-            change: false
-        });
+        var {pwdView} = this.props;
+        pwdView();
+    }
+
+    passwordChange(e){
+        e.preventDefault();
+        var {changePassword} = this.props;
+        var password = this.refs.password.value;
+        var new_password = this.refs.new_password.value;
+        var new_password_ref = this.refs.new_password_ref.value;
+        if(new_password === new_password_ref){
+            changePassword({
+                old_password: password,
+                password: new_password
+            });
+        }else{
+            alert('两次输入密码不一致');
+        }
+
     }
 
     renderChange(){
+        var {currentUser} = this.props;
         return (
             <div className="user-base-info">
-                <form className="x-form">
+                <form className="x-form" onSubmit={this.passwordChange.bind(this)}>
                     <div className="x-form-group">
                         <div className="x-label">登陆账户</div>
-                        <div className="x-value">xxxxxxx</div>
+                        <div className="x-value">{currentUser.phone_number}</div>
                         <div className="x-tips">用户登录，不能修改</div>
                     </div>
                     <div className="x-form-group">
@@ -61,17 +79,18 @@ export class UserInfoSafe extends React.Component {
     }
 
     renderShow(){
+        var {currentUser} = this.props;
         return (
             <div className="user-base-info">
                 <form className="x-form">
                     <div className="x-form-group">
                         <div className="x-label">登陆账户</div>
-                        <div className="x-value">xxxx</div>
+                        <div className="x-value">{currentUser.phone_number}</div>
                         <div className="x-tips">用户登录，不能修改</div>
                     </div>
                     <div className="x-form-group">
                         <div className="x-label">登陆密码</div>
-                        <div className="x-value">xxxx</div>
+                        <div className="x-value">......</div>
                         <div className="x-tips"></div>
                     </div>
                     <div className="x-btn-group">
@@ -83,7 +102,18 @@ export class UserInfoSafe extends React.Component {
     }
 
     render(){
-        if(this.state.change) return this.renderChange();
+        if(this.props.change) return this.renderChange();
         return this.renderShow();
     }
 }
+
+function mapStateToProps(state){
+    return {
+        currentUser: state.userHome.currentUser,
+        change: state.userHome.change
+    };
+}
+export default connect(mapStateToProps, {
+    pushState: pushState,
+    ...UserActionCreators
+})(UserInfoSafe);

@@ -12,10 +12,9 @@ const createHistoryWithBasename = (historyOptions) => {
         basename: '/user_home'
     })
 }
-
 const finalCreateStore = compose(
     applyMiddleware(thunk, createLogger()),
-    reduxReactRouter({ routes: routes,
+    reduxReactRouter({
         createHistory: createHistoryWithBasename }),
     devTools()
 )(createStore);

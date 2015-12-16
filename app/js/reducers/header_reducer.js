@@ -18,6 +18,7 @@ export function authService(state, action){
             return Object.assign({}, state, {currentUser: undefined});
         case 'LOGIN_DIALOG_CLOSE':
             return Object.assign({}, state, {dialogOpen: false});
+
         default : return state;
     }
 }

@@ -8,13 +8,17 @@ import Footer from '../components/footer';
 import classNames from 'classnames';
 import {pushState} from 'redux-router';
 
+//for test begin
+import * as actions from '../actions/user_actions';
+//end
+
 
 class UserHome extends React.Component {
-    constructor(props){
-        super(props);
+    constructor(props, context){
+        super(props, context);
     }
     render() {
-        console.log(this.props);
+        var {updateUser} = this.props;
         const links = [
             {url: 'user_info', label: '我的账户', id:1},
             {url: 'tender', label: '我发布的需求', id:2},
@@ -48,9 +52,7 @@ class UserHome extends React.Component {
 function mapStateToProps(state){
     return state;
 }
-export default connect(mapStateToProps, {
-    pushState
-})(UserHome);
+export default connect(mapStateToProps, {pushState})(UserHome);
 
 
 

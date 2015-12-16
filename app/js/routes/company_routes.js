@@ -18,7 +18,7 @@ import { ReduxRouter } from 'redux-router';
 
 export default (
     <ReduxRouter>
-        <Redirect from="/" to="user_info"/>
+        <Redirect from="/" to="company_info"/>
         <Route path="/" component={UserHome}>
             <Route path="user_info" component={UserInfo}>
                 <IndexRoute component={UserInfoBase} />

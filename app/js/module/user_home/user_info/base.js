@@ -16,30 +16,28 @@ class UserInfoBase extends React.Component {
     userInfoUpdate(e){
         e.preventDefault();
         var refs = this.refs;
+        const {updateUser} = this.props;
         var userInfo = {
-            name: refs.name,
-            company_name: refs.company_name,
-            contact: refs.contact,
-            contact_way: refs.contact_way,
-            tel: refs.tel,
-            email: refs.email
+            name: refs.name.value,
+            company_name: refs.company_name.value,
+            contact: refs.contact.value,
+            contact_way: refs.contact_way.value,
+            tel: refs.tel.value,
+            email: refs.email.value
         }
-
+        updateUser(userInfo);
         return false;
     }
     onEdit(e){
         e.preventDefault();
-        this.setState({
-            editing: true
-        });
-        console.log(dispatch);
+        var {updateView} = this.props;
+        updateView();
     }
 
     onCancel(e){
         e.preventDefault();
-        this.setState({
-            editing: false
-        });
+        var {showView} = this.props;
+        showView();
     }
 
     renderEdit(){
@@ -152,7 +150,7 @@ class UserInfoBase extends React.Component {
         );
     }
     render(){
-        if(this.state.editing) return this.renderEdit();
+        if(this.props.editing) return this.renderEdit();
         return this.renderShow();
 
     }
@@ -160,9 +158,11 @@ class UserInfoBase extends React.Component {
 
 function mapStateToProps(state){
     return {
-        currentUser: state.userHome.currentUser
+        currentUser: state.userHome.currentUser,
+        editing: state.userHome.editing
     };
 }
 export default connect(mapStateToProps, {
-    pushState, UserActionCreators
+    pushState: pushState,
+    ...UserActionCreators
 })(UserInfoBase);

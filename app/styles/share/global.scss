@@ -15,6 +15,9 @@ a{
   color: #fff;
   cursor: pointer;
 }
+button{
+  cursor: pointer;
+}
 
 .cleanfix:after{
   display: block;
@@ -64,7 +67,9 @@ li{
 .white-bg{
   background-color: #fff;
 }
-
+.ml-10{
+  margin-left: 10px;
+}
 .mr-20{
   margin-right: 20px;
 }

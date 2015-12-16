@@ -2,7 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, IndexLink} from 'react-router';
 import {pushState} from 'redux-router';
+import {getTenderData} from '../../../actions/user_actions';
+
+
+
 class Tender extends React.Component {
+    constructor(props){
+        super(props);
+    }
+
+    componentDidMount(){
+        var {getTenderData} = this.props;
+        getTenderData();
+    }
     render(){
         const links = [
             {url: "tender/checking", label: '审核中', id:2},
@@ -22,6 +34,11 @@ class Tender extends React.Component {
                     {links}
                 </ul>
                 <div className="tender-container">
+                    <div className="list-header">
+                        <div className="inline-b tender-content">内容</div>
+                        <div className="inline-b tender-status">状态</div>
+                        <div className="inline-b action">操作</div>
+                    </div>
                     {this.props.children}
                 </div>
             </div>
@@ -33,5 +50,6 @@ function mapStateToProps(state){
     return state;
 }
 export default connect(mapStateToProps, {
-    pushState
+    pushState: pushState,
+    getTenderData: getTenderData
 })(Tender);

@@ -78,7 +78,7 @@ gulp.task("webpack", ['copy'], function(){
     module: {
       loaders: [
         { test: /\.js|jsx$/,
-          loader: 'babel-loader?presets[]=es2015&presets[]=react',
+          loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0',
           exclude: /node_modules/
         }
       ]
@@ -124,12 +124,9 @@ gulp.task('express', function(){
   app.use(proxy(proxyOptions));
 
   router.get('/', function(req, res){
-    //var user = {"_id":"55e450bfa02797ea0448b171","__v":0,"status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.124Z","city":"","role":"system","salt":"105790163844","hashed_password":"d9f48810cafca7c591127d6f62dbf9cd230c93fc","phone_number":"18782972908","username":"","avatar":"uploads/image-1437896764820aa.jpg","email":"","name":"廖小松"};
-    //
-    //res.render('index',{user: user});
-    var user = {"_id":"55e450bfa02797ea0448b183","status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.153Z","phone_number":"17131338013","username":"","avatar":"","email":"","name":"流浪的鱼"};
+    var user = {"_id":"55e450bfa02797ea0448b171","__v":0,"status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.124Z","city":"","role":"system","salt":"105790163844","hashed_password":"d9f48810cafca7c591127d6f62dbf9cd230c93fc","phone_number":"18782972908","username":"","avatar":"uploads/image-1437896764820aa.jpg","email":"","name":"廖小松"};
 
-    res.render('user_home',{user: user});
+    res.render('index',{user: undefined});
   });
 
   router.all('/user_home/*', function(req, res){
