@@ -55,7 +55,21 @@ class Header extends React.Component {
         );
     }
     renderCompanyHome(){
-
+        var {currentUser} = this.props;
+        return (
+            <div className="header-top">
+                <div className="s-logo"></div>
+                <div className="system-type">
+                    <span>参展商管理系统</span>
+                    <span className="ml-10">|</span>
+                    <span className="ml-10">欢迎</span>
+                </div>
+                <ul className="right-side">
+                    <li><a href="">{ currentUser.phone_number}</a></li>
+                    <li><a href="javascript:;" onClick={this.logout.bind(this)}>退出</a></li>
+                </ul>
+            </div>
+        );
     }
     renderUserRegister(){
         return (

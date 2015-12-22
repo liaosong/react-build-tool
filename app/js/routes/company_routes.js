@@ -1,17 +1,18 @@
 import React from 'react';
 import { Route, Redirect, IndexRoute } from 'react-router';
 
-import UserHome from '../module/user_home';
-import UserInfo from '../module/user_home/user_info/index';
-import UserInfoBase from '../module/user_home/user_info/base';
-import UserInfoSafe from '../module/user_home/user_info/safe';
+import CompanyHome from '../module/company_home';
+import CompanyInfo from '../module/company_home/info/index';
+import CompanyInfoBase from '../module/company_home/info/base';
+import CompanyInfoSafe from '../module/company_home/info/safe';
 
-import Tender from '../module/user_home/tender/tender';
-import AllTender from '../module/user_home/tender/all';
-import CheckingTender from '../module/user_home/tender/checking';
-import CheckedTender from '../module/user_home/tender/checked';
+import Management from '../module/company_home/management/index';
+import ManagementInfo from '../module/company_home/management/info';
+import ManagementCase from '../module/company_home/management/cases';
+import ManagementService from '../module/company_home/management/services';
 
-import Enshrine from '../module/user_home/enshrine/enshrine';
+import Collect from '../module/company_home/collect/index';
+
 
 import { ReduxRouter } from 'redux-router';
 
@@ -19,17 +20,18 @@ import { ReduxRouter } from 'redux-router';
 export default (
     <ReduxRouter>
         <Redirect from="/" to="company_info"/>
-        <Route path="/" component={UserHome}>
-            <Route path="user_info" component={UserInfo}>
-                <IndexRoute component={UserInfoBase} />
-                <Route path="safe" component={UserInfoSafe}></Route>
+        <Route path="/" component={CompanyHome}>
+            <Route path="company_info" component={CompanyInfo}>
+                <IndexRoute component={CompanyInfoBase}></IndexRoute>
+                <Route path="safe" component={CompanyInfoSafe}></Route>
+
             </Route>
-            <Route path="tender" component={Tender}>
-                <IndexRoute component={AllTender} />
-                <Route path="checking" component={CheckingTender}></Route>
-                <Route path="checked" component={CheckedTender}></Route>
+            <Route path="management" component={Management}>
+                <IndexRoute component={ManagementInfo}></IndexRoute>
+                <Route path="cases" component={ManagementCase}></Route>
+                <Route path="services" component={ManagementService}></Route>
             </Route>
-            <Route path="enshrine" component={Enshrine}></Route>
+            <Route path="collect" component={Collect}></Route>
         </Route>
     </ReduxRouter>
 );

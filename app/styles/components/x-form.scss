@@ -1,3 +1,5 @@
+$x-value-color: #333333;
+
 .x-form{
 
   padding: 0 20px;
@@ -18,7 +20,7 @@
     .x-value{
       width: 400px;
       display: inline-block;
-      color: #333333;
+      color: $x-value-color;
     }
     .x-tips{
       width: 140px;
@@ -32,6 +34,30 @@
       border: 1px solid #ccc;
       border-radius: 3px;
       font-size: 14px;
+
+    }
+    .select-form-control{
+
+      display: inline-block;
+      vertical-align: middle;
+
+      .Select-placeholder{
+        line-height: 40px;
+        color: $x-value-color;
+      }
+      .Select-input{
+        line-height: 40px;
+      }
+      .Select-control{
+        width: 253px;
+        height: 42px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 14px;
+      }
+      input{
+        padding-left:0;
+      }
     }
     input{
       padding-left: 10px;
