@@ -40,8 +40,11 @@ class CheckBoxGroup extends Component{
             );
         })
 
+        let {className} = this.props;
+        className = "Check-box-group " + className
+
         return (
-            <div className="Check-box-group">
+            <div className={className}>
                 {items}
             </div>
         );

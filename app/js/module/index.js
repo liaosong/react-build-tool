@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import Header from '../components/header';
 import Search from '../components/search';
 import Footer from '../components/footer';
-
+import {initHomeData} from '../actions/index_actions';
+import Modal from 'react-modal';
 import classNames from 'classnames';
 
 
@@ -36,73 +37,71 @@ class CompanyList extends React.Component {
     }
 
     renderFullCompanyList() {
-        // var companies =
+        var {companies} = this.props;
+        companies = companies || [];
+        companies = companies.map((company) => {
+            return (
+                <div className="company-item" key={company._id}>
+                    <img className="company-img" src={company.company_img}/>
+
+                    <div className="company-info">
+                        <div className="company-name">{company.name}</div>
+                        <div className="company-tags">{company.services_type.join(' ')}</div>
+                        <div className="company-cases">成功案例：<span
+                            className="cases-num">{company.cases_num}</span></div>
+                    </div>
+                </div>
+            );
+        });
         return (
             <div className={classNames("company-list","cleanfix")}>
-                <div className={classNames("company-item")}>
-                    <img className={classNames("company-img")}/>
-
-                    <div className={classNames("company-info")}>
-                        <div className={classNames("company-name")}>成都汀兰商务会议有限公司</div>
-                        <div className={classNames("company-tags")}>礼品定制 演员节目 场地搭建</div>
-                        <div className={classNames("company-cases")}>成功案例：<span
-                            className={classNames("cases-num")}>67</span></div>
-                    </div>
-                </div>
-                <div className={classNames("company-item")}>
-                    <img className={classNames("company-img")}/>
-
-                    <div className={classNames("company-info")}>
-                        <div className={classNames("company-name")}>成都汀兰商务会议有限公司</div>
-                        <div className={classNames("company-tags")}>礼品定制 演员节目 场地搭建</div>
-                        <div className={classNames("company-cases")}>成功案例：<span
-                            className={classNames("cases-num")}>67</span></div>
-                    </div>
-                </div>
-                <div className={classNames("company-item")}>
-                    <img className={classNames("company-img")}/>
-
-                    <div className={classNames("company-info")}>
-                        <div className={classNames("company-name")}>成都汀兰商务会议有限公司</div>
-                        <div className={classNames("company-tags")}>礼品定制 演员节目 场地搭建</div>
-                        <div className={classNames("company-cases")}>成功案例：<span
-                            className={classNames("cases-num")}>67</span></div>
-                    </div>
-                </div>
-                <div className={classNames("company-item")}>
-                    <img className={classNames("company-img")}/>
-
-                    <div className={classNames("company-info")}>
-                        <div className={classNames("company-name")}>成都汀兰商务会议有限公司</div>
-                        <div className={classNames("company-tags")}>礼品定制 演员节目 场地搭建</div>
-                        <div className={classNames("company-cases")}>成功案例：<span
-                            className={classNames("cases-num")}>67</span></div>
-                    </div>
-                </div>
+                {companies}
             </div>
         );
     }
 
     renderFactoryList() {
-        return (
-            <div className={classNames("factory-list")}>
-                <div className={classNames('factory-item')}>
-                    <img className={classNames('factory-img')}/>
+        var {companies} = this.props;
+        companies = companies || [];
+        companies = companies.map((company) => {
+            return (
+                <div className="company-item" key={company._id}>
+                    <img className="company-img" src={company.company_img}/>
 
-                    <div className={classNames('factory-info')}>
-                        <div className={classNames('factory-name')}></div>
-                        <div className={classNames('factory-cases')}>搭建案例展示：<span
-                            className={classNames("cases-num")}>67</span></div>
+                    <div className="company-info">
+                        <div className="company-name">{company.name}</div>
+                        <div className="company-cases">搭建案例展示：
+                            <span className="cases-num">{company.cases_num}</span></div>
                     </div>
                 </div>
+            );
+        });
+        return (
+            <div className="row-list factory-list">
+                {companies}
             </div>
         );
     }
 
     renderHireList() {
-        return (
-            <div className={classNames("hire-list")}>
 
+        var {companies} = this.props;
+        companies = companies || [];
+        companies = companies.map((company) => {
+            return (
+                <div className="company-item" key={company._id}>
+                    <img className="company-img" src={company.company_img}/>
+
+                    <div className="company-info">
+                        <div className="company-name">{company.name}</div>
+                        <div className="company-cases">{company.services.join(' ')}</div>
+                    </div>
+                </div>
+            );
+        });
+        return (
+            <div className="row-list hire-list">
+                {companies}
             </div>
         );
     }
@@ -137,8 +136,55 @@ class Index extends React.Component {
                 currentUser: currentUser
             });
         }
+
+        this.state = {
+            tenderDialogOpen: false
+        }
+    }
+
+
+    componentDidMount(){
+        var {dispatch} = this.props;
+        dispatch(initHomeData());
+    }
+    onCreateTender(){
+        var {currentUser, dispatch} = this.props;
+        if(!currentUser){
+            dispatch({
+                type: 'OPEN_LOGIN_DIALOG'
+            })
+        }else{
+            this.setState({
+                tenderDialogOpen: true
+            });
+        }
+    }
+    getTenderPage(type){
+        if(type == 'meeting'){
+            location.href = '/tender?type=meeting';
+        }else{
+            location.href = '/tender?type=exhibition';
+        }
+    }
+    closeDialog(){
+        this.setState({
+            tenderDialogOpen: false
+        });
     }
     render() {
+        var {fullCompany, factoryCompany, rentCompany} = this.props;
+        var dialogStyle = {
+            content:{
+                width: '600px',
+                height: '360px',
+                top: "calc(50% - 180px)",
+                left: "calc(50% - 300px)",
+                border: 'none'
+            },
+            overlay:{
+                backgroundColor: 'rgba(0, 0, 0, 0.5)'
+            }
+        }
         return (
             <div className="container">
                 <header className="cleanfix">
@@ -155,7 +201,20 @@ class Index extends React.Component {
                                 <span className="text-split">或者</span>
 
                                 <div className="publish" id="publish">
-                                    <button>发布需求</button>
+                                    <button onClick={this.onCreateTender.bind(this)}>发布需求</button>
+                                    <Modal isOpen={this.state.tenderDialogOpen} style={dialogStyle} className="tender-type-container">
+                                        <div className="head">请选择需求类型</div>
+                                        <div className="type-container">
+                                            <div className="inline-b meeting" onClick={this.getTenderPage.bind(this, 'meeting')}>
+                                                <div className="type-img"></div>
+                                                <div className="type-name">发布会议</div>
+                                            </div>
+                                            <div className="inline-b exhibition" onClick={this.getTenderPage.bind(this, 'exhibition')}>
+                                                <div className="type-img"></div>
+                                                <div className="type-name">发布展览</div></div>
+                                        </div>
+                                        <div className="close" onClick={this.closeDialog.bind(this)}></div>
+                                    </Modal>
                                 </div>
                             </div>
                             <div className="hot-word-tool">
@@ -170,21 +229,21 @@ class Index extends React.Component {
                         <h2 className="section-head text-center">会展服务商</h2>
 
                         <p className="section-title text-center">为您提供一站式会议展览活动的策划设计及搭建执行服务</p>
-                        <CompanyList type={"full_company"}></CompanyList>
+                        <CompanyList type={"full_company"} companies={fullCompany}></CompanyList>
                         <button className="load-more">加载更多</button>
                     </section>
                     <section className="type-factory">
                         <h2 className="section-head text-center">展厅展台搭建</h2>
 
                         <p className="section-title text-center">会展、展柜、展厅、舞台搭建工程</p>
-                        <CompanyList type={"factory"}></CompanyList>
+                        <CompanyList type={"factory"} companies={factoryCompany}></CompanyList>
                         <button className="load-more">加载更多</button>
                     </section>
                     <section className="type-hire">
                         <h2 className="section-head text-center">设备租赁</h2>
 
                         <p className="section-title text-center">灯光、音响、视频设备租赁</p>
-                        <CompanyList type={"hire"}></CompanyList>
+                        <CompanyList type={"hire"} companies={rentCompany}></CompanyList>
                         <button className="load-more">加载更多</button>
                     </section>
                 </div>
@@ -198,10 +257,13 @@ class Index extends React.Component {
 
 }
 
-function headerState(state) {
+function headerState({index, authService}) {
     return {
-        dialogClose: true
-    }
+        fullCompany: index.homeData.fullCompany,
+        factoryCompany: index.homeData.factoryCompany,
+        rentCompany: index.homeData.rentCompany,
+        currentUser: authService.currentUser
+    };
 }
 
 export default connect(headerState)(Index);

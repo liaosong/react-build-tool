@@ -97,3 +97,21 @@ export function fillCompanyInfo(id, company){
     }
 }
 
+export function initHomeData(){
+    return dispatch => {
+        request.get('/api/web_home')
+            .end(function(err, res){
+                if(err){
+                    return console.log(err);
+                }
+
+                if(res.body.status == 0){
+                    dispatch({
+                        type: 'INIT_INDEX_HOME',
+                        homeData: res.body.data
+                    });
+                }
+            })
+    }
+}
+

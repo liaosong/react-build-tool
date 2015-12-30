@@ -90,3 +90,46 @@ $x-value-color: #333333;
     }
   }
 }
+
+
+.j8-form{
+  margin-top: 60px;
+  input{
+    padding-left: 10px;
+  }
+
+  .form-row-group{
+    margin-top: 20px;
+    &:first-child{
+      margin-top: 0;
+    }
+  }
+
+  .j8-label{
+    width: 120px;
+    display:inline-block;
+  }
+
+  .j8-input{
+    height: 36px;
+    border-radius: 3px;
+    border: 1px solid #e5e5e5;
+    outline: none;
+  }
+  .full-w{
+    width: 407px;
+  }
+
+  .half-w{
+    width: 207px;
+  }
+
+  .concat-label{
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+

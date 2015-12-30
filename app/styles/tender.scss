@@ -1,0 +1,181 @@
+@import "share/global";
+@import "share/head";
+@import './components/footer';
+@import './components/date';
+@import './components/city-selecter';
+
+
+.header-top{
+  background-color: #fff;
+  .s-logo{
+    background-image: url(../images/logo-back.png);
+    cursor: pointer;
+  }
+  .system-type{
+    display: inline-block;
+    line-height: 60px;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #4c4c4c;
+  }
+  .right-side{
+    a{
+      color: #808080;
+    }
+    .apply-btn{
+      color: #3bf;
+      border-color: #3bf;
+    }
+  }
+}
+
+
+.tender-container{
+
+  .head{
+    height: 138px;
+    background-color: #FFFFFF;
+    border-top: 1px solid #e5e5e5;
+
+    .title{
+      font-size: 30px;
+      color: #4c4c4c;
+      text-align: center;
+      margin-top: 40px;
+    }
+    p{
+      font-size: 14px;
+      color: #4c4c4c;
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
+
+  .tender-info{
+    padding-top: 50px;
+    padding-bottom: 70px;
+  }
+  .concats-info{
+    background-color: #FFFFFF;
+    padding-top: 40px;
+    padding-bottom: 100px;
+  }
+
+  .tender-form{
+
+    .form-group{
+      margin-top: 30px;
+
+      &:first-child{
+        margin-top: 0;
+      }
+    }
+    input{
+      padding-left: 10px;
+      outline: none;
+    }
+    .unit{
+      margin-left: 10px;
+    }
+    .control-text{
+      resize: none;
+      border: 2px solid #ccc;
+      height: 140px;
+      padding: 10px;
+      outline: none;
+    }
+
+    .control-input{
+      border: 2px solid #ccc;
+      height: 44px;
+      font-size: 14px;
+
+      .date-input{
+        height: 44px;
+        border: none;
+        font-size: 14px;
+      }
+    }
+    .control-label{
+      font-size: 16px;
+      color: #4c4c4c;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 7px;
+
+      .required-tag{
+        color: #ff0000;
+      }
+    }
+
+    .control-w{
+      width: 225px;
+    }
+    .input-w{
+      width: 236px;
+    }
+    .captcha-w{
+      width: 166px;
+    }
+
+    .concat-label{
+      width: 100px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .captcha{
+      width: 118px;
+      height: 50px;
+    }
+
+    hr{
+      border-top: 1px solid #f4f4f4;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .tender-btn{
+      width: 240px;
+      height: 50px;
+      color: #fff;
+      background-color: #0af;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 3px;
+    }
+  }
+}
+
+.city-selecter{
+  .arrow{
+    width:0;
+    height:0;
+    border-width:8px 8px 0;
+    border-style:solid;
+    border-color:#aaa transparent transparent;/*灰 透明 透明 */
+    margin:40px auto;
+    position: absolute;
+    top: -18px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .city-container{
+    margin-left: 0;
+    border: 2px solid #e5e5e5;
+  }
+}
+.cust-city-select{
+  width: 240px;
+  height: 50px;
+
+  .value{
+    border: 2px solid #ccc;
+    height: 100%;
+    font-size: 14px;
+    width: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+  }
+}

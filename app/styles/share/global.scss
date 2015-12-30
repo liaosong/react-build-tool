@@ -44,6 +44,8 @@ h1,h2,h3,h4,h5,p{
   display: inline-block;
   vertical-align: top;
 }
+
+
 .text-center{
   text-align: center;
 }
@@ -55,7 +57,7 @@ h1,h2,h3,h4,h5,p{
   display: block;
 }
 .hidden{
-  display: none;
+  display: none !important;
 }
 
 .inline-b{
@@ -70,11 +72,23 @@ li{
 .ml-10{
   margin-left: 10px;
 }
+.ml-100{
+  margin-left: 100px;
+}
+.ml-5{
+  margin-left: 5px;
+}
 .mr-20{
   margin-right: 20px;
 }
 .ml-20{
   margin-left: 20px;
+}
+.mt-15{
+  margin-top: 15px;
+}
+.mt-40{
+  margin-top: 40px;
 }
 
 .pt-20{
@@ -106,4 +120,28 @@ li{
 
 .no-padding-top{
   padding-top: 0px !important;
+}
+
+
+
+//btn
+.btn-delete{
+  color: #ff0000;
+}
+.btn-edit{
+  color: #0af;
+}
+
+.g-btn-primary{
+  width:160px;
+  height: 40px;
+  border: 1px solid #0af;
+  color: #0af;
+  font-size: 14px;
+  background-color: #fff;
+  border-raduis: 3px;
+  outline: none;
+}
+.DayPicker{
+  z-index: 100;
 }

@@ -42,6 +42,7 @@
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "react": "^0.14.3",
+    "react-day-picker": "^1.2.0",
     "react-dom": "^0.14.2",
     "react-dropzone": "^3.2.3",
     "react-intl": "^1.2.1",

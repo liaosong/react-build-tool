@@ -26,7 +26,9 @@ const PATHS = {
     user_home: './app/js/user_home.js',
     company_home: './app/js/company_home.js',
     user_register: './app/js/user_register.js',
-    company_register: './app/js/company_register.js'
+    company_register: './app/js/company_register.js',
+    tender: './app/js/tender.js'
+
   }, //页面对应的js文件
   img: ['./app/images/*.*', './app/images/*/*.*']
 
@@ -132,9 +134,8 @@ gulp.task('express', function(){
 
 
   router.get('/', function(req, res){
-    var user = {"_id":"55e450bfa02797ea0448b171","__v":0,"status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.124Z","city":"","role":"system","salt":"105790163844","hashed_password":"d9f48810cafca7c591127d6f62dbf9cd230c93fc","phone_number":"18782972908","username":"","avatar":"uploads/image-1437896764820aa.jpg","email":"","name":"廖小松"};
-
-    res.render('index',{user: undefined});
+    var user = {"_id":"55e450bfa02797ea0448b183","tel":"xxx","contact_way":"xxx","contact":"xxx","company_name":"xxx","status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.153Z","phone_number":"17131338013","username":"","avatar":"","email":"xxxx","name":"流浪的鱼"};
+    res.render('index',{user: user});
   });
 
   router.all('/user_home/*', function(req, res){
@@ -144,7 +145,7 @@ gulp.task('express', function(){
   })
   router.all('/company_home/*', function(req, res){
     var user = { "_id" : "55e450bfa02797ea0448b174", "volume" : 0, "created_at" : "2015-08-31T13:03:59.142Z", "city" : "", "role" : "company", "salt" : "591103770255", "hashed_password" : "1eab2efa5a5b4fd78dc27b7a1cfc6e7e2bb4342e", "phone_number" : "15928124305", "username" : "", "avatar" : "uploads/image-1437896764820aa.jpg", "email" : "", "name" : "马永旭", "__v" : 0 };
-    var company = {"_id":"55e450bfa02797ea0448b1a7","owner":"55e450bfa02797ea0448b174","coordinate":[95,40],"__v":3,"keywords":["test","啊啊","发生地方，ss"],"tel":"xxx","email":"xxx","contacts":"xxx","status":"normal","area":"武侯区","city":"成都市高新区世纪城路新会展中心","province":"","created_at":"2015-08-31T13:03:59.336Z","company_img":"uploads/1450754497620dGVzdA==.jpg","company_logo":"uploads/1450754487784cHNi.jpeg","_description":"test","phone_number":"","address":"成都市高新区世纪城路新会展中心","company_address":"成都市高新区世纪城","services_type":["展位设计","制作搭建","广告制作","展具租赁","AV租赁","植物租摆","设备租赁","篷房展具租赁","物流"],"services":["开锁","搭积木","喷绘","策划","广告制作","你倒是"],"category":["会议","展览","活动"],"type":"full","is_in_limit":false,"score":2,"calls_count":77,"visited_count":8835,"name":"普锐斯会展服务公司"};
+    var company = {"_id":"55e450bfa02797ea0448b1a7","owner":"55e450bfa02797ea0448b174","coordinate":[95,40],"__v":3,"keywords":["test","啊啊","发生地方，ss"],"tel":"xxx","email":"xxx","contacts":"xxx","status":"normal","area":"武侯区","city":"成都市高新区世纪城路新会展中心","province":"","created_at":"2015-08-31T13:03:59.336Z","company_img":"uploads/1450754497620dGVzdA==.jpg","company_logo":"uploads/1450754487784cHNi.jpeg","_description":"test","phone_number":"","address":"成都市高新区世纪城路新会展中心","company_address":"成都市高新区世纪城","services_type":["展具租赁","AV租赁","植物租摆","设备租赁","篷房展具租赁","物流"],"services":["开锁","搭积木","喷绘","策划","广告制作","你倒是"],"category":["会议","展览","活动"],"type":"full","is_in_limit":false,"score":2,"calls_count":77,"visited_count":8835,"name":"普锐斯会展服务公司"};
     res.render('company_home',{user: user, company: company});
   })
   router.get('/user/register', function(req, res){
@@ -153,6 +154,15 @@ gulp.task('express', function(){
   router.get('/company/register', function(req, res){
     var company = {"_id":"5661032ac4bf605df8d5c738","owner":"5661032ac4bf605df8d5c737","__v":0,"email":"","contacts":"","status":"unfinished","area":"","city":"","province":"","created_at":"2015-12-04T03:06:18.863Z","company_img":"","_description":"","phone_number":"","address":"","company_address":"","services_type":[],"services":[],"category":[],"type":"junior","is_in_limit":true,"score":0,"calls_count":0,"visited_count":1,"name":""};
     res.render('company_register', {company: company});
+  });
+  router.get('/tender', function(req, res){
+    var query = req.query;
+    var user = {"_id":"55e450bfa02797ea0448b183","tel":"xxx","contact_way":"xxx","contact":"xxx","company_name":"xxx","status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.153Z","phone_number":"17131338013","username":"","avatar":"","email":"xxxx","name":"流浪的鱼"};
+    if(query.type == 'meeting'){
+      return res.render('tender', {initData:{tenderType: 'meeting', currentUser: req.user || user}});
+    }else{
+      return res.render('tender', {initData:{tenderType: 'exhibition', currentUser: req.user || user}});
+    }
   });
   app.use('/', router);
 

@@ -29,7 +29,7 @@ class Header extends React.Component {
         var {currentUser} = this.props;
         return (
             <div className="header-top">
-                <div className="s-logo"></div>
+                <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <ul className="right-side">
                     <li><a href="">{ currentUser.phone_number}</a></li>
                     <li><a href="javascript:;" onClick={this.logout.bind(this)}>退出</a></li>
@@ -41,7 +41,7 @@ class Header extends React.Component {
         var {currentUser} = this.props;
         return (
             <div className="header-top">
-                <div className="s-logo"></div>
+                <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <div className="system-type">
                     <span>参展商管理系统</span>
                     <span className="ml-10">|</span>
@@ -58,7 +58,7 @@ class Header extends React.Component {
         var {currentUser} = this.props;
         return (
             <div className="header-top">
-                <div className="s-logo"></div>
+                <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <div className="system-type">
                     <span>参展商管理系统</span>
                     <span className="ml-10">|</span>
@@ -74,7 +74,7 @@ class Header extends React.Component {
     renderUserRegister(){
         return (
             <div className="header-top">
-                <div className="s-logo"></div>
+                <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <div className="system-info">
                     <span className="system-name">参展商管理系统</span>
                     <span className="tips">
@@ -90,11 +90,14 @@ class Header extends React.Component {
         const { dispatch } = this.props;
         dispatch(logout());
     }
+    goHome(){
+        location.href = '/';
+    }
 
     renderCompanyRegister(){
         return (
             <div className="header-top">
-                <div className="s-logo"></div>
+                <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <div className="system-info">
                     <span className="system-name">服务商管理系统</span>
                     <span className="tips">
@@ -115,10 +118,10 @@ class Header extends React.Component {
         if(currentUser) return this.renderLogin();
         return (
             <div className="header-top">
-                <div className="s-logo"></div>
+                <div className="s-logo" onClick={this.goHome.bind(this)} ></div>
                 <ul className="right-side">
-                    <li><a href=""><button className="apply-btn">成为服务商</button></a></li>
-                    <li><a href="">注册</a></li>
+                    <li><a href="/company/register"><button className="apply-btn">成为服务商</button></a></li>
+                    <li><a href="/user/register">注册</a></li>
                     <li>
                         <Login registerUrl={this.props.registerUrl}></Login>
                     </li>

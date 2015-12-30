@@ -8,8 +8,23 @@ import Upload from '../../../components/upload';
 import CheckBoxGroup from '../../../components/checkbox_group';
 
 import {updateCompany} from '../../../actions/company_actions';
+import {service_types} from '../../../global_data';
 
+function updateView(){
+    return dispatch =>{
+        dispatch({
+            type: 'COMPANY_INFO_UPDATE_VIEW'
+        });
+    }
+}
 
+function showView(){
+    return dispatch =>{
+        dispatch({
+            type: 'COMPANY_INFO_SHOW_VIEW'
+        });
+    }
+}
 
 class CompanyInfo extends Component{
     constructor(props){
@@ -28,6 +43,16 @@ class CompanyInfo extends Component{
                 console.log('err');
 
         }
+    }
+
+    onEdit(){
+        let {updateView} = this.props;
+
+        updateView();
+    }
+    onShow(){
+        let {showView} = this.props;
+        showView();
     }
 
     updateCompany(e){
@@ -55,18 +80,7 @@ class CompanyInfo extends Component{
         var logoStyle = {width: '100px', height: '100px', backgroundColor: '#eee', border: '2px solid #e5e5e5'};
 
         var {company} = this.props;
-        var services = [{value:'舞美搭建', label:'舞美搭建'},
-            {value:'公关策划', label:'公关策划'},
-            {value:'设计搭建', label:'设计搭建'},
-            {value:'设备租赁', label:'设备租赁'},
-            {value:'篷房展具租赁', label:'篷房展具租赁'},
-            {value:'礼仪模特', label:'礼仪模特'},
-            {value:'摄影摄像服务', label:'摄影摄像服务'},
-            {value:'物流', label:'物流'},
-            {value:'仓储', label:'仓储'},
-            {value:'植物租赁', label:'植物租赁'},
-            {value:'安保服务', label:'安保服务'},
-            {value:'速记翻译', label:'速记翻译'}];
+        var services = service_types;
 
         let logImgTips, companyImgTips;
         if(!company.company_logo){
@@ -131,37 +145,37 @@ class CompanyInfo extends Component{
                     <div className="c-row">
                         <div className="c-label">公司Logo</div>
                         <div className="c-value">
-                            <img src={company.company_logo} alt="" className="company-logo"/>
+                            <img src={'/' + company.company_logo} alt="" className="company-logo"/>
                         </div>
                     </div>
 
                     <div className="c-row">
                         <div className="c-label">公司宣传图</div>
                         <div className="c-value">
-                            <img src="" alt="" className="company-img"/>
+                            <img src={'/' + company.company_img} alt="" className="company-img"/>
                         </div>
                     </div>
                     <div className="c-row">
                         <div className="c-label">关键词</div>
                         <div className="c-value">
-                            <div className="keywords"></div>
+                            <div className="keywords">{company.keywords? company.keywords.join(','):''}</div>
                         </div>
                     </div>
                     <div className="c-row no-padding-top">
                         <div className="c-label pt-20">服务项目</div>
-                        <div className="c-value pt-5">
-
+                        <div className="c-value pt-20">
+                            {company.services_type? company.services_type.join(' '):''}
                         </div>
                     </div>
                     <div className="c-row">
                         <div className="c-label">公司简介</div>
                         <div className="c-value">
-                            <div className="introduce"></div>
+                            <div className="introduce">{company._description}</div>
                         </div>
                     </div>
 
                     <div className="x-btn-group">
-                        <button className="x-edit-btn" type="button" >编辑</button>
+                        <button className="x-edit-btn" type="button" onClick={this.onEdit.bind(this)}>编辑</button>
                     </div>
                 </div>
             </div>
@@ -169,16 +183,23 @@ class CompanyInfo extends Component{
 
     }
     render(){
+        let {infoEdit} = this.props;
+        if(infoEdit){
+            return this.renderEdit();
+        }
         return this.renderShow();
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps({companyHome}){
     return {
-        company: state.companyHome.company
+        company: companyHome.company,
+        infoEdit: companyHome.infoEdit
     };
 }
 export default connect(mapStateToProps, {
     pushState: pushState,
-    updateCompany: updateCompany
+    updateCompany: updateCompany,
+    updateView: updateView,
+    showView: showView
 })(CompanyInfo);

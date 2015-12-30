@@ -60,7 +60,30 @@ function companyHome(state, action){
             return {...state, editing: false};
         case 'COMPANY_INFO_UPDATE':
             return {...state, company: action.company, editing: false};
-
+        case 'COMPANY_INFO_UPDATE_VIEW':
+            return {...state, infoEdit: true};
+        case 'COMPANY_INFO_SHOW_VIEW':
+            return {...state, infoEdit: false};
+        case 'COMPANY_UPDATE_SUCCESS':
+            return {...state, infoEdit: false, company: action.company}
+        case 'INIT_CASES':
+            return {...state, cases: action.cases};
+        case 'DELETE_CASE_SUCCESS':
+            return {...state, cases: _.filter(state.cases, (item) => {return item._id != action.caseId})};
+        case 'CASE_CREATE_SUCCESS':
+            return {...state, cases: [action.caseObj, ...state.cases], caseDialogOpen: false};
+        case 'CASE_PUT_SUCCESS':
+            return {...state, caseDialogOpen: false, cases: state.cases.map((item) => {return item._id == action.caseId ? action.caseObj: item})}
+        case 'INIT_SERVICES':
+            return {...state, services: action.services};
+        case 'DELETE_SERVICE_SUCCESS':
+            return {...state, services: _.filter(state.services, (item) => {return item._id != action.serviceId})};
+        case 'SERVICE_PUT_SUCCESS':
+            return {...state, serviceDialogOpen: false, services: state.services.map((item) => {return item._id == action.serviceId ? action.service: item})};
+        case 'SERVICE_CREATE_SUCCESS':
+            return {...state, serviceDialogOpen: false, services: [action.service, ...state.services]};
+        case 'INIT_TENDER':
+            return {...state, tenders: action.tenders};
         default : return state;
     }
 

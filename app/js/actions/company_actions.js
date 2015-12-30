@@ -59,7 +59,8 @@ export function updateCompany(id, company){
 
                 if(res.body.status == 0){
                     dispatch({
-                        type: 'COMPANY_UPDATE_SUCCESS'
+                        type: 'COMPANY_UPDATE_SUCCESS',
+                        company: res.body.data
                     });
                 }else{
                     return console.log(res.body.message);
