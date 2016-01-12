@@ -16,7 +16,7 @@ export class Datepicker extends Component{
         };
     }
     componentDidMount(){
-        document.addEventListener('click', this.hide.bind(this), false)
+        document.addEventListener('click', this.bodyHide.bind(this), false)
         var dom = ReactDom.findDOMNode(this).querySelector(".date-input");
         dom.onclick = function (e) {
             e.stopPropagation();
@@ -30,9 +30,18 @@ export class Datepicker extends Component{
 
     }
     componentWillUnmount(){
-        document.removeEventListener('click', this.hide.bind(this), false)
+        document.removeEventListener('click', this.bodyHide.bind(this), false)
         var dom = ReactDom.findDOMNode(this).querySelector(".date-input");
         dom.onclick = undefined;
+    }
+
+    bodyHide(e){
+        if(!/DayPicker/.test(e.target.className)){
+            this.setState({
+                isOpen: false
+            });
+        }
+
     }
 
     show(){
@@ -60,7 +69,7 @@ export class Datepicker extends Component{
 
         if(onDataChange){
             if(oldVal !== date){
-                onDataChange(oldVal, date);
+                onDataChange(oldVal, )
             }
         }
     }
