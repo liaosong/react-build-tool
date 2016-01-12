@@ -69,7 +69,7 @@ export class Datepicker extends Component{
 
         if(onDataChange){
             if(oldVal !== date){
-                onDataChange(oldVal, )
+                onDataChange(oldVal, date)
             }
         }
     }
