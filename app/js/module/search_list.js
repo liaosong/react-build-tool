@@ -50,6 +50,32 @@ class CompaniesFilter extends React.Component {
 class Company extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            isEnshrined: false
+        }
+    }
+
+    componentDidMount(){
+        var {company, currentUser} = this.props;
+        if(currentUser){
+            request.get(`/api/client/enshrines/${company._id}/is_enshrined`).end((err, res) => {
+                if(err){
+                    return console.log(err);
+                }
+
+                if(res.body.status == 0){
+                    this.setState({
+                        isEnshrined: res.body.data
+                    });
+                }else{
+                    console.log(res.body.message);
+                }
+            });
+        }
+
+    }
+    isEnshrined(company){
+
     }
 
     showCompany(company){
@@ -67,7 +93,7 @@ class Company extends React.Component{
             <div className={classNames('companies-item')}>
                 <div className="company-name">
                     <div className="name inline">{company.name}</div>
-                    <div className="collect inline"></div>
+                    <div className={classNames("inline", {'collect': !this.state.isEnshrined, 'collected': this.state.isEnshrined})}></div>
 
                 </div>
                 <div className="company-body ">
@@ -169,10 +195,10 @@ class SearchList extends React.Component{
         var serviceFilter = service_types.map((item) => {
             return item.value;
         });
-
+        var currentUser = initData.currentUser;
         companies = companies.map((item, index) => {
             return (
-                <Company company={item} key={index}></Company>
+                <Company company={item} key={index} currentUser={currentUser}></Company>
             );
         })
 

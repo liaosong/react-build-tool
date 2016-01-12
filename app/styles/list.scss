@@ -150,6 +150,13 @@
           background-image: url("../images/collect_icon_hover.png");
         }
       }
+      .collected{
+        width: 26px;
+        height: 26px;
+        background-image: url("../images/collect_icon_click.png");
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+      }
 
     }
 

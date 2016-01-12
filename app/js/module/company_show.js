@@ -159,7 +159,8 @@ class CompanyShow extends React.Component{
         super(props);
         this.state ={
             commentDialogOpen: false,
-            selectCase: null
+            selectCase: null,
+            isEnshrined: false
         }
     }
 
@@ -173,6 +174,22 @@ class CompanyShow extends React.Component{
         dispatch(loadCases(initData.company));
         dispatch(loadQuotation(initData.company));
         dispatch(loadComment(initData.company));
+
+        if(initData.currentUser){
+            request.get(`/api/client/enshrines/${initData.company._id}/is_enshrined`).end((err, res) => {
+                if(err){
+                    return console.log(err);
+                }
+
+                if(res.body.status == 0){
+                    this.setState({
+                        isEnshrined: res.body.data
+                    });
+                }else{
+                    console.log(res.body.message);
+                }
+            });
+        }
     }
     showCommentAdd(){
         this.setState({
@@ -198,6 +215,55 @@ class CompanyShow extends React.Component{
             commentDialogOpen: false
         });
 
+    }
+    beforeEnshrine(comapny){
+        var {currentUser, dispatch} = this.props;
+        if(!currentUser){
+            dispatch({
+                type: 'OPEN_LOGIN_DIALOG'
+            })
+        }else{
+            if(this.state.isEnshrined){
+                this.cancelEnshrined(comapny);
+            }else{
+                this.enshrined(comapny);
+            }
+
+        }
+    }
+    cancelEnshrined(company){
+        request.del(`/api/client/enshrines/cancel`)
+        .send({company: company._id})
+        .end((err, res) => {
+            if(err){
+                return console.log(err);
+            }
+
+            if(res.body.status == 0){
+                this.setState({
+                    isEnshrined: false
+                });
+            }else{
+                console.log(res.body.message);
+            }
+        });
+    }
+    enshrined(company){
+        request.post(`/api/client/enshrines`)
+            .send({company: company._id})
+            .end((err, res) => {
+            if(err){
+                return console.log(err);
+            }
+
+            if(res.body.status == 0){
+                this.setState({
+                    isEnshrined: true
+                });
+            }else{
+                console.log(res.body.message);
+            }
+        });
     }
     render(){
 
@@ -227,6 +293,8 @@ class CompanyShow extends React.Component{
                 <Comment comment={item} key={index}></Comment>
             );
         })
+
+        var enshrineText = this.state.isEnshrined ? '取消收藏': '收藏此服务商';
 
         return (
             <div className="container">
@@ -270,7 +338,7 @@ class CompanyShow extends React.Component{
                         </div>
                         <div className="right-side inline">
                             <div className="btn-container">
-                                <button>收藏此服务商</button>
+                                <button onClick={this.beforeEnshrine.bind(this, company)}>{enshrineText}</button>
                             </div>
                         </div>
                     </div>
