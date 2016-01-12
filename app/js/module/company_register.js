@@ -18,6 +18,21 @@ class Register extends React.Component {
     constructor(props){
         super(props);
     }
+    //componentDidMount(){
+    //    var {initData, dispatch} = this.props;
+    //    if(initData.currentUser) {
+    //        dispatch({
+    //            type: 'INIT_AUTH',
+    //            currentUser: initData.currentUser
+    //        });
+    //
+    //        dispatch({
+    //            type: 'COMPANY_REGISTER',
+    //            company: initData.company
+    //        });
+    //    }
+    //
+    //}
 
     onCompanyRegister(user){
         let {dispatch} = this.props;
@@ -45,6 +60,7 @@ class Register extends React.Component {
 
 function registerState(state) {
     return {
+        currentUser: state.authService.currentUser,
         company: state.companyRegister.company
     }
 }

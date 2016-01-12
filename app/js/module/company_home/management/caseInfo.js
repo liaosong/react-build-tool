@@ -33,6 +33,9 @@ export class CaseInfo extends React.Component{
     saveCase(e){
         e.preventDefault();
         var {title, beginDate, endDate, joinedNum, address, serviceType, description, imgUrls} = this.refs;
+        imgUrls = imgUrls.value.map((item) => {
+            return {url: item}
+        })
         var caseInfo = {
             title: title.value,
             begin_date: beginDate.value,
@@ -41,7 +44,7 @@ export class CaseInfo extends React.Component{
             address: address.value,
             service_type: serviceType.value,
             _description: description.value,
-            img_urls: imgUrls.value
+            img_urls: imgUrls
         };
 
         let {onSave} = this.props;

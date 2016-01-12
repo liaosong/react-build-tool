@@ -9,46 +9,12 @@
   <script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
 
   <link rel="stylesheet" type="text/css" href="styles/list.css">
-
+  <script>
+    window.INIT_DATA = <%-JSON.stringify(initData)%>
+  </script>
 </head>
 <body>
-<div class="header-top">
-  <div class="s-logo"></div>
-  <ul class="right-side">
-    <li><a href=""><button class="apply-btn">成为服务商</button></a></li>
-    <li><a href="">注册</a></li>
-    <li><a href="">登陆</a></li>
-  </ul>
-</div>
-
-<div class="search-container">
-  <div class="search-bar w-1000 s-center">
-    <div class="search-and-tool">
-      <div id="search_bar" class="inline"></div>
-      <span class="text-split">或者</span>
-      <button class="publish">发布需求</button>
-    </div>
-    <div class="filter-group citys">
-      <div class="filter-title inline">服务城市：</div>
-      <div id="city_filter" class="inline"></div>
-    </div>
-    <div class="filter-group types">
-      <div class="filter-title inline">服务类型：</div>
-      <div id="type_filter" class="inline"></div>
-    </div>
-  </div>
-</div>
-
-<div class="list-container w-1000 s-center">
-  <div class="search-result-num">全部结果（32）</div>
-  <div id="search_list" class="">
-
-  </div>
-  <div id="pagination"></div>
-  
-</div>
-
-<div id="footer"></div>
+<div id="container"></div>
 <script type="text/javascript" src="js/company_list.js"></script>
 </body>
 

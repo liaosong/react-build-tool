@@ -27,7 +27,7 @@ export function login(user) {
 
 export function logout() {
     return dispatch => {
-        request.get('/api/users/logout').end((err, res) => {
+        request.get(`/api/user/web_logout?t=${new Date().getTime()}`).end((err, res) => {
             if(err) return console.log(err);
             if(res.body.status == 0){
                 dispatch({type:'LOGOUT'});
@@ -70,8 +70,12 @@ export function companyRegister(user){
                     dispatch({
                         type: 'COMPANY_REGISTER',
                         registerType: 'company',
-                        currentUser: res.body.data.user,
                         company: res.body.data.company
+                    });
+
+                    dispatch({
+                        type: 'AUTH_INIT',
+                        currentUser: res.body.data.user
                     });
                 }
             });

@@ -17,16 +17,16 @@ const finalCreateStore = compose(
 )(createStore);
 
 
-var COMPANY;
-if(window.COMPANY) {
-    COMPANY = window.COMPANY;
+var initData = {};
+if(window.INIT_DATA) {
+    initData = window.INIT_DATA;
 }
-const store = finalCreateStore(CompanyRegReducer, {companyRegister:{company: COMPANY}});
+const store = finalCreateStore(CompanyRegReducer, {companyRegister:{company: initData.company}, authService:{currentUser: initData.currentUser}});
 
 let rootElement = document.getElementById('container');
 ReactDom.render(
     <Provider store={store} >
-        <Register />
+        <Register initData={initData}/>
     </Provider>,
     rootElement
 );

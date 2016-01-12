@@ -17,7 +17,9 @@ var cities = [
     '不限','北京','上海','广州','深圳','天津','杭州','南京','武汉','重庆','成都','西安'
 ];
 
+var pageSize = 10;
 
 
 
-export {service_types, cities}
+
+export {service_types, cities, pageSize}

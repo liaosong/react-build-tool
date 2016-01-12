@@ -5,7 +5,7 @@ import Header from '../components/header';
 import Search from '../components/search';
 import Footer from '../components/footer';
 import {initHomeData} from '../actions/index_actions';
-import Modal from 'react-modal';
+import Publish from '../components/publish';
 import classNames from 'classnames';
 
 
@@ -14,11 +14,15 @@ class HotSearch extends React.Component {
         super(props);
     }
 
+    onSearch(word){
+        location.href = `/search?q=${word}`;
+    }
+
     render() {
         var hotWords = ['设计搭建', '公关策划', '摄影摄像', 'AV租赁', '物流仓储', '礼仪模特', '植物鲜花', '成都'];
-        var mapedWords = hotWords.map((word) => {
+        var mapedWords = hotWords.map((word, index) => {
             return (
-                <a className={classNames("hot-word")} key={word}>{word}</a>
+                <a className={classNames("hot-word")} key={index} onClick={this.onSearch.bind(this, word)}>{word}</a>
             );
         });
         return (
@@ -129,13 +133,7 @@ class CompanyList extends React.Component {
 class Index extends React.Component {
     constructor(props){
         super(props);
-        var {currentUser, dispatch} = this.props;
-        if(currentUser){
-            dispatch({
-                type: 'INIT_AUTH',
-                currentUser: currentUser
-            });
-        }
+
 
         this.state = {
             tenderDialogOpen: false
@@ -144,7 +142,13 @@ class Index extends React.Component {
 
 
     componentDidMount(){
-        var {dispatch} = this.props;
+        var {initUser, dispatch} = this.props;
+        if(initUser){
+            dispatch({
+                type: 'INIT_AUTH',
+                currentUser: initUser
+            });
+        }
         dispatch(initHomeData());
     }
     onCreateTender(){
@@ -173,18 +177,7 @@ class Index extends React.Component {
     }
     render() {
         var {fullCompany, factoryCompany, rentCompany} = this.props;
-        var dialogStyle = {
-            content:{
-                width: '600px',
-                height: '360px',
-                top: "calc(50% - 180px)",
-                left: "calc(50% - 300px)",
-                border: 'none'
-            },
-            overlay:{
-                backgroundColor: 'rgba(0, 0, 0, 0.5)'
-            }
-        }
+
         return (
             <div className="container">
                 <header className="cleanfix">
@@ -200,22 +193,7 @@ class Index extends React.Component {
                                 <Search className="inline"></Search>
                                 <span className="text-split">或者</span>
 
-                                <div className="publish" id="publish">
-                                    <button onClick={this.onCreateTender.bind(this)}>发布需求</button>
-                                    <Modal isOpen={this.state.tenderDialogOpen} style={dialogStyle} className="tender-type-container">
-                                        <div className="head">请选择需求类型</div>
-                                        <div className="type-container">
-                                            <div className="inline-b meeting" onClick={this.getTenderPage.bind(this, 'meeting')}>
-                                                <div className="type-img"></div>
-                                                <div className="type-name">发布会议</div>
-                                            </div>
-                                            <div className="inline-b exhibition" onClick={this.getTenderPage.bind(this, 'exhibition')}>
-                                                <div className="type-img"></div>
-                                                <div className="type-name">发布展览</div></div>
-                                        </div>
-                                        <div className="close" onClick={this.closeDialog.bind(this)}></div>
-                                    </Modal>
-                                </div>
+                                <Publish></Publish>
                             </div>
                             <div className="hot-word-tool">
                                 <div className="tool-title inline">热门搜索：</div>

@@ -31,6 +31,12 @@ export class CitySelecter extends React.Component {
         evt.stopPropagation();
     }
     setSelect(city){
+        var {onSelectChange} = this.props;
+        if(onSelectChange){
+            if(city !== this.value){
+                onSelectChange(this.value, city);
+            }
+        }
         if(city == "不限"){
             this.value = "";
         }else{
@@ -39,6 +45,7 @@ export class CitySelecter extends React.Component {
         this.setState({
             selectCity: city
         });
+
 
     }
     windowClickHander(evt){

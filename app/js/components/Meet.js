@@ -49,6 +49,7 @@ export class Meet extends Component{
                                 <span className="value">{tender.min_join_num}</span>
                                 <span>—</span>
                                 <span>{tender.max_join_num}</span>
+
                             </div>
                             <div className="t-row">
                                 <span className="label">详情：</span>

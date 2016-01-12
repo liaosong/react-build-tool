@@ -15,10 +15,21 @@ class Upload extends Component{
     }
 
     componentDidMount(){
-        let {value} = this.props;
+        let {value, multiple} = this.props;
+        if(multiple){
+            value = value || [];
+            value = value.map((item) => {
+                return item.url;
+            });
+            this.value = value;
+
+        }else{
+            this.value = value;
+        }
         this.setState({
             value: value
         });
+
     }
 
     onClick(){

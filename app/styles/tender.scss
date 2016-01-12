@@ -63,6 +63,25 @@
 
   .tender-form{
 
+    .error-tips{
+      color: #ff0000;
+      margin-left: 15px;
+      font-size: 14px;
+    }
+    .concats-info{
+      .error-tips{
+        margin-left: 0;
+        margin-top: 5px;
+      }
+    }
+
+    .concats-info{
+
+      .form-group{
+        margin-top: 0px;
+      }
+    }
+
     .form-group{
       margin-top: 30px;
 
@@ -168,6 +187,7 @@
 .cust-city-select{
   width: 240px;
   height: 50px;
+  vertical-align: middle;
 
   .value{
     border: 2px solid #ccc;
@@ -178,4 +198,10 @@
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;
   }
+}
+
+.tender-create-success{
+  height: 300px;
+  text-align: center;
+  padding-top: 30px;
 }

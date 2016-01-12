@@ -95,7 +95,7 @@ class Service extends Component{
         super(props);
         this.state = {
             dialogOptions: {
-                isOpen: true
+                isOpen: false
             }
         }
     }

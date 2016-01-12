@@ -1,0 +1,55 @@
+.comment-add{
+
+  .x-close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+.comment-form{
+
+  padding-left: 50px;
+  padding-right: 50px;
+  .title{
+    text-align: center;
+  }
+
+  .comment-form-group{
+    margin-top: 20px;
+
+    .inline{
+      vertical-align: middle;
+    }
+  }
+
+  .comment-content{
+    display: block;
+    resize: none;
+    width: 478px;
+    height: 98px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    outline: none;
+    margin-top: 10px;
+  }
+
+  .btn-group{
+    text-align: right;
+    margin-top: 20px;
+
+    button{
+      width: 120px;
+      height: 34px;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      background-color: #FFFFFF;
+      color: #808080;
+    }
+
+    .submit{
+      border-color: #0af;
+      color: #0af;
+    }
+  }
+}

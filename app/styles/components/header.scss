@@ -1,7 +1,7 @@
 .login-container{
 
   .logo{
-    height: 100px;
+    height: 70px;
     width: 100%;
     background-image: url(../images/logo-back.png);
     background-repeat: no-repeat;
@@ -52,6 +52,13 @@
     a{
       color: #09f;
     }
+  }
+
+  .login-error{
+    text-align: center;
+    color: #ff0000;
+    height: 20px;
+    margin-bottom: 10px;
   }
 
 }

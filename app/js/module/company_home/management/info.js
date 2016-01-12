@@ -55,7 +55,7 @@ class CompanyInfo extends Component{
         showView();
     }
 
-    updateCompany(e){
+    onDataSubmit(e){
         e.preventDefault();
         var {company, updateCompany} = this.props;
 
@@ -92,7 +92,7 @@ class CompanyInfo extends Component{
         }
         return (
             <div className="company-info-container">
-                <form className="x-form" onSubmit={this.updateCompany.bind(this)}>
+                <form className="x-form" onSubmit={this.onDataSubmit.bind(this)}>
                     <div className="c-row">
                         <div className="c-label">公司Logo</div>
                         <div className="c-value">
@@ -130,7 +130,7 @@ class CompanyInfo extends Component{
 
                     <div className="x-btn-group">
                         <button className="x-save-btn" type="submit">保存</button>
-                        <button className="x-cancel-btn ml-20" type="button">取消</button>
+                        <button className="x-cancel-btn ml-20" type="button" onClick={this.onShow.bind(this)}>取消</button>
                     </div>
                 </form>
             </div>
@@ -145,7 +145,7 @@ class CompanyInfo extends Component{
                     <div className="c-row">
                         <div className="c-label">公司Logo</div>
                         <div className="c-value">
-                            <img src={'/' + company.company_logo} alt="" className="company-logo"/>
+                            <img src={'/' + company.company_logo} alt="" className="company-logo" ref="test"/>
                         </div>
                     </div>
 

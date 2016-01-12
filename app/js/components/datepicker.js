@@ -49,13 +49,20 @@ export class Datepicker extends Component{
     }
 
     onDayClick(e, day){
+        var {onDataChange} = this.props;
+        var oldVal = this.state.inputValue;
         let date = moment(day).format("YYYY-MM-DD");
-        console.log(date);
         this.setState({
             isOpen: false,
             inputValue: date
         });
         this.value = date;
+
+        if(onDataChange){
+            if(oldVal !== date){
+                onDataChange(oldVal, date);
+            }
+        }
     }
 
     render(){

@@ -5,6 +5,9 @@ body{
   font-size: 14px;
   background-color: #f4f4f4;
 }
+button{
+  font-family: "Microsoft YaHei", "微软雅黑", helvetica, arial, verdana, tahoma, sans-serif !important;
+}
 ul{
   margin: 0;
   padding: 0;
@@ -90,7 +93,9 @@ li{
 .mt-40{
   margin-top: 40px;
 }
-
+.mb-70{
+  margin-bottom: 70px;
+}
 .pt-20{
   padding-top: 20px;
 }
@@ -144,4 +149,36 @@ li{
 }
 .DayPicker{
   z-index: 100;
+}
+
+.star{
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-image: url("../images/star_icon.png");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.no-star{
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-image: url("../images/star_border.png");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+
+.x-close{
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-image: url("../images/cancel_icon.png");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+
+  &:hover{
+    background-image: url("../images/cancel_icon_hover.png");
+  }
 }

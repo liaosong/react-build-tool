@@ -29,6 +29,8 @@ function index(state, action){
     switch (action.type){
         case 'INIT_INDEX_HOME':
             return {...state, homeData: action.homeData};
+        case 'TENDER_CREATE_SUCCESS':
+            return {...state, tenderCreate: true};
         default: return state;
     }
 }

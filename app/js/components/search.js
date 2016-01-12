@@ -1,6 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import $ from 'jquery';
+
+import request from 'superagent';
+
+import {pageSize} from '../global_data';
 
 class CitySelecter extends React.Component {
   constructor(props) {
@@ -12,6 +15,7 @@ class CitySelecter extends React.Component {
       isOpen: false,
       selectCity: '不限'
     };
+    this.value = this.state.selectCity;
   }
   hide(){
     this.setState({
@@ -33,6 +37,7 @@ class CitySelecter extends React.Component {
     evt.stopPropagation();
   }
   setSelect(city){
+    this.value = city;
     this.setState({
       selectCity: city
     });
@@ -82,14 +87,36 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  searchCompany(q, city, cb){
+    request.get(`/api/search?query_text=${q}&page_size=${pageSize}`).end((err, res) => {
+      if(err) return console.log(err);
+      if(res.body.status == 0){
+        cb(q, res.body);
+      }
+    })
+  }
   search(){
-    $.get('/api/companies').then(function(data){console.log(data)});
+    var {keywords, city} = this.refs;
+    var {onSearched} = this.props;
+    var cityVal;
+    city = city || {};
+    if(city.value){
+      cityVal = city.value == '不限' ? '' : city.value;
+    }else{
+      cityVal = '';
+    }
+    if(!onSearched){
+      return location.href = `/search?q=${keywords.value}&city=${cityVal}`;
+    }
+    this.searchCompany(keywords.value, city, onSearched);
+
   }
   renderNoCity(){
     return (
       <div className={classNames('inline')}>
-        <input className={classNames('search-input')}/>
-        <button className={classNames('search-button')}>搜索</button>
+        <input className={classNames('search-input')} ref="keywords" defaultValue={this.props.queryText || ''}/>
+        <button className={classNames('search-button')} onClick={this.search.bind(this)}>搜索</button>
       </div>
     );
   }
@@ -99,8 +126,8 @@ class SearchBar extends React.Component {
     if(noCity) return this.renderNoCity();
     return (
       <div className={classNames('inline')} >
-        <input className={classNames('search-input')}/>
-        <CitySelecter/>
+        <input className={classNames('search-input')} ref="keywords" defaultValue={this.props.queryText || ''}/>
+        <CitySelecter ref="city"/>
         <button className={classNames('search-button')} onClick={this.search.bind(this)}>搜索</button>
       </div>
     );

@@ -9,7 +9,7 @@ export class ServiceInfo extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            isOpen: true
+            isOpen: false
         }
     }
 
@@ -33,10 +33,13 @@ export class ServiceInfo extends React.Component{
     saveService(e){
         e.preventDefault();
         var {name, price, imgUrls} = this.refs;
+        imgUrls = imgUrls.value.map((item) => {
+            return {url: item}
+        })
         var serviceInfo = {
             name: name.value,
             price: price.value,
-            img_urls: imgUrls.value
+            img_urls: imgUrls
         };
 
         let {onSave} = this.props;

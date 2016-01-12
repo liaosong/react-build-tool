@@ -27,7 +27,7 @@ if(window.CURRENT_USER) {
 let rootElement = document.getElementById('container');
 ReactDom.render(
     <Provider store={store} >
-      <Index currentUser={currentUser}/>
+      <Index initUser={currentUser}/>
     </Provider>,
     rootElement
 );

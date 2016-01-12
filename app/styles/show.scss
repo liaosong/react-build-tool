@@ -1,6 +1,8 @@
 @import "share/global";
 @import "share/head";
 @import './components/footer';
+@import "./components/comment-form";
+@import "./components/gallery";
 
 
 .header-top{
@@ -28,6 +30,8 @@
     height: 420px;
   }
 
+
+
   .company-info{
     height: 160px;
 
@@ -53,6 +57,14 @@
         .services{
           margin-top: 20px;
           color: #333;
+          .service-items{
+            width: 530px;
+
+            .item{
+              display: inline-block;
+              margin-left: 7px;
+            }
+          }
 
           .service-title{
             font-weight: bold;
@@ -68,10 +80,11 @@
       border-right: 1px solid #f4f4f4;
 
       .concat-user-info{
-        padding: 30px 30px 15px 30px;
+        padding: 25px 30px 15px 30px;
 
         .phone-number{
           margin-top: 10px;
+          color: #ff9801;
         }
       }
       .line{
@@ -95,6 +108,26 @@
   font-size: 18px;
   font-weight: bold;
   color: #4c4c4c;
+
+  .title{
+    width: 890px;
+  }
+  .action{
+    font-size: 18px;
+    color: #09f;
+    cursor: pointer;
+
+    .add-icon{
+      width: 18px;
+      height: 18px;
+      background-position: 50% 50%;
+      display: inline-block;
+      vertical-align: middle;
+      background-image: url(../images/comment_icon.png);
+      margin-right: 20px;
+    }
+  }
+
 }
 .btn-load-more{
   width: 160px;
@@ -127,7 +160,7 @@
 
     .btn-container{
       height: 40px;
-      width: 278px;
+      width: 238px;
       margin-left: 1px;
       background-color: #fff;
       padding: 20px;
@@ -141,6 +174,8 @@
       }
     }
   }
+
+
 }
 
 section{
@@ -152,6 +187,139 @@ section{
 
   .cases-container{
     margin-top: 30px;
+    margin-left: -20px;
+
+    .case-item{
+
+      width: 320px;
+      height: 200px;
+      margin-left: 20px;
+      margin-top: 20px;
+      background-color: #FFFFFF;
+
+      .case-img{
+        height: 140px;
+        width: 100%;
+      }
+      .case-title{
+        color: #333333;
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
   }
 
+}
+
+.services-container{
+
+  margin-left: -20px;
+  margin-top: 30px;
+  .quotation-item{
+    width: 235px;
+    height: 300px;
+    margin-left: 20px;
+    background-color: #fff;
+
+    .quotation-img{
+      width: 100%;
+      height: 210px;
+
+    }
+
+    .quotation-info{
+      padding: 10px 15px;
+
+      .name{
+        color: #333333;
+        font-size: 14px;
+      }
+      .price{
+        color: #ff9801;
+        font-size: 24px;
+        margin-top: 8px;
+      }
+
+    }
+  }
+}
+
+.bg-fff{
+  background-color: #FFFFFF;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+.comment-container{
+  .comment-item{
+    padding-bottom: 30px;
+    border-bottom: 1px solid #f4f4f4;
+    margin-top: 30px;
+
+
+    .avatar-box{
+      width: 120px;
+      .avatar{
+        width: 64px;
+        height: 64px;
+        border-radius: 32px;
+      }
+    }
+
+    .body{
+      width: 880px;
+
+      .score-container{
+        padding: 10px 0;
+      }
+
+      .content{
+        color: #333333;
+      }
+
+      .name-and-date{
+        .name{
+          width: 802px;
+          font-size: 16px;
+          color: #666666;
+        }
+        .date{
+          width: 78px;
+          color: #999999;
+        }
+      }
+    }
+  }
+}
+
+
+.case-info{
+  border-top: 1px solid #e5e5e5;
+  padding-top: 40px;
+
+  .name{
+    font-size: 20px;
+    color: #333333;
+  }
+
+  .case-item{
+    color: #333333;
+  }
+
+  .first{
+    margin-top: 25px;
+  }
+
+  .description{
+    margin-top: 40px;
+    margin-bottom: 100px;
+  }
+
+}
+
+.info-show-container{
+  .x-close{
+    top: 20px;
+    right: 20px;
+    position: absolute;
+  }
 }

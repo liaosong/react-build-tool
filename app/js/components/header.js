@@ -31,7 +31,7 @@ class Header extends React.Component {
             <div className="header-top">
                 <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <ul className="right-side">
-                    <li><a href="">{ currentUser.phone_number}</a></li>
+                    <li><a href="/home">{ currentUser.phone_number}</a></li>
                     <li><a href="javascript:;" onClick={this.logout.bind(this)}>退出</a></li>
                 </ul>
             </div>
@@ -80,7 +80,7 @@ class Header extends React.Component {
                     <span className="tips">
                         已有参展商账号？
                     </span>
-                    <Login loginText="立即登陆" registerUrl={this.props.registerUrl}></Login>
+                    <Login loginText="立即登录" registerUrl={this.props.registerUrl}></Login>
                 </div>
             </div>
         );
@@ -89,6 +89,7 @@ class Header extends React.Component {
         e.preventDefault();
         const { dispatch } = this.props;
         dispatch(logout());
+        this.goHome();
     }
     goHome(){
         location.href = '/';

@@ -11,7 +11,7 @@ export function authService(state, action){
         case 'OPEN_LOGIN_DIALOG':
             return Object.assign({}, state, {dialogOpen: true});
         case 'LOGIN':
-            return Object.assign({}, state, {currentUser: action.currentUser, errorMessage: '', dialogOpen: false});
+            return Object.assign({}, state, {currentUser: action.currentUser, errorMessage: '', dialogOpen: false, errorMessage: null});
         case 'LOGIN_ERROR':
             return Object.assign({}, state, {currentUser: undefined, errorMessage: action.message});
         case 'LOGOUT':

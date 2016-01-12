@@ -45,6 +45,7 @@
     "react-day-picker": "^1.2.0",
     "react-dom": "^0.14.2",
     "react-dropzone": "^3.2.3",
+    "react-image-gallery": "^0.5.4",
     "react-intl": "^1.2.1",
     "react-modal": "^0.6.1",
     "react-onclickoutside": "^4.5.0",

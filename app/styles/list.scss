@@ -2,6 +2,8 @@
 @import "share/head";
 @import "components/pagination";
 @import './components/footer';
+@import "./components/city-selecter";
+@import './components/publish';
 
 .header-top{
   background-color: #fff;
@@ -100,12 +102,11 @@
     vertical-align: top;
     
     .filter-item{
-      width: 46px;
-      height: 24px;
       line-height: 24px;
       text-align: center;
       display: inline-block;
       color: #4c4c4c;
+      padding: 2px 5px;
       
       &.active{
         color: #0af;
@@ -124,20 +125,53 @@
 
   .companies-list{
     margin-top: 10px;
-    background-color: #fff;
-    padding: 30px 20px;
+
   }
 
   .companies-item{
-
+    margin-top: 4px;
+    background-color: #fff;
+    padding: 30px 20px;
     .company-name{
       font-size: 20px;
       color: #0af;
+
+      .name{
+        width: 934px;
+      }
+      .collect{
+        width: 26px;
+        height: 26px;
+        background-image: url("../images/collect_icon.png");
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+
+        &:hover{
+          background-image: url("../images/collect_icon_hover.png");
+        }
+      }
 
     }
 
     .company-body{
       margin-top: 25px;
+
+    }
+    .info{
+      width: 804px;
+      border-right: 1px solid #f4f4f4;
+
+    }
+    .action{
+      width: 155px;
+      text-align: right;
+      height: 107px;
+
+      button{
+        width: 135px;
+        border-radius: 3px;
+        margin-top: 33px;
+      }
     }
 
     .company-description{
@@ -167,6 +201,15 @@
     .inline-value{
       margin-left: 8px;
     }
+  }
+
+  .company-pagination{
+    margin-top: 4px;
+    height: 64px;
+    background-color: #fff;
+    padding-top: 30px;
+    text-align: center;
+
   }
 
 }

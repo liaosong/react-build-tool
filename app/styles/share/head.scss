@@ -46,3 +46,69 @@ $header_top_height: 60px;
     }
   }
 }
+
+
+.login-container{
+
+  .logo{
+    height: 70px;
+    width: 100%;
+    background-image: url(../images/logo-back.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  input{
+    height: 36px;
+    width: 266px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding-left: 10px;
+    font-size: 14px;
+  }
+  .password{
+    margin-top: 14px;
+  }
+  .reset-password{
+    margin-top: 14px;
+    color: #0af;
+    display: inline-block;
+  }
+  button{
+    width: 280px;
+    border-radius: 3px;
+    height: 42px;
+    background-color: #0af;
+    color: #fff;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    border: 1px solid #09f;
+  }
+  .tips{
+    font-size: 12px;
+    height: 16px;
+    color: #ff0000;
+  }
+
+  hr{
+    border-top: 2px solid #e6e6e6;
+  }
+  .reg-ref{
+    margin-top: 25px;
+    color: #4c4c4c;
+
+    a{
+      color: #09f;
+    }
+  }
+
+  .login-error{
+    text-align: center;
+    color: #ff0000;
+    height: 20px;
+    margin-bottom: 10px;
+  }
+
+}
