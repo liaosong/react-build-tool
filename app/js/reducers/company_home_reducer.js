@@ -30,7 +30,7 @@ function userHome(state, action){
         case 'PWD_UPDATE_SUCCESS':
             return {...state, change: false};
         case 'PWD_UPDATE_FAIL':
-            return {...state, change: true};
+            return {...state, change: true, errorMessage: action.message};
         case 'PWD_SHOW_VIEW':
             return {...state, change: false};
         case 'PWD_UPDATE_VIEW':
