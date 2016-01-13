@@ -60,7 +60,7 @@ class Header extends React.Component {
             <div className="header-top">
                 <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <div className="system-type">
-                    <span>参展商管理系统</span>
+                    <span>服务商管理系统</span>
                     <span className="ml-10">|</span>
                     <span className="ml-10">欢迎</span>
                 </div>

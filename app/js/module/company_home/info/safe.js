@@ -53,7 +53,7 @@ class CompanyInfoSafe extends React.Component {
                         <div className="x-value">
                             <input ref="password" type="password" className="x-form-control" placeholder="请输入密码"/>
                         </div>
-                        <div className="x-tips"></div>
+                        <div className="x-tips error">{this.props.errorMessage}</div>
                     </div>
                     <div className="x-form-group">
                         <div className="x-label">新密码</div>
@@ -110,7 +110,8 @@ class CompanyInfoSafe extends React.Component {
 function mapStateToProps(state){
     return {
         currentUser: state.userHome.currentUser,
-        change: state.userHome.change
+        change: state.userHome.change,
+        errorMessage: state.userHome.errorMessage
     };
 }
 export default connect(mapStateToProps, {

@@ -51,7 +51,16 @@ export function userRegister(user){
                         type: 'USER_REGISTER',
                         registerType: 'user'
                     });
+                }else if(res.body.status == 1){
+                    dispatch({
+                        type: 'USER_REGISTER_DUPLICATION_ERROR',
+                        registerType: 'user',
+                        userType: res.body.type,
+                        error: res.body.error,
+                        message: res.body.message
+                    });
                 }
+
             });
     }
 }
@@ -77,6 +86,15 @@ export function companyRegister(user){
                         type: 'AUTH_INIT',
                         currentUser: res.body.data.user
                     });
+                }else if(res.body.status == 1){
+                    dispatch({
+                        type: 'USER_REGISTER_DUPLICATION_ERROR',
+                        registerType: 'user',
+                        userType: res.body.type,
+                        error: res.body.error,
+                        message: res.body.message
+                    });
+
                 }
             });
     }

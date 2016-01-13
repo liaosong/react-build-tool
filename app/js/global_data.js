@@ -1,6 +1,8 @@
 
 
-var service_types = [{value:'场地搭建', label:'场地搭建'},
+var service_types = [
+    {value: '综合', label: '综合'},
+    {value:'场地搭建', label:'场地搭建'},
     {value:'公关策划', label:'公关策划'},
     {value:'展位设计', label:'展位设计'},
     {value:'设备租赁', label:'设备租赁'},

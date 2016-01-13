@@ -7,6 +7,7 @@ import Footer from '../components/footer';
 import {initHomeData} from '../actions/index_actions';
 import Publish from '../components/publish';
 import classNames from 'classnames';
+import request from 'superagent';
 
 
 class HotSearch extends React.Component {
@@ -33,11 +34,64 @@ class HotSearch extends React.Component {
     }
 }
 
+
+class HireCompany extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            quotations: []
+        }
+    }
+
+    componentDidMount(){
+        this.getQuotation();
+    }
+    getQuotation(){
+        var {company} = this.props;
+        request.get(`/api/companies/${company._id}/quotations`)
+            .end((err, res) => {
+                if(err) return console.log(err);
+
+                if(res.body.status == 0){
+                    this.setState({
+                        quotations: res.body.data
+                    });
+                }else{
+                    console.log(res.body.message);
+                }
+            });
+    }
+    showCompany(company){
+        location.href = `/companies/${company._id}`;
+    }
+
+    render(){
+        var {company} = this.props;
+        var quotations = this.state.quotations.map((item, index) => {
+            return item.name
+        })
+        return (
+            <div className="company-item">
+                <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
+
+                <div className="company-info">
+                    <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
+                    <div className="company-cases">{quotations.join(' ')}</div>
+                </div>
+            </div>
+        );
+    }
+}
 class CompanyList extends React.Component {
     constructor(props) {
         super(props);
 
 
+    }
+
+    showCompany(company){
+        location.href = `/companies/${company._id}`;
     }
 
     renderFullCompanyList() {
@@ -46,10 +100,10 @@ class CompanyList extends React.Component {
         companies = companies.map((company) => {
             return (
                 <div className="company-item" key={company._id}>
-                    <img className="company-img" src={company.company_img}/>
+                    <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
 
                     <div className="company-info">
-                        <div className="company-name">{company.name}</div>
+                        <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
                         <div className="company-tags">{company.services_type.join(' ')}</div>
                         <div className="company-cases">成功案例：<span
                             className="cases-num">{company.cases_num}</span></div>
@@ -70,10 +124,10 @@ class CompanyList extends React.Component {
         companies = companies.map((company) => {
             return (
                 <div className="company-item" key={company._id}>
-                    <img className="company-img" src={company.company_img}/>
+                    <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
 
                     <div className="company-info">
-                        <div className="company-name">{company.name}</div>
+                        <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
                         <div className="company-cases">搭建案例展示：
                             <span className="cases-num">{company.cases_num}</span></div>
                     </div>
@@ -93,14 +147,7 @@ class CompanyList extends React.Component {
         companies = companies || [];
         companies = companies.map((company) => {
             return (
-                <div className="company-item" key={company._id}>
-                    <img className="company-img" src={company.company_img}/>
-
-                    <div className="company-info">
-                        <div className="company-name">{company.name}</div>
-                        <div className="company-cases">{company.services.join(' ')}</div>
-                    </div>
-                </div>
+                <HireCompany company={company} key={company._id}></HireCompany>
             );
         });
         return (
@@ -175,6 +222,16 @@ class Index extends React.Component {
             tenderDialogOpen: false
         });
     }
+
+    loadFullCompany(){
+        location.href = `/search?service_type=综合`;
+    }
+    loadFactorCompany(){
+        location.href = `/search?service_type=场地搭建`;
+    }
+    loadHireCompany(){
+        location.href = `/search?service_type=设备租赁`;
+    }
     render() {
         var {fullCompany, factoryCompany, rentCompany} = this.props;
 
@@ -208,21 +265,21 @@ class Index extends React.Component {
 
                         <p className="section-title text-center">为您提供一站式会议展览活动的策划设计及搭建执行服务</p>
                         <CompanyList type={"full_company"} companies={fullCompany}></CompanyList>
-                        <button className="load-more">加载更多</button>
+                        <button className="load-more" onClick={this.loadFullCompany.bind(this)}>加载更多</button>
                     </section>
                     <section className="type-factory">
                         <h2 className="section-head text-center">展厅展台搭建</h2>
 
                         <p className="section-title text-center">会展、展柜、展厅、舞台搭建工程</p>
                         <CompanyList type={"factory"} companies={factoryCompany}></CompanyList>
-                        <button className="load-more">加载更多</button>
+                        <button className="load-more" onClick={this.loadFactorCompany.bind(this)}>加载更多</button>
                     </section>
                     <section className="type-hire">
                         <h2 className="section-head text-center">设备租赁</h2>
 
                         <p className="section-title text-center">灯光、音响、视频设备租赁</p>
                         <CompanyList type={"hire"} companies={rentCompany}></CompanyList>
-                        <button className="load-more">加载更多</button>
+                        <button className="load-more" onClick={this.loadHireCompany.bind(this)}>加载更多</button>
                     </section>
                 </div>
                 <Footer></Footer>

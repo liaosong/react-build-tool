@@ -66,7 +66,7 @@ class CodeButton extends React.Component {
     render() {
         return (
             <div className="inline-b">
-                <button disabled={this.state.waiting} className={classNames('code-button', { disabled: this.state.waiting })} onClick={this.getCode.bind(this)}>{this.state.buttonText}</button>
+                <button disabled={this.state.waiting} className={classNames('code-button', { disabled: this.state.waiting })} onClick={this.getCode.bind(this)} type="button">{this.state.buttonText}</button>
             </div>
         );
     }

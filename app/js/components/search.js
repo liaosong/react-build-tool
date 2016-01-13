@@ -115,7 +115,7 @@ class SearchBar extends React.Component {
   renderNoCity(){
     return (
       <div className={classNames('inline')}>
-        <input className={classNames('search-input')} ref="keywords" defaultValue={this.props.queryText || ''}/>
+        <input className={classNames('search-input')} ref="keywords" defaultValue={this.props.queryText || ''} placeholder="您需要什么服务?"/>
         <button className={classNames('search-button')} onClick={this.search.bind(this)}>搜索</button>
       </div>
     );
@@ -126,7 +126,7 @@ class SearchBar extends React.Component {
     if(noCity) return this.renderNoCity();
     return (
       <div className={classNames('inline')} >
-        <input className={classNames('search-input')} ref="keywords" defaultValue={this.props.queryText || ''}/>
+        <input className={classNames('search-input')} ref="keywords" defaultValue={this.props.queryText || ''} placeholder="您需要什么服务?"/>
         <CitySelecter ref="city"/>
         <button className={classNames('search-button')} onClick={this.search.bind(this)}>搜索</button>
       </div>

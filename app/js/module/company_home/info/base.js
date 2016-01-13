@@ -44,12 +44,12 @@ class CompanyBase extends Component{
         console.log(arguments);
 
         var {updateCompanyInfo} = this.props;
-
+        var city = this.refs.city.state.value;
 
         var company = {
             name: this.refs.name.value,
             address: this.refs.address.value,
-            city: this.refs.address.value,
+            city: city,
             type: this.refs.type.value,
             contacts: this.refs.contacts.value,
             tel: this.refs.tel.value,

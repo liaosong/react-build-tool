@@ -61,7 +61,8 @@ class Register extends React.Component {
 function registerState(state) {
     return {
         currentUser: state.authService.currentUser,
-        company: state.companyRegister.company
+        company: state.companyRegister.company,
+        userType: state.companyRegister.userType
     }
 }
 

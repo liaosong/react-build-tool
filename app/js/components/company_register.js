@@ -55,6 +55,37 @@ class Step1 extends React.Component{
         }
 
     }
+
+    componentWillReceiveProps(nextProps){
+        var {userType, error, message} = nextProps;
+        if(userType){
+            if(userType == 'company'){
+                this.setState({
+                    phoneNumberTips: '该手机号已经注册为服务商，您可以直接登录'
+                });
+            }else if(userType == 'exhibitor'){
+                this.setState({
+                    phoneNumberTips: '该手机号已经注册为参展商，请更换手机号码后再注册'
+                });
+            }else{
+                this.setState({
+                    phoneNumberTips: '该手机号已经注册,请更换手机号码后再注册'
+                });
+            }
+        }
+
+        if(error){
+            if(error == 'code'){
+                this.setState({
+                    codeTips: message
+                });
+            }else if(error == 'captcha'){
+                this.setState({
+                    captchaTips: message
+                });
+            }
+        }
+    }
     changeCaptcha(){
         this.setState({
             captchaUrl: '/api/captcha.jpg?t=' + new Date().getTime()
@@ -433,6 +464,13 @@ class CompanyRegister extends React.Component{
 
     }
 
+    componentWillReceiveProps(nextProps){
+        var {currentUser} = nextProps;
+        if(currentUser){
+            location.href = '/home';
+        }
+    }
+
     onApply(user){
         var {onRegister} = this.props;
         onRegister(user);
@@ -446,7 +484,7 @@ class CompanyRegister extends React.Component{
     render(){
         var stepView, step;
 
-        var {company} = this.props;
+        var {company, userType, error, message} = this.props;
 
         if(company && (company.status == 'unfinished')){
             stepView = <Step2 onFillCompanyInfo={this.onFillCompanyInfo.bind(this)} company={company}></Step2>;
@@ -455,7 +493,7 @@ class CompanyRegister extends React.Component{
             stepView = <Step3></Step3>;
             step = 3;
         }else{
-            stepView = <Step1 onApply={this.onApply.bind(this)} company={company}></Step1>;
+            stepView = <Step1 onApply={this.onApply.bind(this)} company={company} userType={userType} error={error} message={message}></Step1>;
             step = 1;
         }
 
@@ -479,8 +517,11 @@ class CompanyRegister extends React.Component{
 
 function registerState(state) {
     return {
-        company: state.companyRegister.company
-
+        company: state.companyRegister.company,
+        currentUser: state.authService.currentUser,
+        userType: state.companyRegister.userType,
+        error: state.companyRegister.error,
+        message: state.companyRegister.message
     }
 }
 

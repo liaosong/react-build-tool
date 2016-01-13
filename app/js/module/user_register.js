@@ -24,6 +24,12 @@ class Register extends React.Component {
         }));
 
     }
+    componentWillReceiveProps(nextProps){
+        var {currentUser} = nextProps;
+        if(currentUser){
+            location.href = '/home';
+        }
+    }
 
     render() {
         return (
@@ -48,7 +54,8 @@ class Register extends React.Component {
 
 function registerState(state) {
     return {
-        headerType: state.headerType
+        headerType: state.headerType,
+        currentUser: state.authService.currentUser
     }
 }
 

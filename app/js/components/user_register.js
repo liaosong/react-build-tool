@@ -22,6 +22,38 @@ class UserRegister extends React.Component{
             captchaUrl: '/api/captcha.jpg'
         }
     }
+
+    componentWillReceiveProps(nextProps){
+        var {userType, error, message} = nextProps;
+        if(userType){
+            if(userType == 'company'){
+                this.setState({
+                    phoneNumberTips: '该手机号已经注册为服务商，您可以直接登录'
+                });
+            }else if(userType == 'exhibitor'){
+                this.setState({
+                    phoneNumberTips: '该手机号已经注册为参展商，请更换手机号码后再注册'
+                });
+            }else{
+                this.setState({
+                    phoneNumberTips: '该手机号已经注册,请更换手机号码后再注册'
+                });
+            }
+        }
+
+        if(error){
+            if(error == 'code'){
+                this.setState({
+                    codeTips: message
+                });
+            }else if(error == 'captcha'){
+                this.setState({
+                    captchaTips: message
+                });
+            }
+        }
+    }
+
     changeCaptcha(){
         this.setState({
             captchaUrl: '/api/captcha.jpg?t=' + new Date().getTime()
@@ -191,4 +223,14 @@ class UserRegister extends React.Component{
     }
 }
 
-export default UserRegister;
+//export default UserRegister;
+
+function store2props(state) {
+    return {
+        userType: state.register.userType,
+        error: state.register.error,
+        message: state.register.message
+    }
+}
+
+export default connect(store2props)(UserRegister);
