@@ -18,18 +18,20 @@ export class CaseShow extends Component{
 
     }
     componentWillReceiveProps(nextProps){
-        var {caseInfo} = nextProps;
+        var {caseInfo, isOpen} = nextProps;
         if(caseInfo){
             this.setState({
                 caseInfo: caseInfo,
-                isOpen: true
+                isOpen: isOpen
             });
         }
     }
     onRequestClose(){
+        var {hideCaseHander} = this.props;
         this.setState({
             isOpen: false
         });
+        hideCaseHander();
     }
 
 

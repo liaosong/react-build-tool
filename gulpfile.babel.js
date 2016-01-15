@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import webpack from 'webpack';
+import gulpWebpack from 'webpack-stream';
 import gulpUtil from 'gulp-util';
 import path from 'path';
 import jade from 'gulp-jade';
@@ -9,6 +10,9 @@ import livereload from 'gulp-livereload';
 import proxy from 'proxy-middleware';
 import logger from 'morgan';
 import url from 'url';
+import autoprefixer from 'gulp-autoprefixer';
+
+var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 
 const PROXY_URL = 'http://127.0.0.1:4000/api';
@@ -27,7 +31,8 @@ const PATHS = {
     company_home: './app/js/company_home.js',
     user_register: './app/js/user_register.js',
     company_register: './app/js/company_register.js',
-    tender: './app/js/tender.js'
+    tender: './app/js/tender.js',
+    forget_password: './app/js/forget_password.js',
 
   }, //页面对应的js文件
   img: ['./app/images/*.*', './app/images/*/*.*']
@@ -40,6 +45,14 @@ gulp.task('sass', function(){
     .pipe(sass())
     .pipe(gulp.dest(PATHS.dist))
     .pipe(livereload());
+});
+
+gulp.task('sassBuild', function(){
+  gulp.src(PATHS.module_sass, {base: PATHS.src})
+      .pipe(sass({style: 'compressed'}))
+      .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+      .pipe(gulp.dest(PATHS.dist))
+      .pipe(livereload());
 });
 gulp.task("copy", function(){
   gulp.src(PATHS.html, {base: PATHS.src})
@@ -57,10 +70,46 @@ gulp.task("copy-html", function(){
     .pipe(gulp.dest(PATHS.dist))
     .pipe(livereload());
 });
-//for production build
-gulp.task("build", function(){
 
+gulp.task('webpackBuild', ['copy'], function(){
+  webpack({
+    entry: PATHS.module_js,
+    output: {
+      path: path.join(__dirname, '/dist/js/'),
+      filename: '[name].js'
+    },
+    resolve: {
+      extensions: ['', '.js', '.jsx']
+    },
+    plugins: [
+      new uglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      })
+    ],
+    module: {
+      loaders: [
+        { test: /\.js|jsx$/,
+          loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0',
+          exclude: /node_modules/
+        }
+      ]
+    }
+  }, function(err, stats){
+    if(err) throw new gulpUtil.PluginError("webpack", err);
+    var jsonStats = stats.toJson();
+    if(jsonStats.errors.length > 0) {
+      console.error(jsonStats.errors.join('\n\r'));
+    }
+    if(jsonStats.warnings.length > 0)
+      console.log(jsonStats.warnings);
+
+  });
 });
+
+//for production build
+gulp.task("build", ['sassBuild', 'webpackBuild']);
 
 //for devlopment build
 gulp.task("serve",[
@@ -186,6 +235,10 @@ gulp.task('express', function(){
     var user = { "_id" : "55e450bfa02797ea0448b174", "volume" : 0, "created_at" : "2015-08-31T13:03:59.142Z", "city" : "", "role" : "company", "salt" : "591103770255", "hashed_password" : "1eab2efa5a5b4fd78dc27b7a1cfc6e7e2bb4342e", "phone_number" : "15928124305", "username" : "", "avatar" : "uploads/image-1437896764820aa.jpg", "email" : "", "name" : "马永旭", "__v" : 0 };
     var company = {"_id":"55e450bfa02797ea0448b1a7","owner":"55e450bfa02797ea0448b174","coordinate":[95,40],"__v":3,"keywords":["test","啊啊","发生地方，ss"],"tel":"xxx","email":"xxx","contacts":"xxx","status":"unfinished","area":"武侯区","city":"成都市高新区世纪城路新会展中心","province":"","created_at":"2015-08-31T13:03:59.336Z","company_img":"uploads/1450754497620dGVzdA==.jpg","company_logo":"uploads/1450754487784cHNi.jpeg","_description":"test","phone_number":"","address":"成都市高新区世纪城路新会展中心","company_address":"成都市高新区世纪城","services_type":["展具租赁","AV租赁","植物租摆","设备租赁","篷房展具租赁","物流"],"services":["开锁","搭积木","喷绘","策划","广告制作","你倒是"],"category":["会议","展览","活动"],"type":"full","is_in_limit":false,"score":2,"calls_count":77,"visited_count":8835,"name":"普锐斯会展服务公司"};
     res.render('show', {initData:{company: company, currentUser: user}});
+  })
+
+  router.get('/user/forget_password', function(req, res){
+    res.render('forget_password');
   })
   app.use('/', router);
 

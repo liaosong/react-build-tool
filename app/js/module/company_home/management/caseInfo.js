@@ -92,7 +92,7 @@ export class CaseInfo extends React.Component{
                             <Datepicker className="half-w inline-b" ref="endDate" defaultValue={caseObj.end_date}></Datepicker>
                         </div>
                         <div className="form-row-group">
-                            <label className="j8-label">参见人数</label>
+                            <label className="j8-label">参加人数</label>
                             <input type="text" className="form-row-control j8-input half-w" ref="joinedNum" defaultValue={caseObj.joined_num}/>
                         </div>
                         <div className="form-row-group">

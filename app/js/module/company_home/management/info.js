@@ -139,6 +139,10 @@ class CompanyInfo extends Component{
 
     renderShow(){
         var {company} = this.props;
+        var description = company._description || '';
+        description = description.split(/\n/).map((item, index) => {
+            return <p key={index}>{item}</p>
+        });
         return (
             <div className="company-info-container show-info">
                 <div className="x-form">
@@ -170,7 +174,7 @@ class CompanyInfo extends Component{
                     <div className="c-row">
                         <div className="c-label">公司简介</div>
                         <div className="c-value">
-                            <div className="introduce">{company._description}</div>
+                            <div className="introduce">{description}</div>
                         </div>
                     </div>
 

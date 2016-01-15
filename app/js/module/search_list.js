@@ -58,24 +58,69 @@ class Company extends React.Component{
     componentDidMount(){
         var {company, currentUser} = this.props;
         if(currentUser){
-            request.get(`/api/client/enshrines/${company._id}/is_enshrined`).end((err, res) => {
+            this.isEnshrined(company);
+        }
+
+    }
+    isEnshrined(company){
+        request.get(`/api/client/enshrines/${company._id}/is_enshrined`).end((err, res) => {
+            if(err){
+                return console.log(err);
+            }
+
+            if(res.body.status == 0){
+                this.setState({
+                    isEnshrined: res.body.data
+                });
+            }else{
+                console.log(res.body.message);
+            }
+        });
+    }
+
+    beforeEnshrined(company){
+        var {currentUser, openLoginPage} = this.props;
+        if(!currentUser) return openLoginPage();
+        if(this.state.isEnshrined){
+            this.cancelEnshrined(company);
+        }else{
+            this.enshrined(company);
+        }
+    }
+
+    cancelEnshrined(company){
+        request.del(`/api/client/enshrines/cancel`)
+            .send({company: company._id})
+            .end((err, res) => {
                 if(err){
                     return console.log(err);
                 }
 
                 if(res.body.status == 0){
                     this.setState({
-                        isEnshrined: res.body.data
+                        isEnshrined: false
                     });
                 }else{
                     console.log(res.body.message);
                 }
             });
-        }
-
     }
-    isEnshrined(company){
+    enshrined(company){
+        request.post(`/api/client/enshrines`)
+            .send({company: company._id})
+            .end((err, res) => {
+                if(err){
+                    return console.log(err);
+                }
 
+                if(res.body.status == 0){
+                    this.setState({
+                        isEnshrined: true
+                    });
+                }else{
+                    console.log(res.body.message);
+                }
+            });
     }
 
     showCompany(company){
@@ -84,22 +129,27 @@ class Company extends React.Component{
     render(){
         var {company} = this.props;
 
-        var services = company.services.map((item, index) => {
+        var services = company.services_type.map((item, index) => {
             return (
                 <span key={index}>{item}</span>
             );
         });
+
+        var description = company._description || '';
+        description = description.split(/\n/).map((item, index) => {
+            return <p key={index}>{item}</p>
+        });
         return (
             <div className={classNames('companies-item')}>
                 <div className="company-name">
-                    <div className="name inline">{company.name}</div>
-                    <div className={classNames("inline", {'collect': !this.state.isEnshrined, 'collected': this.state.isEnshrined})}></div>
+                    <div className="name inline" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
+                    <div className={classNames("inline", {'collect': !this.state.isEnshrined, 'collected': this.state.isEnshrined})} onClick={this.beforeEnshrined.bind(this, company)}></div>
 
                 </div>
                 <div className="company-body ">
                     <div className="info left-side inline">
                         <div className="company-description">
-                            {company._description || '介绍无'}
+                            {description || '介绍无'}
                         </div>
                         <div className="service-row">
                             <div className="item-title inline">服务项目：</div>
@@ -111,11 +161,11 @@ class Company extends React.Component{
                         <div className="concat-and-case-row">
                             <div className="concat-container inline">
                                 <div className="inline">联系方式：</div>
-                                <div className="inline inline-value">{company.phone_number}</div>
+                                <div className="inline inline-value">{company.phone_number || company.tel}</div>
                             </div>
                             <div className="case-container inline">
                                 <div className="inline">成功案例：</div>
-                                <div className="inline inline-value cases-num">{company.cases_num}</div>
+                                <div className="inline inline-value cases-num">{company.cases_num || 0}</div>
                             </div>
                         </div>
                     </div>
@@ -146,6 +196,15 @@ class SearchList extends React.Component{
             count: initData.count,
             query: initData.query
         });
+    }
+
+    componentWillReceiveProps(nextProps){
+        var {currentUser} = nextProps;
+        if(currentUser){
+            this.forceUpdate();
+        }
+
+
     }
 
     searchCompany(q){
@@ -189,16 +248,23 @@ class SearchList extends React.Component{
         location.href = this.object2url(query);
     }
 
+    openLoginPage(){
+        var {dispatch} = this.props;
+        dispatch({
+            type: 'OPEN_LOGIN_DIALOG'
+        });
+    }
+
     render(){
         //initData={currentUser,queryText}
-        var {companies, count, initData} = this.props;
+        var {companies, count, initData, currentUser} = this.props;
         var serviceFilter = service_types.map((item) => {
             return item.value;
         });
-        var currentUser = initData.currentUser;
+        currentUser = currentUser || initData.currentUser;
         companies = companies.map((item, index) => {
             return (
-                <Company company={item} key={index} currentUser={currentUser}></Company>
+                <Company company={item} key={index} currentUser={currentUser} openLoginPage={this.openLoginPage.bind(this)}></Company>
             );
         })
 
@@ -246,11 +312,12 @@ class SearchList extends React.Component{
 }
 
 
-function headerState({list}) {
+function headerState({list, authService}) {
     return {
         companies: list.companies,
         count: list.count,
-        query: list.query
+        query: list.query,
+        currentUser: authService.currentUser
     };
 }
 

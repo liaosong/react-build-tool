@@ -106,14 +106,14 @@ class Login extends React.Component{
                             <div className="tips">{this.state.phoneNumberTips}</div>
                             <input ref="password" type="password" className="password" onChange={this.checkPassword.bind(this)}/>
                             <div className="tips">{this.state.passwordTips}</div>
-                            <a href="" className="reset-password">忘记密码？</a>
+                            <a href="/user/forget_password" className="reset-password">忘记密码？</a>
 
                             <button type="submit">登录</button>
                         </form>
                         <hr/>
                         <div className="reg-ref">
                             <span>还没有账号？</span>
-                            <a href={this.props.registerUrl}>注册</a>
+                            <a href="/user/register">注册</a>
                         </div>
                     </div>
                 </Modal>

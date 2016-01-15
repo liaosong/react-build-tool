@@ -11,9 +11,13 @@ class CommentAdd extends Component{
     }
 
     onClose(){
+        var {onClosed} = this.props;
         this.setState({
             isOpen: false
         });
+        if(onClosed){
+            onClosed();
+        }
     }
     componentWillReceiveProps(nextProps){
         var {isOpen} = nextProps;

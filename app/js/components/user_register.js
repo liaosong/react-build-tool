@@ -28,11 +28,11 @@ class UserRegister extends React.Component{
         if(userType){
             if(userType == 'company'){
                 this.setState({
-                    phoneNumberTips: '该手机号已经注册为服务商，您可以直接登录'
+                    phoneNumberTips: '该手机号已经注册为服务商，请更换手机号码后再注册'
                 });
             }else if(userType == 'exhibitor'){
                 this.setState({
-                    phoneNumberTips: '该手机号已经注册为参展商，请更换手机号码后再注册'
+                    phoneNumberTips: '该手机号已经注册为参展商，您可以直接登录'
                 });
             }else{
                 this.setState({

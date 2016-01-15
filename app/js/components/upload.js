@@ -37,10 +37,11 @@ class Upload extends Component{
         fileInput.click();
     }
     onDelete(delItem){
+        this.value = this.state.value.filter((item) => {return item != delItem});
+
         this.setState({
-            value: this.state.value.filter((item) => {return item != delItem})
+            value: this.value
         });
-        this.value = this.state.value;
     }
 
     onChange(){

@@ -107,9 +107,10 @@ class Case extends React.Component{
 
     render(){
         var {caseInfo} = this.props;
+        var caseImg = caseInfo.img_urls.length >= 1 ? '/' + caseInfo.img_urls[0].url : '';
         return (
             <div className="case-item inline" onClick={this.showCase.bind(this, caseInfo)}>
-                <img src={'/' + caseInfo.img_urls[0].url} alt="" className="case-img"/>
+                <img src={caseImg} alt="" className="case-img"/>
                 <div className="case-title">{caseInfo.title}</div>
             </div>
         );
@@ -120,9 +121,10 @@ class Quotation extends React.Component{
 
     render(){
         var {quotation} = this.props;
+        var quotationImg = quotation.img_urls.length >= 1 ? '/' + quotation.img_urls[0].url : '';
         return (
             <div className="quotation-item inline">
-                <img src={'/' + quotation.img_urls[0].url} alt="" className="quotation-img"/>
+                <img src={quotationImg} alt="" className="quotation-img"/>
                 <div className="quotation-info">
                     <div className="name">{quotation.name}</div>
                     <div className="price">{quotation.price}</div>
@@ -136,6 +138,11 @@ class Comment extends React.Component{
 
     render(){
         var {comment} = this.props;
+
+        var content = comment.content || '';
+        content = content.split(/\n/).map((item, index) => {
+            return <p key={index}>{item}</p>
+        });
         return (
             <div className="comment-item">
                 <div className="avatar-box inline">
@@ -147,7 +154,7 @@ class Comment extends React.Component{
                         <div className="date inline-b">{moment(comment.creat_date).format('YYYY-MM-DD')}</div>
                     </div>
                     <Star score={comment.score}></Star>
-                    <div className="content">{comment.content}</div>
+                    <div className="content">{content}</div>
                 </div>
             </div>
         );
@@ -160,7 +167,8 @@ class CompanyShow extends React.Component{
         this.state ={
             commentDialogOpen: false,
             selectCase: null,
-            isEnshrined: false
+            isEnshrined: false,
+            caseShowOpen: false
         }
     }
 
@@ -196,10 +204,22 @@ class CompanyShow extends React.Component{
             commentDialogOpen: true
         });
     }
+    hideCommentAdd(){
+        this.setState({
+            commentDialogOpen: false
+        });
+    }
 
     showCase(caseObj){
         this.setState({
-            selectCase: caseObj
+            selectCase: caseObj,
+            caseShowOpen: true
+        });
+    }
+
+    hideCaseHander(){
+        this.setState({
+            caseShowOpen: false
         });
     }
 
@@ -296,6 +316,10 @@ class CompanyShow extends React.Component{
 
         var enshrineText = this.state.isEnshrined ? '取消收藏': '收藏此服务商';
 
+        var description = company._description || '';
+        description = description.split(/\n/).map((item, index) => {
+            return <p key={index}>{item}</p>
+        });
         return (
             <div className="container">
                 <Header></Header>
@@ -333,7 +357,7 @@ class CompanyShow extends React.Component{
                         <div className="left-side inline">
                             <div className="section-title">关于此服务商</div>
                             <div className="content">
-                                {company._description}
+                                {description}
                             </div>
                         </div>
                         <div className="right-side inline">
@@ -349,7 +373,7 @@ class CompanyShow extends React.Component{
                             {cases}
                         </div>
                         <button className="btn-load-more">查看更多</button>
-                        <CaseShow caseInfo={this.state.selectCase} className="case-show-container"></CaseShow>
+                        <CaseShow caseInfo={this.state.selectCase} className="case-show-container" isOpen={this.state.caseShowOpen} hideCaseHander={this.hideCaseHander.bind(this)}></CaseShow>
                     </section>
                     <section className="company-services w-1000 s-center">
                         <div className="section-title">产品或服务</div>
@@ -365,7 +389,7 @@ class CompanyShow extends React.Component{
                                 <div className="action inline-b">
                                     <i className="add-icon"></i>
                                     <span onClick={this.showCommentAdd.bind(this)}>我要点评</span>
-                                    <CommentAdd isOpen={this.state.commentDialogOpen} onDataSubmit={this.createComment.bind(this)}></CommentAdd>
+                                    <CommentAdd isOpen={this.state.commentDialogOpen} onDataSubmit={this.createComment.bind(this)} onClosed={this.hideCommentAdd.bind(this)}></CommentAdd>
                                 </div>
                             </div>
 
