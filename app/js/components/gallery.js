@@ -58,6 +58,8 @@ export class Gallery extends Component{
                 </div>
             );
         });
+
+
         return (
             <div className={classNames("gallery", this.props.className)}>
                 <div className="main-box">
@@ -66,8 +68,8 @@ export class Gallery extends Component{
                 <div className="side-container">
                     {sides}
                 </div>
-                <div className="previous" onClick={this.previousImg.bind(this)}></div>
-                <div className="next" onClick={this.nextImg.bind(this)}></div>
+                <div className={classNames("previous", {'hidden': images.length < 2})} onClick={this.previousImg.bind(this)}></div>
+                <div className={classNames("next", {'hidden': images.length < 2})} onClick={this.nextImg.bind(this)}></div>
             </div>
         );
     }

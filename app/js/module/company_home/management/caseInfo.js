@@ -9,7 +9,11 @@ export class CaseInfo extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            titleTips: '',
+            dateTips: '',
+            joinNumTips: '',
+            imgUrlTips: '',
         }
     }
 
@@ -48,11 +52,95 @@ export class CaseInfo extends React.Component{
         };
 
         let {onSave} = this.props;
+        if(this.checkTitle() && this.checkDate() && this.checkJoinedNum() && this.checkImgUrls()){
+            if(this.state.case && this.state.case._id){
+                onSave(this.state.case._id, caseInfo);
+            }else{
+                onSave(null, caseInfo);
+            }
+        }
 
-        if(this.state.case && this.state.case._id){
-            onSave(this.state.case._id, caseInfo);
+
+    }
+
+    checkTitle(){
+        var {title} = this.refs;
+        if(title.value){
+            this.setState({
+                titleTips: ''
+            });
+            return true;
         }else{
-            onSave(null, caseInfo);
+            this.setState({
+                titleTips: '标题必填'
+            });
+            return false;
+        }
+    }
+    checkDate(){
+        var {beginDate, endDate} = this.refs;
+
+        if(beginDate.value){
+            if(endDate.value){
+                if(beginDate.value <= endDate.value){
+                    this.setState({
+                        dateTips: ''
+                    });
+                    return true;
+                }else{
+                    this.setState({
+                        dateTips: '结束日期不能在开始日期之前'
+                    });
+                    return false;
+                }
+            }else{
+                this.setState({
+                    dateTips: '结束日期必填'
+                });
+                return false;
+            }
+        }else{
+            this.setState({
+                dateTips: '开始日期必填'
+            });
+            return false;
+        }
+
+    }
+
+    checkJoinedNum(){
+        var {joinedNum} = this.refs;
+        if(/[1-9]\d*/.test(joinedNum.value)){
+            this.setState({
+                joinNumTips: ''
+            });
+            return true;
+        }else{
+            if(joinedNum.value){
+                this.setState({
+                    joinNumTips: '参加人数必须为数字，且不能为0'
+                });
+            }else{
+                this.setState({
+                    joinNumTips: '参加人数不能为空'
+                });
+            }
+            return false;
+        }
+    }
+
+    checkImgUrls(){
+        var {imgUrls} = this.refs;
+        if(imgUrls.value && imgUrls.value.length >=1){
+            this.setState({
+                imgUrlTips: ''
+            });
+            return true;
+        }else{
+            this.setState({
+                imgUrlTips: '案例图片不能为空'
+            });
+            return false;
         }
     }
 
@@ -81,19 +169,31 @@ export class CaseInfo extends React.Component{
                 <div className="w-1000 s-center">
                     <form className="x-form j8-form" onSubmit={this.saveCase.bind(this)}>
                         <div className="form-row-group">
-                            <label className="j8-label">标题</label>
+                            <label className="j8-label">
+                                <span>标题</span>
+                                <span className="required">*</span>
+                            </label>
                             <input type="text" className="form-row-control j8-input full-w" ref="title" defaultValue={caseObj.title}/>
+                            <span className="error-tips">{this.state.titleTips}</span>
                         </div>
 
                         <div className="form-row-group">
-                            <label className="j8-label">举办日期</label>
+                            <label className="j8-label">
+                                <span>举办日期</span>
+                                <span className="required">*</span>
+                            </label>
                             <Datepicker className="half-w inline-b" ref="beginDate" defaultValue={caseObj.begin_date}></Datepicker>
                             <label className="concat-label">至</label>
                             <Datepicker className="half-w inline-b" ref="endDate" defaultValue={caseObj.end_date}></Datepicker>
+                            <span className="error-tips">{this.state.dateTips}</span>
                         </div>
                         <div className="form-row-group">
-                            <label className="j8-label">参加人数</label>
+                            <label className="j8-label">
+                                <span>参加人数</span>
+                                <span className="required">*</span>
+                            </label>
                             <input type="text" className="form-row-control j8-input half-w" ref="joinedNum" defaultValue={caseObj.joined_num}/>
+                            <span className="error-tips">{this.state.joinNumTips}</span>
                         </div>
                         <div className="form-row-group">
                             <label className="j8-label">举办地点</label>
@@ -108,8 +208,12 @@ export class CaseInfo extends React.Component{
                             <textarea className="form-row-control description" ref="description" defaultValue={caseObj._description}></textarea>
                         </div>
                         <div className="form-row-group">
-                            <label className="j8-label">案例图片</label>
+                            <label className="j8-label">
+                                <span>案例图片</span>
+                                <span className="required">*</span>
+                            </label>
                             <Upload multiple className="inline" ref="imgUrls" value={caseObj.img_urls}></Upload>
+                            <div className="error-tips ml-120">{this.state.imgUrlTips}</div>
                         </div>
                         <hr className="line"/>
                         <div className="x-btn-group">

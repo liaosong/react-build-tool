@@ -8,12 +8,16 @@ import {Star} from '../components/star';
 import CommentAdd from '../components/comment_add';
 import moment from 'moment';
 import {CaseShow} from './case_show';
+import classNames from 'classnames';
 
+const casePageSize = 6;
+const quotationPageSize = 8;
+const commentPageSize = 10;
 
-function loadCases(company){
+function loadCases(company, page = 1){
 
     return dispatch => {
-        request.get(`/api/companies/${company._id}/cases`)
+        request.get(`/api/companies/${company._id}/cases?page_size=${casePageSize}&page=${page}`)
             .end((err, res) => {
                 if(err){
                     return console.log(err);
@@ -21,8 +25,9 @@ function loadCases(company){
 
                 if(res.body.status == 0){
                     dispatch({
-                        type: 'INIT_CASES',
-                        cases: res.body.data
+                        type: 'LOAD_MORE_CASES',
+                        cases: res.body.data,
+                        count: res.body.count
                     });
                 }else{
                     console.log(res.body.message);
@@ -31,10 +36,11 @@ function loadCases(company){
     }
 }
 
-function loadQuotation(company){
+
+function loadQuotation(company, page = 1){
 
     return dispatch => {
-        request.get(`/api/companies/${company._id}/quotations`)
+        request.get(`/api/companies/${company._id}/quotations?page_size=${quotationPageSize}&page=${page}`)
             .end((err, res) => {
                 if(err){
                     return console.log(err);
@@ -42,8 +48,9 @@ function loadQuotation(company){
 
                 if(res.body.status == 0){
                     dispatch({
-                        type: 'INIT_QUOTATIONS',
-                        quotations: res.body.data
+                        type: 'LOAD_MORE_QUOTATIONS',
+                        quotations: res.body.data,
+                        quotationsCount: res.body.count
                     });
                 }else{
                     console.log(res.body.message);
@@ -52,10 +59,10 @@ function loadQuotation(company){
     }
 }
 
-function loadComment(company){
+function loadComment(company, page = 1){
 
     return dispatch => {
-        request.get(`/api/companies/${company._id}/comments`)
+        request.get(`/api/companies/${company._id}/comments?page_size=${commentPageSize}&page=${page}`)
             .end((err, res) => {
                 if(err){
                     return console.log(err);
@@ -63,8 +70,9 @@ function loadComment(company){
 
                 if(res.body.status == 0){
                     dispatch({
-                        type: 'INIT_COMMENTS',
-                        comments: res.body.data
+                        type: 'LOAD_MORE_COMMENTS',
+                        comments: res.body.data,
+                        count: res.body.count
                     });
                 }else{
                     console.log(res.body.message);
@@ -200,9 +208,17 @@ class CompanyShow extends React.Component{
         }
     }
     showCommentAdd(){
-        this.setState({
-            commentDialogOpen: true
-        });
+        var {currentUser, dispatch} = this.props;
+        if(!currentUser){
+            dispatch({
+                type: 'OPEN_LOGIN_DIALOG'
+            });
+        }else{
+            this.setState({
+                commentDialogOpen: true
+            });
+        }
+
     }
     hideCommentAdd(){
         this.setState({
@@ -285,9 +301,37 @@ class CompanyShow extends React.Component{
             }
         });
     }
+
+    loadMoreCase(){
+        var {caseCount, cases, company, dispatch} = this.props;
+
+        if(caseCount > cases.length){
+            //加载更多
+            var page = cases.length / casePageSize;
+            dispatch(loadCases(company, page + 1));
+        }
+
+    }
+
+    loadMoreService(){
+        var {quotationsCount, quotations, company, dispatch} = this.props;
+
+        if(quotationsCount > quotations.length){
+            var page = quotations.length/ quotationPageSize;
+            dispatch(loadQuotation(company, page + 1));
+        }
+    }
+
+    loadMoreComment(){
+        var {commentCount, comments, company, dispatch} = this.props;
+        if(commentCount > comments.length){
+            var page = comments.length / commentPageSize;
+            dispatch(loadComment(company, page + 1));
+        }
+    }
     render(){
 
-        var {company, cases, quotations, comments} = this.props;
+        var {company, cases, quotations, comments, caseCount, quotationsCount, commentCount} = this.props;
         company.services_type = company.services_type || [];
 
         var serviceType = company.services_type.map((item, index) => {
@@ -367,23 +411,23 @@ class CompanyShow extends React.Component{
                         </div>
                     </div>
 
-                    <section className="company-cases w-1000 s-center">
+                    <section className="company-cases w-1000 s-center show-section">
                         <div className="section-title">成功案例展示</div>
                         <div className="cases-container">
                             {cases}
                         </div>
-                        <button className="btn-load-more">查看更多</button>
+                        <button className={classNames("btn-load-more", {'show': caseCount > cases.length})} onClick={this.loadMoreCase.bind(this)}>查看更多</button>
                         <CaseShow caseInfo={this.state.selectCase} className="case-show-container" isOpen={this.state.caseShowOpen} hideCaseHander={this.hideCaseHander.bind(this)}></CaseShow>
                     </section>
-                    <section className="company-services w-1000 s-center">
+                    <section className="company-services w-1000 s-center show-section">
                         <div className="section-title">产品或服务</div>
                         <div className="services-container">
                             {quotations}
                         </div>
-                        <button className="btn-load-more">查看更多</button>
+                        <button className={classNames("btn-load-more", {'show': quotationsCount > quotations.length})} onClick={this.loadMoreService.bind(this)}>查看更多</button>
                     </section>
                     <div className="bg-fff">
-                        <div className="comment-list w-1000 s-center">
+                        <div className="comment-list w-1000 s-center show-section">
                             <div className="section-title">
                                 <div className="title inline-b">客户评价</div>
                                 <div className="action inline-b">
@@ -396,7 +440,7 @@ class CompanyShow extends React.Component{
                             <div className="comment-container">
                                 {comments}
                             </div>
-                            <button className="btn-load-more">查看更多</button>
+                            <button className={classNames("btn-load-more", {'show': commentCount > comments.length})} onClick={this.loadMoreComment.bind(this)}>查看更多</button>
                         </div>
                     </div>
                 </div>
@@ -414,7 +458,10 @@ function headerState({companyShow, authService}) {
         company: companyShow.company,
         cases: companyShow.cases,
         quotations: companyShow.quotations,
-        comments: companyShow.comments
+        comments: companyShow.comments,
+        caseCount: companyShow.caseCount,
+        quotationsCount: companyShow.quotationsCount,
+        commentCount: companyShow.commentCount
     };
 }
 

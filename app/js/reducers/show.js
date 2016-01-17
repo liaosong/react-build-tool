@@ -10,12 +10,12 @@ function companyShow(state, action){
     switch (action.type){
         case 'INIT_STORE':
             return {...state, company: action.company};
-        case 'INIT_CASES':
-            return {...state, cases: action.cases};
-        case 'INIT_QUOTATIONS':
-            return {...state, quotations: action.quotations};
-        case 'INIT_COMMENTS':
-            return {...state, comments: action.comments};
+        case 'LOAD_MORE_CASES':
+            return {...state, cases: state.cases.concat(action.cases), caseCount: action.count};
+        case 'LOAD_MORE_QUOTATIONS':
+            return {...state, quotations: state.quotations.concat(action.quotations), quotationsCount: action.quotationsCount};
+        case 'LOAD_MORE_COMMENTS':
+            return {...state, comments: state.comments.concat(action.comments), commentCount: action.count};
         case 'ADD_COMMENT':
             return {...state, comments: [action.comment].concat(state.comments)};
         default: return state;

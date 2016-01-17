@@ -5,18 +5,19 @@ import Footer from '../components/footer';
 import SearchBar from '../components/search';
 import Publish from '../components/publish';
 import classNames from 'classnames';
-import {cities, service_types, pageSize} from '../global_data';
+import {cityObjArray, service_types, pageSize} from '../global_data';
 
 import {Pagination} from '../components/pagination';
 
 import Header from '../components/header';
 import request from 'superagent';
+import _ from 'lodash';
 
 class CompaniesFilter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectFilter: this.props.value || '不限'
+            selectFilter: _.find(this.props.filters, (item) => {return item.value == this.props.value}) || {value: '', label: '不限'}
         }
     }
     filter(item){
@@ -30,12 +31,12 @@ class CompaniesFilter extends React.Component {
     }
     render() {
         var {filters} = this.props;
-        if(filters[0] != '不限'){
-            filters = ['不限'].concat(filters);
+        if(filters[0].label != '不限'){
+            filters = [{value: '', label: '不限'}].concat(filters);
         }
         filters = filters.map((filter, index) => {
             return (
-                <a className={classNames('filter-item', {active: this.state.selectFilter == filter})} key={index} onClick={this.filter.bind(this, filter)}>{filter}</a>
+                <a className={classNames('filter-item', {active: this.state.selectFilter.value == filter.value})} key={index} onClick={this.filter.bind(this, filter)}>{filter.label}</a>
             );
         });
         return (
@@ -51,7 +52,8 @@ class Company extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            isEnshrined: false
+            isEnshrined: false,
+            caseNum: 0
         }
     }
 
@@ -60,7 +62,23 @@ class Company extends React.Component{
         if(currentUser){
             this.isEnshrined(company);
         }
+        this.getCaseNum(company);
 
+    }
+    getCaseNum(company){
+        request.get(`/api/companies/${company._id}/case_num`).end((err, res) => {
+            if(err){
+                return console.log(err);
+            }
+
+            if(res.body.status == 0){
+                this.setState({
+                    caseNum: res.body.data
+                });
+            }else{
+                console.log(res.body.message);
+            }
+        })
     }
     isEnshrined(company){
         request.get(`/api/client/enshrines/${company._id}/is_enshrined`).end((err, res) => {
@@ -165,7 +183,7 @@ class Company extends React.Component{
                             </div>
                             <div className="case-container inline">
                                 <div className="inline">成功案例：</div>
-                                <div className="inline inline-value cases-num">{company.cases_num || 0}</div>
+                                <div className="inline inline-value cases-num">{this.state.caseNum}</div>
                             </div>
                         </div>
                     </div>
@@ -224,7 +242,7 @@ class SearchList extends React.Component{
         if(val == '不限' || val == ''){
             delete query.service_type;
         }else{
-            query.service_type = val;
+            query.service_type = val.value;
         }
 
         location.href = this.object2url(query);
@@ -243,7 +261,7 @@ class SearchList extends React.Component{
         if(val == '不限' || val == ''){
             delete query.city;
         }else{
-            query.city = val;
+            query.city = val.value;
         }
         location.href = this.object2url(query);
     }
@@ -258,9 +276,6 @@ class SearchList extends React.Component{
     render(){
         //initData={currentUser,queryText}
         var {companies, count, initData, currentUser} = this.props;
-        var serviceFilter = service_types.map((item) => {
-            return item.value;
-        });
         currentUser = currentUser || initData.currentUser;
         companies = companies.map((item, index) => {
             return (
@@ -269,8 +284,8 @@ class SearchList extends React.Component{
         })
 
         var pageNum = Math.ceil(count/pageSize);
-        var city = initData.query.city || '不限';
-        var service = initData.query.service_type || '不限';
+        var city = initData.query.city || '';
+        var service = initData.query.service_type || '';
         var page = initData.query.page || 1;
         var initialSelected = page - 1;
 
@@ -286,11 +301,11 @@ class SearchList extends React.Component{
                         </div>
                         <div className="filter-group citys">
                             <div className="filter-title inline">服务城市：</div>
-                            <CompaniesFilter filters={cities} onFilter={this.onCityFilter.bind(this)} value={city}></CompaniesFilter>
+                            <CompaniesFilter filters={cityObjArray} onFilter={this.onCityFilter.bind(this)} value={city}></CompaniesFilter>
                         </div>
                         <div className="filter-group types">
                             <div className="filter-title inline">服务类型：</div>
-                            <CompaniesFilter filters={serviceFilter} onFilter={this.onServiceFilter.bind(this)} value={service}></CompaniesFilter>
+                            <CompaniesFilter filters={service_types} onFilter={this.onServiceFilter.bind(this)} value={service}></CompaniesFilter>
                         </div>
                     </div>
                 </div>

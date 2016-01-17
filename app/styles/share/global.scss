@@ -57,7 +57,7 @@ h1,h2,h3,h4,h5,p{
   -webkit-text-size-adjust:none;
 }
 .show{
-  display: block;
+  display: block !important;
 }
 .hidden{
   display: none !important;
@@ -185,4 +185,8 @@ li{
 
 .error{
   color: #ff0000 !important;
+}
+.error-tips{
+  color: #ff0000 !important;
+  height: 19px;
 }

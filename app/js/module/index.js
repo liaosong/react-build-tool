@@ -265,21 +265,21 @@ class Index extends React.Component {
 
                         <p className="section-title text-center">为您提供一站式会议展览活动的策划设计及搭建执行服务</p>
                         <CompanyList type={"full_company"} companies={fullCompany}></CompanyList>
-                        <button className="load-more" onClick={this.loadFullCompany.bind(this)}>加载更多</button>
+                        <button className="load-more" onClick={this.loadFullCompany.bind(this)}>查看更多</button>
                     </section>
                     <section className="type-factory">
                         <h2 className="section-head text-center">展厅展台搭建</h2>
 
                         <p className="section-title text-center">会展、展柜、展厅、舞台搭建工程</p>
                         <CompanyList type={"factory"} companies={factoryCompany}></CompanyList>
-                        <button className="load-more" onClick={this.loadFactorCompany.bind(this)}>加载更多</button>
+                        <button className="load-more" onClick={this.loadFactorCompany.bind(this)}>查看更多</button>
                     </section>
                     <section className="type-hire">
                         <h2 className="section-head text-center">设备租赁</h2>
 
                         <p className="section-title text-center">灯光、音响、视频设备租赁</p>
                         <CompanyList type={"hire"} companies={rentCompany}></CompanyList>
-                        <button className="load-more" onClick={this.loadHireCompany.bind(this)}>加载更多</button>
+                        <button className="load-more" onClick={this.loadHireCompany.bind(this)}>查看更多</button>
                     </section>
                 </div>
                 <Footer></Footer>

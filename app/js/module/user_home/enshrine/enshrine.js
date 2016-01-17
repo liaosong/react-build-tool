@@ -63,7 +63,7 @@ class CompanyInfo extends React.Component{
         company = company || {};
         var services = (<InlineTags label="服务项目：" data={company.services_type}></InlineTags>);
         var name = (<InlineTags label="联系人：" data={[company.contacts]}></InlineTags>);
-        var concat = (<InlineTags label="联系方式：" data={[company.phone_number]}></InlineTags>);
+        var concat = (<InlineTags label="联系方式：" data={[company.phone_number || company.tel]}></InlineTags>);
         return (
             <div className="en-item">
                 <div className="head">{company.name}</div>

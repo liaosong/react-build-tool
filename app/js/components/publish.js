@@ -18,9 +18,15 @@ class Publish extends React.Component{
                 type: 'OPEN_LOGIN_DIALOG'
             })
         }else{
-            this.setState({
-                tenderDialogOpen: true
-            });
+
+            if(currentUser.u_type == 'company'){
+                this.openErrorDialog();
+            }else{
+                this.setState({
+                    tenderDialogOpen: true
+                });
+            }
+
         }
     }
     getTenderPage(type){
@@ -32,6 +38,18 @@ class Publish extends React.Component{
     }
     closeDialog(){
         this.setState({
+            tenderDialogOpen: false
+        });
+    }
+
+    closeErrorDialog(){
+        this.setState({
+            errorDialogOpen: false
+        });
+    }
+    openErrorDialog(){
+        this.setState({
+            errorDialogOpen: true,
             tenderDialogOpen: false
         });
     }
@@ -50,6 +68,20 @@ class Publish extends React.Component{
                 backgroundColor: 'rgba(0, 0, 0, 0.5)'
             }
         }
+
+        var errorDialog = {
+            content:{
+                width: '600px',
+                height: '240px',
+                top: "calc(50% - 120px)",
+                left: "calc(50% - 300px)",
+                border: 'none'
+            },
+            overlay:{
+                backgroundColor: 'rgba(0, 0, 0, 0.5)'
+            }
+        }
+
         return (
             <div className="publish inline-b">
                 <button onClick={this.onCreateTender.bind(this)}>发布需求</button>
@@ -65,6 +97,15 @@ class Publish extends React.Component{
                             <div className="type-name">发布展览</div></div>
                     </div>
                     <div className="close" onClick={this.closeDialog.bind(this)}></div>
+                </Modal>
+
+                <Modal isOpen={this.state.errorDialogOpen} style={errorDialog} className="error-dialog" onRequestClose={this.closeErrorDialog.bind(this)}>
+                    <div className="head">错误提示</div>
+                    <p className="title">对不起！</p>
+                    <p className="tips">我们暂未开通服务商的需求发布功能。</p>
+
+                    <button className="g-btn-primary" onClick={this.closeErrorDialog.bind(this)}>确定</button>
+                    <div className="close" onClick={this.closeErrorDialog.bind(this)}></div>
                 </Modal>
             </div>
         );

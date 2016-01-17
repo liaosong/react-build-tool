@@ -46,6 +46,56 @@
 
   .close{
     position: absolute;
+    cursor: pointer;
+
+    right: 15px;
+    top: 15px;
+    width: 24px;
+    height: 24px;
+    background-image: url("../images/cancel_icon.png");
+
+    &:hover{
+      background-image: url("../images/cancel_icon_hover.png");
+    }
+  }
+
+}
+
+
+.error-dialog{
+
+  position: relative;
+
+  .head{
+    text-align: center;
+    color: #4c4c4c;
+  }
+
+
+  .title{
+    font-size: 24px;
+    color: #ff0000;
+    padding-left: 30px;
+    margin-top: 35px;
+
+  }
+
+  .tips{
+    font-size: 14px;
+    color: #4c4c4c;
+    padding-left: 30px;
+    margin-top: 20px;
+  }
+  .g-btn-primary{
+    border-radius: 3px;
+    position: absolute;
+    right: 50px;
+    bottom: 40px;
+  }
+
+  .close{
+    position: absolute;
+    cursor: pointer;
 
     right: 15px;
     top: 15px;

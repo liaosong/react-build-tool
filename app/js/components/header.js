@@ -104,7 +104,7 @@ class Header extends React.Component {
                     <span className="tips">
                         已有服务商账号？
                     </span>
-                    <Login loginText="立即登陆" registerUrl={this.props.registerUrl}></Login>
+                    <Login loginText="立即登录" registerUrl={this.props.registerUrl}></Login>
                 </div>
             </div>
         );

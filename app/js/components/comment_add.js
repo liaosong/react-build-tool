@@ -6,7 +6,9 @@ class CommentAdd extends Component{
     constructor(props){
         super(props);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            scoreTips: '',
+            contentTips: ''
         };
     }
 
@@ -26,6 +28,36 @@ class CommentAdd extends Component{
         });
     }
 
+    checkScore(){
+        var {score} = this.refs;
+        if(/[12345]/.test(score.value)){
+            this.setState({
+                scoreTips: ''
+            });
+            return true;
+        }else{
+            this.setState({
+                scoreTips: '评分必选'
+            });
+            return false;
+        }
+    }
+
+    checkContent(){
+        var {content} = this.refs;
+        if(content.value){
+            this.setState({
+                contentTips: ''
+            });
+            return true;
+        }else{
+            this.setState({
+                contentTips: '评论不能为空'
+            });
+            return false;
+        }
+    }
+
     onCommentCreate(e){
         e.preventDefault();
         var {content, score} = this.refs;
@@ -34,7 +66,9 @@ class CommentAdd extends Component{
             content: content.value,
             score: score.value
         };
-        onDataSubmit(comment);
+        if(this.checkScore() && this.checkContent()){
+            onDataSubmit(comment);
+        }
     }
 
     render(){
@@ -58,10 +92,12 @@ class CommentAdd extends Component{
                     <div className="comment-form-group">
                         <label className="inline">综合评价</label>
                         <StarControl className="inline ml-20" ref="score"></StarControl>
+                        <div className="error-tips">{this.state.scoreTips}</div>
                     </div>
                     <div className="comment-form-group">
                         <label>详细描述</label>
-                        <textarea className="comment-content" ref="content"></textarea>
+                        <textarea className="comment-content" ref="content" onBlur={this.checkContent.bind(this)}></textarea>
+                        <div className="error-tips">{this.state.contentTips}</div>
                     </div>
 
                     <div className="btn-group">
