@@ -107,7 +107,7 @@ class SearchBar extends React.Component {
       cityVal = '';
     }
     if(!onSearched){
-      return location.href = `/search?q=${keywords.value}&city=${cityVal}`;
+      return location.href = encodeURI(`/search?q=${keywords.value}&city=${cityVal}`);
     }
     this.searchCompany(keywords.value, city, onSearched);
 

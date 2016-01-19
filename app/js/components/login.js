@@ -17,7 +17,8 @@ class Login extends React.Component{
                     height: '404px',
                     top: "calc(50% - 222px)",
                     left: "calc(50% - 150px)",
-                    border: 'none'
+                    border: 'none',
+                    overflow: 'hidden'
                 },
                 overlay:{
                     backgroundColor: 'rgba(0, 0, 0, 0.5)'

@@ -6,11 +6,11 @@ export default function CError(state, action){
     }
     switch (action.type){
         case 'ERROR-500':
-            return Object.assign({}, state, {code: 500});
+            return {...state, code: 500};
         case 'ERROR-401':
-            return Object.assign({}, state, {code: 401});
+            return {...state, code: 401};
         case 'ERROR-OTHERS':
-            return Object.assign({}, state, {message: action.message});
+            return {...state, message: action.message};
         default : return state;
     }
 }

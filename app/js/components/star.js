@@ -12,7 +12,7 @@ class Star extends Component{
 
     render(){
         var {score} = this.props;
-        var stars = new Array(5).fill(1).map((item, index) => {
+        var stars = [1,1,1,1,1].map((item, index) => {
             var num = index + 1;
             if(num > score){
                 return <li className="no-star" key={index}></li>

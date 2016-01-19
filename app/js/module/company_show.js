@@ -389,7 +389,7 @@ class CompanyShow extends React.Component{
                             <div className="right-side inline">
                                 <div className="concat-user-info">
                                     <div className="name">{company.contacts}</div>
-                                    <div className="phone-number">{company.phone_number || company.tel}</div>
+                                    <div className="phone-number">{company.phone_number}</div>
                                 </div>
                                 <hr className="line"/>
                                 <p className="address">{company.address}</p>

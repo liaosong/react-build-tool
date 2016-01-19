@@ -12,7 +12,6 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            headerType: this.props.type,
             dialogContent: '',
             phoneNumberTips: '',
             passwordTips: ''

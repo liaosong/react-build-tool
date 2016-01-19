@@ -12,11 +12,11 @@ function register(state, action){
 
     switch (action.type){
         case 'USER_REGISTER':
-            return Object.assign({}, state, {registerType: 'user', userType: undefined, error: action.error, message: action.message});
+            return {...state, registerType: 'user', userType: undefined, error: action.error, message: action.message};
         case 'COMPANY_REGISTER':
-            return Object.assign({}, state, {currentUser: action.currentUser, step: 2, company: action.company});
+            return {...state, currentUser: action.currentUser, step: 2, company: action.company};
         case 'COMPANY_FILL_INFO':
-            return Object.assign({}, state, {company: action.company, step : 3});
+            return {...state, company: action.company, step : 3};
         case 'USER_REGISTER_DUPLICATION_ERROR':
             return {...state, userType: action.userType, error: action.error, message: action.message};
         default: return state;

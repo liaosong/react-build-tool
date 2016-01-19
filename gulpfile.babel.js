@@ -35,7 +35,8 @@ const PATHS = {
     forget_password: './app/js/forget_password.js',
 
   }, //页面对应的js文件
-  img: ['./app/images/*.*', './app/images/*/*.*']
+  img: ['./app/images/*.*', './app/images/*/*.*'],
+  buildPath: '../bang_homepage'
 
 };
 
@@ -108,8 +109,19 @@ gulp.task('webpackBuild', ['copy'], function(){
   });
 });
 
+
 //for production build
-gulp.task("build", ['sassBuild', 'webpackBuild']);
+gulp.task("build", ['sassBuild', 'webpackBuild'], function(){
+  gulp.src(['dist/*.*', 'dist/*/*.*'], {base: 'dist'})
+      .pipe(gulp.dest(PATHS.buildPath));
+
+});
+
+//for devlopment debug remote
+gulp.task("debug",['sass','webpack'], function(){
+  gulp.src(['dist/*.*', 'dist/*/*.*'], {base: 'dist'})
+      .pipe(gulp.dest(PATHS.buildPath));
+});
 
 //for devlopment build
 gulp.task("serve",[

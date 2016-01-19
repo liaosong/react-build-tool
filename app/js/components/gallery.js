@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
+import _ from 'lodash';
 
 export class Gallery extends Component{
     constructor(props){
@@ -28,7 +29,7 @@ export class Gallery extends Component{
 
     previousImg(){
         var {images} = this.props;
-        var currentIndex = images.findIndex((item) => {
+        var currentIndex = _.findIndex(images, (item) => {
             return item == this.state.selected;
         });
         if(currentIndex > 0){
@@ -39,7 +40,7 @@ export class Gallery extends Component{
     }
     nextImg(){
         var {images} = this.props;
-        var currentIndex = images.findIndex((item) => {
+        var currentIndex = _.findIndex(images, (item) => {
             return item == this.state.selected;
         });
         if(currentIndex < images.length - 1){

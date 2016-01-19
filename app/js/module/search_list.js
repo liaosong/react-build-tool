@@ -5,7 +5,7 @@ import Footer from '../components/footer';
 import SearchBar from '../components/search';
 import Publish from '../components/publish';
 import classNames from 'classnames';
-import {cityObjArray, service_types, pageSize} from '../global_data';
+import {cityObjArray, service_types_filter, pageSize} from '../global_data';
 
 import {Pagination} from '../components/pagination';
 
@@ -17,8 +17,15 @@ class CompaniesFilter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectFilter: _.find(this.props.filters, (item) => {return item.value == this.props.value}) || {value: '', label: '不限'}
+            selectFilter: {value: '', label: '不限'}
         }
+    }
+
+    componentDidMount(){
+        var {filters} = this.props;
+        this.setState({
+            selectFilter: _.find(filters, (item) => {return item.value == this.props.value}) || {value: '', label: '不限'}
+        });
     }
     filter(item){
         var {onFilter} = this.props;
@@ -179,7 +186,7 @@ class Company extends React.Component{
                         <div className="concat-and-case-row">
                             <div className="concat-container inline">
                                 <div className="inline">联系方式：</div>
-                                <div className="inline inline-value">{company.phone_number || company.tel}</div>
+                                <div className="inline inline-value">{company.phone_number}</div>
                             </div>
                             <div className="case-container inline">
                                 <div className="inline">成功案例：</div>
@@ -226,7 +233,7 @@ class SearchList extends React.Component{
     }
 
     searchCompany(q){
-        location.href = `/search?q=${q}`;
+        location.href = encodeURI(`/search?q=${q}`);
     }
 
 
@@ -244,8 +251,8 @@ class SearchList extends React.Component{
         }else{
             query.service_type = val.value;
         }
-
-        location.href = this.object2url(query);
+        query.page = 1;
+        location.href = encodeURI(this.object2url(query));
 
     }
 
@@ -263,7 +270,8 @@ class SearchList extends React.Component{
         }else{
             query.city = val.value;
         }
-        location.href = this.object2url(query);
+        query.page = 1;
+        location.href = encodeURI(this.object2url(query));
     }
 
     openLoginPage(){
@@ -305,7 +313,7 @@ class SearchList extends React.Component{
                         </div>
                         <div className="filter-group types">
                             <div className="filter-title inline">服务类型：</div>
-                            <CompaniesFilter filters={service_types} onFilter={this.onServiceFilter.bind(this)} value={service}></CompaniesFilter>
+                            <CompaniesFilter filters={service_types_filter} onFilter={this.onServiceFilter.bind(this)} value={service}></CompaniesFilter>
                         </div>
                     </div>
                 </div>

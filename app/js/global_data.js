@@ -1,10 +1,24 @@
 
 
 var service_types = [
-    {value: 'full', label: '综合/一站式服务'},
     {value:'场地搭建', label:'场地搭建'},
     {value:'公关策划', label:'公关策划'},
     {value:'展位设计', label:'展位设计'},
+    {value:'设备租赁', label:'设备租赁'},
+    {value:'篷房展具租赁', label:'篷房展具租赁'},
+    {value:'礼仪模特', label:'礼仪模特'},
+    {value:'摄影摄像', label:'摄影摄像'},
+    {value:'物流', label:'物流'},
+    {value:'仓储', label:'仓储'},
+    {value:'植物租赁', label:'植物租赁'},
+    {value:'安保服务', label:'安保服务'},
+    {value:'速记翻译', label:'速记翻译'}];
+
+var service_types_filter = [
+    {value: 'full', label: '综合/一站式服务'},
+    {value:'展位设计', label:'展位设计'},
+    {value:'公关策划', label:'公关策划'},
+    {value:'场地搭建', label:'场地搭建'},
     {value:'设备租赁', label:'设备租赁'},
     {value:'篷房展具租赁', label:'篷房展具租赁'},
     {value:'礼仪模特', label:'礼仪模特'},
@@ -38,4 +52,4 @@ var pageSize = 10;
 
 
 
-export {service_types, cities, pageSize, cityObjArray}
+export {service_types, cities, pageSize, cityObjArray, service_types_filter}

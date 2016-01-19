@@ -83,11 +83,113 @@ class HireCompany extends React.Component {
         );
     }
 }
+
+class FullCompany extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            caseNum: 0
+        }
+    }
+
+    showCompany(company){
+        location.href = `/companies/${company._id}`;
+    }
+
+    componentDidMount(){
+        var {company} = this.props;
+        this.getCaseNum(company);
+
+    }
+    getCaseNum(company){
+        request.get(`/api/companies/${company._id}/case_num`).end((err, res) => {
+            if(err){
+                return console.log(err);
+            }
+
+            if(res.body.status == 0){
+                this.setState({
+                    caseNum: res.body.data
+                });
+            }else{
+                console.log(res.body.message);
+            }
+        })
+    }
+
+
+    render(){
+        var {company} = this.props;
+        return (
+            <div className="company-item">
+                <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
+
+                <div className="company-info">
+                    <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
+                    <div className="company-tags">{company.services_type.join(' ')}</div>
+                    <div className="company-cases">成功案例：<span
+                        className="cases-num">{this.state.caseNum}</span></div>
+                </div>
+            </div>
+        );
+    }
+}
+
+
+class FactoryCompany extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            caseNum: 0
+        }
+    }
+
+    showCompany(company){
+        location.href = `/companies/${company._id}`;
+    }
+
+    componentDidMount(){
+        var {company} = this.props;
+        this.getCaseNum(company);
+
+    }
+    getCaseNum(company){
+        request.get(`/api/companies/${company._id}/case_num`).end((err, res) => {
+            if(err){
+                return console.log(err);
+            }
+
+            if(res.body.status == 0){
+                this.setState({
+                    caseNum: res.body.data
+                });
+            }else{
+                console.log(res.body.message);
+            }
+        })
+    }
+
+    render() {
+        var {company} = this.props;
+        return (
+            <div className="company-item">
+                <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
+
+                <div className="company-info">
+                    <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
+                    <div className="company-cases">搭建案例展示：
+                        <span className="cases-num">{this.state.caseNum}</span></div>
+                </div>
+            </div>
+        );
+    }
+
+}
+
+
 class CompanyList extends React.Component {
     constructor(props) {
         super(props);
-
-
     }
 
     showCompany(company){
@@ -99,16 +201,7 @@ class CompanyList extends React.Component {
         companies = companies || [];
         companies = companies.map((company) => {
             return (
-                <div className="company-item" key={company._id}>
-                    <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
-
-                    <div className="company-info">
-                        <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
-                        <div className="company-tags">{company.services_type.join(' ')}</div>
-                        <div className="company-cases">成功案例：<span
-                            className="cases-num">{company.cases_num}</span></div>
-                    </div>
-                </div>
+                <FullCompany company={company} key={company._id}></FullCompany>
             );
         });
         return (
@@ -123,15 +216,7 @@ class CompanyList extends React.Component {
         companies = companies || [];
         companies = companies.map((company) => {
             return (
-                <div className="company-item" key={company._id}>
-                    <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
-
-                    <div className="company-info">
-                        <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
-                        <div className="company-cases">搭建案例展示：
-                            <span className="cases-num">{company.cases_num}</span></div>
-                    </div>
-                </div>
+                <FactoryCompany company={company} key={company._id}></FactoryCompany>
             );
         });
         return (
@@ -224,7 +309,7 @@ class Index extends React.Component {
     }
 
     loadFullCompany(){
-        location.href = `/search?service_type=综合`;
+        location.href = `/search?service_type=full`;
     }
     loadFactorCompany(){
         location.href = `/search?service_type=场地搭建`;
@@ -240,9 +325,9 @@ class Index extends React.Component {
                 <header className="cleanfix">
                     <Header></Header>
 
-                    <h1 className="title-welcome">欢迎光临</h1>
+                    <h1 className="title-welcome">系统公测中</h1>
 
-                    <p className="site-title">向超过190个国家的参展商提供优质的会展服务</p>
+                    <p className="site-title">欢迎使用神州会展！元月1日至31日系统公测中，2月1日正式上线，敬请期待！！！</p>
 
                     <div className="header-bottom">
                         <div className="w-1000 s-center">

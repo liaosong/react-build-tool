@@ -52,7 +52,7 @@ class CompanyBase extends Component{
             city: city,
             type: this.refs.type.value,
             contacts: this.refs.contacts.value,
-            tel: this.refs.tel.value,
+            phone_number: this.refs.phoneNumber.value,
             email: this.refs.email.value
         }
 
@@ -124,9 +124,9 @@ class CompanyBase extends Component{
                         <div className="x-tips"></div>
                     </div>
                     <div className="x-form-group">
-                        <div className="x-label">固话</div>
+                        <div className="x-label">联系方式</div>
                         <div className="x-value">
-                            <input ref="tel" type="text" className="x-form-control" defaultValue={company.tel} placeholder="请输入固定电话"/>
+                            <input ref="phoneNumber" type="text" className="x-form-control" defaultValue={company.phone_number} placeholder="请输入联系方式"/>
                         </div>
                         <div className="x-tips"></div>
                     </div>
@@ -184,8 +184,8 @@ class CompanyBase extends Component{
                         <div className="x-tips"></div>
                     </div>
                     <div className="x-form-group">
-                        <div className="x-label">固话</div>
-                        <div className="x-value">{company.tel || "未填写"}</div>
+                        <div className="x-label">联系方式</div>
+                        <div className="x-value">{company.phone_number || "未填写"}</div>
                         <div className="x-tips"></div>
                     </div>
                     <div className="x-form-group">
