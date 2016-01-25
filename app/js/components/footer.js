@@ -9,10 +9,10 @@ class Footer extends React.Component {
     return (
       <footer>
         <div className={classNames("f-service-container")}>
-          <a className={classNames("service-item")}>关于我们</a>
-          <a className={classNames("service-item")}>服务条款</a>
-          <a className={classNames("service-item")}>隐私政策</a>
-          <a className={classNames("service-item")}>常见问题</a>
+          <a className={classNames("service-item")} href="/about">关于我们</a>
+          <a className={classNames("service-item")} href="/statement">服务条款</a>
+          <a className={classNames("service-item")} href="/privacy">隐私政策</a>
+          <a className={classNames("service-item")} href="">常见问题</a>
         </div>
         <div className={classNames("f-about-us")}>
           <div className={classNames("concat-us", "inline-flow")}>

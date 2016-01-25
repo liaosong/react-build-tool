@@ -3,6 +3,7 @@ body{
   padding: 0;
   font-family: "Microsoft YaHei", "微软雅黑", helvetica, arial, verdana, tahoma, sans-serif;
   font-size: 14px;
+  -webkit-font-smoothing: antialiased;
   background-color: #f4f4f4;
 }
 button{
@@ -95,6 +96,9 @@ li{
 }
 .mb-70{
   margin-bottom: 70px;
+}
+.mb-30{
+  margin-bottom: 30px;
 }
 .pt-20{
   padding-top: 20px;
@@ -189,4 +193,8 @@ li{
 .error-tips{
   color: #ff0000 !important;
   height: 19px;
+}
+
+.modal-open{
+  overflow: hidden;
 }

@@ -21,7 +21,7 @@ class Login extends React.Component{
                     overflow: 'hidden'
                 },
                 overlay:{
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                    backgroundColor: 'rgba(246, 246, 246, 0.9)',
                 }
             }
         };

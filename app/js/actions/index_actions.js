@@ -127,13 +127,28 @@ export function initHomeData(){
                     return console.log(err);
                 }
 
+
                 if(res.body.status == 0){
+                    var {fullCompany, factoryCompany, rentCompany} = res.body.data;
+                    fullCompany = fullCompany.map((item) => {
+                        return webAd2company(item);
+                    });
+                    factoryCompany = factoryCompany.map((item) => {
+                        return webAd2company(item);
+                    });
+                    rentCompany = rentCompany.map((item) => {
+                        return webAd2company(item);
+                    });
                     dispatch({
                         type: 'INIT_INDEX_HOME',
-                        homeData: res.body.data
+                        homeData: {fullCompany, factoryCompany, rentCompany}
                     });
                 }
             })
     }
 }
 
+function webAd2company(ad){
+    var company = ad.company || {};
+    return {...company, web_ad_img: ad.img_url}
+}

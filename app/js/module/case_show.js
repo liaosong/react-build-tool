@@ -15,7 +15,16 @@ export class CaseShow extends Component{
     }
 
     componentDidMount(){
-
+        this.toggleClass2body(false);
+    }
+    toggleClass2body(open){
+        var className = document.body.className;
+        var classStr = 'modal-open';
+        if(open){
+            document.body.className = className.replace(new RegExp(classStr), '') + ' ' + classStr;
+        }else{
+            document.body.className = className.replace(new RegExp(classStr), '');
+        }
     }
     componentWillReceiveProps(nextProps){
         var {caseInfo, isOpen} = nextProps;
@@ -25,6 +34,8 @@ export class CaseShow extends Component{
                 isOpen: isOpen
             });
         }
+
+        this.toggleClass2body(isOpen);
     }
     onRequestClose(){
         var {hideCaseHander} = this.props;
@@ -45,10 +56,16 @@ export class CaseShow extends Component{
                 left: "100px",
                 right: "100px",
                 border: 'none',
+                bottom: "initial",
+                marginBottom: '60px',
                 padding: 0,
+                borderRadius: 'none'
             },
             overlay:{
-                backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                backgroundColor: 'rgba(246, 246, 246, 0.9)',
+                overflowY: 'scroll',
+                width: '100%',
+                height: '100%',
             }
         }
 

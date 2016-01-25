@@ -68,12 +68,12 @@ class HireCompany extends React.Component {
 
     render(){
         var {company} = this.props;
-        var quotations = this.state.quotations.map((item, index) => {
+        var quotations = this.state.quotations.map((item) => {
             return item.name
         })
         return (
             <div className="company-item">
-                <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
+                <img className="company-img" src={company.web_ad_img} onClick={this.showCompany.bind(this, company)}/>
 
                 <div className="company-info">
                     <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
@@ -122,7 +122,7 @@ class FullCompany extends React.Component{
         var {company} = this.props;
         return (
             <div className="company-item">
-                <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
+                <img className="company-img" src={company.web_ad_img} onClick={this.showCompany.bind(this, company)}/>
 
                 <div className="company-info">
                     <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
@@ -173,7 +173,7 @@ class FactoryCompany extends React.Component{
         var {company} = this.props;
         return (
             <div className="company-item">
-                <img className="company-img" src={company.company_img} onClick={this.showCompany.bind(this, company)}/>
+                <img className="company-img" src={company.web_ad_img} onClick={this.showCompany.bind(this, company)}/>
 
                 <div className="company-info">
                     <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
@@ -319,7 +319,6 @@ class Index extends React.Component {
     }
     render() {
         var {fullCompany, factoryCompany, rentCompany} = this.props;
-
         return (
             <div className="container">
                 <header className="cleanfix">
@@ -379,9 +378,9 @@ class Index extends React.Component {
 
 function headerState({index, authService}) {
     return {
-        fullCompany: index.homeData.fullCompany,
-        factoryCompany: index.homeData.factoryCompany,
-        rentCompany: index.homeData.rentCompany,
+        fullCompany: index.homeData.fullCompany || [],
+        factoryCompany: index.homeData.factoryCompany || [],
+        rentCompany: index.homeData.rentCompany || [],
         currentUser: authService.currentUser
     };
 }

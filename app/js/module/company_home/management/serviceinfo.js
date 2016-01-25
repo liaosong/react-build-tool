@@ -17,7 +17,7 @@ export class ServiceInfo extends React.Component{
     }
 
     componentDidMount(){
-
+        this.toggleClass2body(false);
     }
     componentWillReceiveProps(nextProps){
         let {dialogOptions} = nextProps;
@@ -25,6 +25,16 @@ export class ServiceInfo extends React.Component{
             isOpen: dialogOptions.isOpen,
             service: dialogOptions.service
         });
+        this.toggleClass2body(dialogOptions.isOpen);
+    }
+    toggleClass2body(open){
+        var className = document.body.className;
+        var classStr = 'modal-open';
+        if(open){
+            document.body.className = className.replace(new RegExp(classStr), '') + ' ' + classStr;
+        }else{
+            document.body.className = className.replace(new RegExp(classStr), '');
+        }
     }
     onRequestClose(){
         this.setState({
@@ -113,9 +123,15 @@ export class ServiceInfo extends React.Component{
                 right: "100px",
                 border: 'none',
                 padding: 0,
+                bottom: "initial",
+                marginBottom: '60px',
+                borderRadius: 'none'
             },
             overlay:{
-                backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                backgroundColor: 'rgba(246, 246, 246, 0.9)',
+                overflowY: 'scroll',
+                width: '100%',
+                height: '100%',
             }
         }
 

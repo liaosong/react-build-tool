@@ -33,6 +33,9 @@ const PATHS = {
     company_register: './app/js/company_register.js',
     tender: './app/js/tender.js',
     forget_password: './app/js/forget_password.js',
+    about: './app/js/about.js',
+    privacy: './app/js/privacy.js',
+    statement: './app/js/statement.js'
 
   }, //页面对应的js文件
   img: ['./app/images/*.*', './app/images/*/*.*'],
@@ -251,6 +254,21 @@ gulp.task('express', function(){
 
   router.get('/user/forget_password', function(req, res){
     res.render('forget_password');
+  })
+  router.get('/about', function(req, res){
+    var user = { "_id" : "55e450bfa02797ea0448b174", "volume" : 0, "created_at" : "2015-08-31T13:03:59.142Z", "city" : "", "role" : "company", "salt" : "591103770255", "hashed_password" : "1eab2efa5a5b4fd78dc27b7a1cfc6e7e2bb4342e", "phone_number" : "15928124305", "username" : "", "avatar" : "uploads/image-1437896764820aa.jpg", "email" : "", "name" : "马永旭", "__v" : 0 };
+    var company = {"_id":"55e450bfa02797ea0448b1a7","owner":"55e450bfa02797ea0448b174","coordinate":[95,40],"__v":3,"keywords":["test","啊啊","发生地方，ss"],"tel":"xxx","email":"xxx","contacts":"xxx","status":"unfinished","area":"武侯区","city":"成都市高新区世纪城路新会展中心","province":"","created_at":"2015-08-31T13:03:59.336Z","company_img":"uploads/1450754497620dGVzdA==.jpg","company_logo":"uploads/1450754487784cHNi.jpeg","_description":"test","phone_number":"","address":"成都市高新区世纪城路新会展中心","company_address":"成都市高新区世纪城","services_type":["展具租赁","AV租赁","植物租摆","设备租赁","篷房展具租赁","物流"],"services":["开锁","搭积木","喷绘","策划","广告制作","你倒是"],"category":["会议","展览","活动"],"type":"full","is_in_limit":false,"score":2,"calls_count":77,"visited_count":8835,"name":"普锐斯会展服务公司"};
+    res.render('about_me', {initData:{company: company, currentUser: user}});
+  })
+  router.get('/privacy', function(req, res){
+    var user = { "_id" : "55e450bfa02797ea0448b174", "volume" : 0, "created_at" : "2015-08-31T13:03:59.142Z", "city" : "", "role" : "company", "salt" : "591103770255", "hashed_password" : "1eab2efa5a5b4fd78dc27b7a1cfc6e7e2bb4342e", "phone_number" : "15928124305", "username" : "", "avatar" : "uploads/image-1437896764820aa.jpg", "email" : "", "name" : "马永旭", "__v" : 0 };
+    var company = {"_id":"55e450bfa02797ea0448b1a7","owner":"55e450bfa02797ea0448b174","coordinate":[95,40],"__v":3,"keywords":["test","啊啊","发生地方，ss"],"tel":"xxx","email":"xxx","contacts":"xxx","status":"unfinished","area":"武侯区","city":"成都市高新区世纪城路新会展中心","province":"","created_at":"2015-08-31T13:03:59.336Z","company_img":"uploads/1450754497620dGVzdA==.jpg","company_logo":"uploads/1450754487784cHNi.jpeg","_description":"test","phone_number":"","address":"成都市高新区世纪城路新会展中心","company_address":"成都市高新区世纪城","services_type":["展具租赁","AV租赁","植物租摆","设备租赁","篷房展具租赁","物流"],"services":["开锁","搭积木","喷绘","策划","广告制作","你倒是"],"category":["会议","展览","活动"],"type":"full","is_in_limit":false,"score":2,"calls_count":77,"visited_count":8835,"name":"普锐斯会展服务公司"};
+    res.render('privacy', {initData:{company: company, currentUser: user}});
+  })
+  router.get('/statement', function(req, res){
+    var user = { "_id" : "55e450bfa02797ea0448b174", "volume" : 0, "created_at" : "2015-08-31T13:03:59.142Z", "city" : "", "role" : "company", "salt" : "591103770255", "hashed_password" : "1eab2efa5a5b4fd78dc27b7a1cfc6e7e2bb4342e", "phone_number" : "15928124305", "username" : "", "avatar" : "uploads/image-1437896764820aa.jpg", "email" : "", "name" : "马永旭", "__v" : 0 };
+    var company = {"_id":"55e450bfa02797ea0448b1a7","owner":"55e450bfa02797ea0448b174","coordinate":[95,40],"__v":3,"keywords":["test","啊啊","发生地方，ss"],"tel":"xxx","email":"xxx","contacts":"xxx","status":"unfinished","area":"武侯区","city":"成都市高新区世纪城路新会展中心","province":"","created_at":"2015-08-31T13:03:59.336Z","company_img":"uploads/1450754497620dGVzdA==.jpg","company_logo":"uploads/1450754487784cHNi.jpeg","_description":"test","phone_number":"","address":"成都市高新区世纪城路新会展中心","company_address":"成都市高新区世纪城","services_type":["展具租赁","AV租赁","植物租摆","设备租赁","篷房展具租赁","物流"],"services":["开锁","搭积木","喷绘","策划","广告制作","你倒是"],"category":["会议","展览","活动"],"type":"full","is_in_limit":false,"score":2,"calls_count":77,"visited_count":8835,"name":"普锐斯会展服务公司"};
+    res.render('statement', {initData:{company: company, currentUser: user}});
   })
   app.use('/', router);
 

@@ -27,6 +27,7 @@ export class Datepicker extends Component{
                 inputValue: moment(defaultValue).format("YYYY-MM-DD")
             });
         }
+        this.value = moment(defaultValue).format("YYYY-MM-DD");
 
     }
     componentWillUnmount(){
@@ -37,9 +38,11 @@ export class Datepicker extends Component{
 
     bodyHide(e){
         if(!/DayPicker/.test(e.target.className)){
-            this.setState({
-                isOpen: false
-            });
+            if(this.state.isOpen){
+                this.setState({
+                    isOpen: false
+                });
+            }
         }
 
     }

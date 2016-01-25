@@ -364,12 +364,15 @@ class CompanyShow extends React.Component{
         description = description.split(/\n/).map((item, index) => {
             return <p key={index}>{item}</p>
         });
+        var companyImgStyle = {
+            backgroundImage: `url(/${company.web_company_img})`
+        };
         return (
             <div className="container">
                 <Header></Header>
                 <div className="company-show-container">
                     <div className="company-home-page">
-                        <img src={'/' + company.company_img} alt="" className="head-img"/>
+                        <div className="head-img" style={companyImgStyle}></div>
                         <div className="company-info w-1000 s-center inline-container">
                             <div className="left-side inline">
                                 <div className="company-logo inline">

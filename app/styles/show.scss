@@ -28,6 +28,8 @@
   .head-img{
     width: 100%;
     height: 420px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
   }
 
 
@@ -325,6 +327,6 @@ section{
   .x-close{
     top: 20px;
     right: 20px;
-    position: absolute;
+    position: fixed;
   }
 }

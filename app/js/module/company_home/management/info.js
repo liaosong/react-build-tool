@@ -64,7 +64,7 @@ class CompanyInfo extends Component{
 
         var companyInfo = {
             company_logo: this.refs.logo.value,
-            company_img: this.refs.companyImg.value,
+            web_company_img: this.refs.companyImg.value,
             keywords: keywords,
             services_type: this.refs.servicesType.value,
             _description: this.refs.description.value
@@ -104,7 +104,7 @@ class CompanyInfo extends Component{
                     <div className="c-row">
                         <div className="c-label">公司宣传图</div>
                         <div className="c-value">
-                            <Upload ref="companyImg" className="broadcast-img-upload x-upload" text="添加图片" onStatusChange={this.onStatusChange.bind(this)} value={company.company_img}></Upload>
+                            <Upload ref="companyImg" className="broadcast-img-upload x-upload" text="添加图片" onStatusChange={this.onStatusChange.bind(this)} value={company.web_company_img}></Upload>
                             {companyImgTips}
                         </div>
                     </div>
@@ -156,7 +156,7 @@ class CompanyInfo extends Component{
                     <div className="c-row">
                         <div className="c-label">公司宣传图</div>
                         <div className="c-value">
-                            <img src={'/' + company.company_img} alt="" className="company-img"/>
+                            <img src={'/' + company.web_company_img} alt="" className="company-img"/>
                         </div>
                     </div>
                     <div className="c-row">

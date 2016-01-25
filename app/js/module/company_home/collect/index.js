@@ -97,8 +97,10 @@ class TenderInfo extends Component{
                         <div className="info-row">{others}</div>
                     </div>
                     <div className="right-side inline">
-                        <div className="concat-name">{tender.contacts}</div>
-                        <div className="concat-phone">{tender.tel}</div>
+                        <div className="user-info">
+                            <div className="concat-name">{tender.contacts}</div>
+                            <div className="concat-phone">{tender.tel}</div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,50 @@
+@import "share/global";
+@import "share/head";
+@import './components/footer';
+
+
+
+.header-top{
+  background-color: #fff;
+  .s-logo{
+    background-image: url(../images/logo-back.png);
+    cursor: pointer;
+  }
+  .right-side{
+    a{
+      color: #808080;
+    }
+    .apply-btn{
+      color: #3bf;
+      border-color: #3bf;
+    }
+  }
+}
+
+
+.our-container{
+  min-height: 500px;
+  background-color: #FFFFFF;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  border: 1px solid #e5e5e5;
+
+  padding: 40px;
+
+
+  h2{
+    font-weight: normal;
+    font-size: 24px;
+    color: #0af;
+  }
+
+  h3{
+    font-size: 16px;
+    font-weight: bold;
+    color: #0af;
+    line-height: 26px;
+  }
+  p{
+    color: #333333;
+  }
+}
