@@ -185,17 +185,17 @@ class Company extends React.Component{
                         </div>
                         <div className="concat-and-case-row">
                             <div className="concat-container inline">
-                                <div className="inline">联系方式：</div>
+                                <div className="inline title">联系方式：</div>
                                 <div className="inline inline-value">{company.phone_number}</div>
                             </div>
                             <div className="case-container inline">
-                                <div className="inline">成功案例：</div>
+                                <div className="inline title">成功案例：</div>
                                 <div className="inline inline-value cases-num">{this.state.caseNum}</div>
                             </div>
                         </div>
                     </div>
                     <div className="right-side action inline">
-                        <button className="g-btn-primary" onClick={this.showCompany.bind(this, company)}>查看更多详情</button>
+                        <button className="g-btn-primary" onClick={this.showCompany.bind(this, company)}>查看详情</button>
                     </div>
                 </div>
 

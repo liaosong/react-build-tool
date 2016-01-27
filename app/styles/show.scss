@@ -18,6 +18,7 @@
     .apply-btn{
       color: #3bf;
       border-color: #3bf;
+
     }
   }
 }
@@ -51,6 +52,7 @@
       }
       .name-and-service{
         padding-top: 35px;
+        width: 600px;
 
         .name{
           font-size: 20px;
@@ -60,7 +62,7 @@
           margin-top: 20px;
           color: #333;
           .service-items{
-            width: 530px;
+            width: 528px;
 
             .item{
               display: inline-block;
@@ -69,7 +71,7 @@
           }
 
           .service-title{
-            font-weight: bold;
+            color: #333333;
           }
         }
       }
@@ -82,11 +84,14 @@
       border-right: 1px solid #f4f4f4;
 
       .concat-user-info{
-        padding: 25px 30px 15px 30px;
+        padding: 25px 20px 10px 20px;
+        color: #4c4c4c;
 
         .phone-number{
-          margin-top: 10px;
+          margin-top: 8px;
           color: #ff9801;
+          font-size: 24px;
+          font-family: Arial, sans-serif;
         }
       }
       .line{
@@ -96,18 +101,18 @@
         border-top: 1px solid #f4f4f4;
       }
       .address{
-        padding: 12px 30px;
-        height: 65px;
+        padding: 12px 20px;
         text-overflow : ellipsis;
         overflow: hidden;
         display: -webkit-box;
+        color: #808080;
       }
     }
   }
 }
 
 .section-title{
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #4c4c4c;
 
@@ -115,9 +120,11 @@
     width: 890px;
   }
   .action{
-    font-size: 18px;
-    color: #09f;
+    font-size: 14px;
+    color: #0af;
     cursor: pointer;
+    width: 110px;
+    text-align: right;
 
     .add-icon{
       width: 18px;
@@ -126,7 +133,7 @@
       display: inline-block;
       vertical-align: middle;
       background-image: url(../images/comment_icon.png);
-      margin-right: 20px;
+      margin-right: 10px;
     }
   }
 
@@ -141,13 +148,19 @@
   margin: 60px auto;
   margin-bottom: 0;
   display: none;
+
+
+  &:hover{
+    background-color: #0af;
+    color: #fff;
+  }
 }
 .show-section{
   padding-bottom: 70px;
 }
 
 .company-about{
-  padding-top: 40px;
+  padding-top: 35px;
 
   .inline{
     font-size: 14px;
@@ -157,7 +170,16 @@
 
     .content{
       color: #4c4c4c;
-      padding: 30px 30px 50px 0;
+      padding: 25px 30px 50px 0;
+
+      p{
+        text-indent: 2em;
+        margin-bottom: 15px;
+
+        &:last-child{
+          margin-bottom: 0;
+        }
+      }
     }
   }
   .right-side{
@@ -176,6 +198,13 @@
         color: #0af;
         background-color: #fff;
         border: 1px solid #0af;
+        border-radius: 3px;
+        font-size: 14px;
+
+        &:hover{
+          background-color: #0af;
+          color: #fff;
+        }
       }
     }
   }
@@ -185,13 +214,13 @@
 
 section{
   border-top: 1px solid #e5e5e5;
-  padding-top: 40px;
+  padding-top: 35px;
 
 }
 .company-cases{
 
   .cases-container{
-    margin-top: 30px;
+    margin-top: 25px;
     margin-left: -20px;
 
     .case-item{
@@ -199,13 +228,13 @@ section{
       width: 320px;
       height: 200px;
       margin-left: 20px;
-      margin-top: 20px;
       background-color: #FFFFFF;
       cursor: pointer;
 
       .case-img{
         height: 140px;
         width: 100%;
+        display: block;
       }
       .case-title{
         color: #333333;
@@ -220,10 +249,10 @@ section{
 .services-container{
 
   margin-left: -20px;
-  margin-top: 10px;
+  margin-top: 5px;
   .quotation-item{
     width: 235px;
-    height: 300px;
+    height: 288px;
     margin-left: 20px;
     background-color: #fff;
     margin-top: 20px;
@@ -231,6 +260,7 @@ section{
     .quotation-img{
       width: 100%;
       height: 210px;
+      display: block;
 
     }
 
@@ -281,16 +311,17 @@ section{
 
       .content{
         color: #333333;
+
       }
 
       .name-and-date{
         .name{
-          width: 802px;
+          width: 799px;
           font-size: 16px;
           color: #666666;
         }
         .date{
-          width: 78px;
+          width: 81px;
           color: #999999;
         }
       }
@@ -309,7 +340,8 @@ section{
   }
 
   .case-item{
-    color: #333333;
+    color: #4c4c4c;
+    line-height: 22px;
   }
 
   .first{
@@ -319,6 +351,16 @@ section{
   .description{
     margin-top: 40px;
     margin-bottom: 100px;
+    color: #4c4c4c;
+
+    p{
+      text-indent: 2em;
+      margin-bottom: 15px;
+
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
   }
 
 }
@@ -326,7 +368,7 @@ section{
 .info-show-container{
   .x-close{
     top: 20px;
-    right: 20px;
+    right: 25px;
     position: fixed;
   }
 }

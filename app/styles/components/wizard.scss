@@ -28,9 +28,15 @@
   color: #ccc;
   line-height: 38px;
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 .complete{
   background-image: url(/images/complete_icon.png);
+}
+.node-complete{
+  .step-name{
+    color: #333333;
+  }
 }
 .step>.complete{
   border: none;

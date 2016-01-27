@@ -69,7 +69,7 @@ class CitySelecter extends React.Component {
 
     return (
       <div className={classNames('city-selecter', 'inline')} onClick={this.toggle.bind(this)}>
-        <span>{this.state.selectCity}</span>
+        <span className="search-city">{this.state.selectCity}</span>
         <ul className={classNames('city-container','cleanfix', {
         show: this.state.isOpen
         })}>
@@ -116,7 +116,7 @@ class SearchBar extends React.Component {
     return (
       <div className={classNames('inline')}>
         <input className={classNames('search-input')} ref="keywords" defaultValue={this.props.queryText || ''} placeholder="您需要什么服务?"/>
-        <button className={classNames('search-button')} onClick={this.search.bind(this)}>搜索</button>
+        <button className={classNames('search-button', 'g-blue-button')} onClick={this.search.bind(this)}>搜索</button>
       </div>
     );
   }
@@ -128,7 +128,7 @@ class SearchBar extends React.Component {
       <div className={classNames('inline')} >
         <input className={classNames('search-input')} ref="keywords" defaultValue={this.props.queryText || ''} placeholder="您需要什么服务?"/>
         <CitySelecter ref="city"/>
-        <button className={classNames('search-button')} onClick={this.search.bind(this)}>搜索</button>
+        <button className={classNames('search-button', 'g-blue-button')} onClick={this.search.bind(this)}>搜索</button>
       </div>
     );
   }

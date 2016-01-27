@@ -14,14 +14,16 @@ class Login extends React.Component{
             dialogStyle: {
                 content:{
                     width: '280px',
-                    height: '404px',
-                    top: "calc(50% - 222px)",
-                    left: "calc(50% - 150px)",
+                    height: '395px',
+                    top: "calc(50% - 197px)",
+                    left: "calc(50% - 140px)",
                     border: 'none',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    borderRadius: 'none',
+                    boxShadow: '0px 1px 5px rgba(0,0,0,.3)'
                 },
                 overlay:{
-                    backgroundColor: 'rgba(246, 246, 246, 0.9)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
                 }
             }
         };
@@ -103,13 +105,13 @@ class Login extends React.Component{
                         <div className="logo"></div>
                         <p className="login-error">{errorMessage}</p>
                         <form method="POST" onSubmit={this.login.bind(this)} noValidate>
-                            <input ref="phoneNumber" type="text" className="phone-number" onChange={this.checkPhoneNumber.bind(this)}/>
+                            <input ref="phoneNumber" type="text" className="phone-number" onChange={this.checkPhoneNumber.bind(this)} placeholder="手机号码"/>
                             <div className="tips">{this.state.phoneNumberTips}</div>
-                            <input ref="password" type="password" className="password" onChange={this.checkPassword.bind(this)}/>
+                            <input ref="password" type="password" className="password" onChange={this.checkPassword.bind(this)} placeholder="密码"/>
                             <div className="tips">{this.state.passwordTips}</div>
                             <a href="/user/forget_password" className="reset-password">忘记密码？</a>
 
-                            <button type="submit">登录</button>
+                            <button type="submit">登 录</button>
                         </form>
                         <hr/>
                         <div className="reg-ref">

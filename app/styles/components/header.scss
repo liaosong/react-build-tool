@@ -1,13 +1,14 @@
 .login-container{
 
   .logo{
-    height: 70px;
-    width: 100%;
-    background-image: url(../images/logo-back.png);
+    width: 180px;
+    height: 50px;
+    margin: 0 auto;
+    background-image: url(../images/logo-login.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    cursor: pointer;
     background-size: 100%;
+    margin-top: 10px;
   }
 
   input{
@@ -36,7 +37,19 @@
     color: #fff;
     margin-top: 25px;
     margin-bottom: 20px;
-    border: 1px solid #09f;
+    border: 1px solid #0af;
+    font-size: 14px;
+
+    &:hover{
+      background-color: #1ab3ff;
+      border-color: #1ab3ff;
+
+    }
+
+    &:focus, &:visited{
+      background-color: #08c;
+      border-color: #08c;
+    }
   }
   .tips{
     font-size: 12px;
@@ -46,6 +59,7 @@
 
   hr{
     border-top: 2px solid #e6e6e6;
+    border-width: 1px;
   }
   .reg-ref{
     margin-top: 25px;

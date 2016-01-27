@@ -168,7 +168,8 @@ export class CaseInfo extends React.Component{
                 padding: 0,
                 bottom: "initial",
                 marginBottom: '60px',
-                borderRadius: 'none'
+                borderRadius: 'none',
+                boxShadow: '0px 1px 5px rgba(0,0,0,.3)'
             },
             overlay:{
                 backgroundColor: 'rgba(246, 246, 246, 0.9)',
@@ -229,7 +230,8 @@ export class CaseInfo extends React.Component{
                                 <span>案例图片</span>
                                 <span className="required">*</span>
                             </label>
-                            <Upload multiple className="inline" ref="imgUrls" value={caseObj.img_urls}></Upload>
+                            <p className="inline case-img-tip">添加案例图片，让用户更加了解您的实力！只支持JPG、PNG、GIF，文件大小不超过5M</p>
+                            <Upload multiple className="inline ml-120" ref="imgUrls" value={caseObj.img_urls}></Upload>
                             <div className="error-tips ml-120">{this.state.imgUrlTips}</div>
                         </div>
                         <hr className="line"/>

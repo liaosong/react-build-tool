@@ -186,29 +186,29 @@ class UserRegister extends React.Component{
                 <form onSubmit={this.userRegister.bind(this)}>
                     <div className="form-group">
                         <label htmlFor="phone_number">手机号</label>
-                        <input type="text" className="row-input" ref="phoneNumber" onBlur={this.phoneNumberCheck.bind(this)}/>
+                        <input type="text" className="row-input" ref="phoneNumber" onBlur={this.phoneNumberCheck.bind(this)} placeholder="请输入手机号"/>
                         <span className="err-tips">{this.state.phoneNumberTips}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone_number">图形验证码</label>
-                        <input type="text" className="part-row-input" ref="captcha" onBlur={this.checkCaptcha.bind(this)}/>
+                        <input type="text" className="part-row-input" ref="captcha" onBlur={this.checkCaptcha.bind(this)} placeholder="请输入图形验证码"/>
                         <img src={this.state.captchaUrl} alt="" className="inline captcha" onClick={this.changeCaptcha.bind(this)}/>
                         <span className="err-tips">{this.state.captchaTips}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone_number">手机验证码</label>
-                        <input type="text" className="part-row-input" ref="code" onBlur={this.codeCheck.bind(this)}/>
+                        <input type="text" className="part-row-input" ref="code" onBlur={this.codeCheck.bind(this)} placeholder="请输入手机验证码"/>
                         <CodeButton onGetCode={this.onGetCode.bind(this)}></CodeButton>
                         <span className="err-tips">{this.state.codeTips}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone_number">设置密码</label>
-                        <input type="password" className="row-input" ref="password" onBlur={this.passwordCheck.bind(this)}/>
+                        <input type="password" className="row-input" ref="password" onBlur={this.passwordCheck.bind(this)} placeholder="请输入密码"/>
                         <span className="err-tips">{this.state.passwordTips}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone_number">重新输入密码</label>
-                        <input type="password" className="row-input" ref="passwordRef" onBlur={this.passwordRefCheck.bind(this)}/>
+                        <input type="password" className="row-input" ref="passwordRef" onBlur={this.passwordRefCheck.bind(this)} placeholder="请重新输入密码"/>
                         <span className="err-tips">{this.state.passwordRefTips}</span>
                     </div>
                     <div className="submit-group">

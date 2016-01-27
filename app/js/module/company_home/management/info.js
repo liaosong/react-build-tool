@@ -83,13 +83,10 @@ class CompanyInfo extends Component{
         var services = service_types;
 
         let logImgTips, companyImgTips;
-        if(!company.company_logo){
-            logImgTips = (<div className="tips">只支持JPG、PNG、GIF、文件不超过5M</div>);
-        }
 
-        if(!company.company_img){
-            companyImgTips = (<div className="block-tips">图片大小为1920*420px，只支持JPG、PNG、GIF、文件不超过5M</div>);
-        }
+        logImgTips = (<div className="tips">只支持JPG、PNG、GIF、文件不超过5M</div>);
+
+        companyImgTips = (<div className="block-tips">图片大小为1920*420px，只支持JPG、PNG、GIF、文件不超过5M</div>);
         return (
             <div className="company-info-container">
                 <form className="x-form" onSubmit={this.onDataSubmit.bind(this)}>

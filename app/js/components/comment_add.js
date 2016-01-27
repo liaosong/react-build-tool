@@ -75,10 +75,13 @@ class CommentAdd extends Component{
         var dialogStyle = {
             content:{
                 width: '600px',
-                height: '360px',
+                height: '370px',
                 top: "calc(50% - 180px)",
                 left: "calc(50% - 300px)",
-                border: 'none'
+                border: 'none',
+                borderRadius: 'none',
+                padding: '0',
+                boxShadow: '0px 1px 5px rgba(0,0,0,.3)'
             },
             overlay:{
                 backgroundColor: 'rgba(0, 0, 0, 0.5)'
@@ -89,14 +92,14 @@ class CommentAdd extends Component{
                 <div className="x-close" onClick={this.onClose.bind(this)}></div>
                 <form className="comment-form" onSubmit={this.onCommentCreate.bind(this)}>
                     <div className="title">我要点评</div>
-                    <div className="comment-form-group">
+                    <div className="comment-form-group score-group">
                         <label className="inline">综合评价</label>
                         <StarControl className="inline ml-20" ref="score"></StarControl>
                         <div className="error-tips">{this.state.scoreTips}</div>
                     </div>
                     <div className="comment-form-group">
                         <label>详细描述</label>
-                        <textarea className="comment-content" ref="content" onBlur={this.checkContent.bind(this)}></textarea>
+                        <textarea className="comment-content" ref="content" onBlur={this.checkContent.bind(this)} placeholder="请输入您对该服务商的详细评价"></textarea>
                         <div className="error-tips">{this.state.contentTips}</div>
                     </div>
 

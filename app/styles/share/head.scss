@@ -2,13 +2,14 @@ $header_top_height: 60px;
 
 .header-top{
   height: $header_top_height;
+  border-bottom: 1px solid #e6e6e6;
 
   .s-logo{
     background-image: url(../images/logo.png);
     height: 100%;
     line-height: $header_top_height;
     background-repeat: no-repeat;
-    margin-left: 30px;
+    margin-left: 23px;
     float: left;
     width: 160px;
     background-size: 100%;
@@ -21,21 +22,35 @@ $header_top_height: 60px;
     padding-right: 12px;
   }
   .tips{
-    border-left: 1px solid #4c4c4c;
+    border-left: 1px solid #808080;
   }
 
   .right-side{
     float: right;
 
+    .phone-number{
+      margin-right: 20px;
+    }
+    .block-item{
+      width: 80px;
+      text-align: center;
+      border-left: 1px solid #e6e6e6;
+      cursor: pointer;
+
+      &:hover{
+        background-color: #f2f2f2;
+      }
+    }
+
     li{
       display: inline-block;
       line-height: $header_top_height;
-      margin-right: 30px;
       font-size: 14px;
       color: #fff;
     }
 
     .apply-btn{
+      margin-right: 20px;
       height: 34px;
       width: 120px;
       border: 2px solid #fff;
@@ -45,6 +60,11 @@ $header_top_height: 60px;
       background-color: rgba(255, 255, 255, .2);
       cursor: pointer;
       line-height: normal;
+
+      &:hover{
+        background-color: rgba(0, 0, 0, .05);
+      }
+
     }
   }
 }
@@ -53,12 +73,14 @@ $header_top_height: 60px;
 .login-container{
 
   .logo{
-    height: 70px;
-    width: 100%;
-    background-image: url(../images/logo-back.png);
+    width: 180px;
+    height: 50px;
+    margin: 0 auto;
+    background-image: url(../images/logo-login.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100%;
+    margin-top: 10px;
   }
 
   input{
@@ -87,7 +109,19 @@ $header_top_height: 60px;
     color: #fff;
     margin-top: 25px;
     margin-bottom: 20px;
-    border: 1px solid #09f;
+    border: 1px solid #0af;
+    font-size: 14px;
+
+    &:hover{
+      background-color: #1ab3ff;
+      border-color: #1ab3ff;
+
+    }
+
+    &:focus, &:visited{
+      background-color: #08c;
+      border-color: #08c;
+    }
   }
   .tips{
     font-size: 12px;

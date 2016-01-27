@@ -5,8 +5,10 @@ body{
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   background-color: #f4f4f4;
+  letter-spacing: 0.02em;
 }
-button{
+
+input, button{
   font-family: "Microsoft YaHei", "微软雅黑", helvetica, arial, verdana, tahoma, sans-serif !important;
 }
 ul{
@@ -148,8 +150,27 @@ li{
   color: #0af;
   font-size: 14px;
   background-color: #fff;
-  border-raduis: 3px;
+  border-radius: 3px;
   outline: none;
+
+
+  &:hover{
+    background-color: #0af;
+    color: #fff;
+  }
+}
+
+.g-blue-button{
+  &:hover{
+    background-color: #1ab3ff;
+    border-color: #1ab3ff;
+
+  }
+
+  &:focus, &:visited{
+    background-color: #08c;
+    border-color: #08c;
+  }
 }
 .DayPicker{
   z-index: 100;
@@ -193,8 +214,31 @@ li{
 .error-tips{
   color: #ff0000 !important;
   height: 19px;
+  font-size: 12px;
 }
 
 .modal-open{
   overflow: hidden;
 }
+*{
+  outline: none;
+}
+hr{
+  padding: 0;
+  margin: 0;
+}
+p{
+  line-height: 22px;
+}
+
+.overflow-ellipsis{
+  display:block;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.split-line{
+  color: #808080;
+}
+

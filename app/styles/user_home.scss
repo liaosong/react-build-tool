@@ -34,12 +34,14 @@
   .index-container{
     width: 200px;
     font-size: 16px;
+
   }
 
   a{
     color: #808080;
     &.active{
       color: #4c4c4c;
+      font-weight: bold;
     }
   }
   .service-item{
@@ -55,6 +57,8 @@
   .content-container{
     background-color: #fff;
     width: 800px;
+    margin-bottom: 100px;
+    min-height: 500px;
   }
 }
 
@@ -81,6 +85,7 @@
         &.active{
           color: #09f;
           border-bottom: 2px solid #09f;
+          font-weight: bold;
         }
 
       }
@@ -88,9 +93,14 @@
   }
 }
 
+.info-content{
+  background-color: #fff;
+}
+
 .tender-container{
 
   padding: 20px;
+  background-color: #fff;
 
 
   .list-header{
@@ -102,18 +112,22 @@
 
     .tender-content,.tender-status,.action{
       line-height: 42px;
-      padding-left: 20px;
     }
 
     .tender-content{
-      width: 499px;
+      width: 498px;
+      padding-left: 20px;
 
     }
+    .tender-status, .action{
+      text-align: center;
+    }
+
     .tender-status{
-      width: 100px;
+      width: 120px;
     }
     .action{
-      width: 99px;
+      width: 120px;
     }
   }
 
@@ -137,6 +151,7 @@
     .tender-item{
       margin-top: 20px;
       border: 1px solid #e5e5e5;
+      color: #333333;
 
       .tender-head{
         background-color: #f4f4f4;
@@ -211,6 +226,7 @@
 }
 
 .enshrine-container{
+  background-color: #fff;
 
   .en-header{
     padding-left: 20px;
@@ -248,10 +264,10 @@
 
       .en-title-content{
         padding-left: 20px;
-        width: 619px;
+        width: 599px;
       }
       .en-title-action{
-        width: 119px;
+        width: 139px;
         text-align: center;
       }
     }
@@ -268,9 +284,11 @@
           color: #09f;
           line-height: 42px;
           padding-left: 20px;
+          font-size: 16px;
         }
 
         .body{
+          color: #333333;
           .left-side{
             padding: 20px;
             width: 578px;
@@ -291,7 +309,7 @@
           }
 
           .right-side{
-            width: 119px;
+            width: 139px;
             border-left: 1px solid #e5e5e5;
             text-align: center;
             line-height: 88px;

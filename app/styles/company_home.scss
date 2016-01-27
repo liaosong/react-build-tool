@@ -34,7 +34,7 @@
 
 .company-home-container{
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 100px;
 
   .index-container{
     width: 200px;
@@ -45,6 +45,7 @@
     color: #808080;
     &.active{
       color: #4c4c4c;
+      font-weight: bold;
     }
   }
   .service-item{
@@ -86,11 +87,16 @@
         &.active{
           color: #09f;
           border-bottom: 2px solid #09f;
+          font-weight: bold;
         }
 
       }
     }
   }
+}
+
+.info-content{
+  background-color: #FFFFFF;
 }
 
 .company-info-container{
@@ -108,6 +114,7 @@
 
     .c-label{
       width: 220px;
+      color: #808080;
     }
 
     .c-value{
@@ -122,9 +129,13 @@
     }
 
     .c-input{
-      height: 40px;
+      height: 38px;
       width: 525px;
       padding-left: 10px;
+      font-size: 14px;
+      color: #333;
+      border-radius: 3px;
+      border: 1px solid #ccc;
     }
 
 
@@ -137,6 +148,7 @@
     outline: none;
     padding: 10px;
     font-size: 14px;
+    border-radius: 3px;
   }
 }
 
@@ -285,7 +297,18 @@
 }
 
 .j8-form{
-  padding-bottom: 60px;
+
+  textarea{
+    border-radius: 3px;
+  }
+
+  .j8-label{
+    color: #4c4c4c;
+  }
+  .j8-input{
+    border-color: #cccccc;
+    color: #333333;
+  }
 
   .service-type{
 
@@ -293,7 +316,13 @@
     .j8-label{
       padding-top: 20px;
       vertical-align: top;
+
     }
+  }
+
+  .date-input{
+    height: 40px;
+    border-color: #cccccc;
   }
 
   .description{
@@ -308,10 +337,13 @@
   .tips{
     color: #b2b2b2;
     margin-left: 120px;
-    margin-top: 10px;
+    margin-top: 6px;
   }
   .ml-120{
     margin-left: 120px;
+  }
+  .mt-0{
+    margin-top: 0px;
   }
   .ml-0{
     margin-left: 0px;
@@ -333,7 +365,7 @@
   .img-item{
     width: 164px;
     height: 108px;
-    border: 1px solid #e5e5e5;
+    border: 2px solid #e5e5e5;
     margin-left: 20px;
     margin-top: 20px;
     position: relative;
@@ -398,6 +430,7 @@
 
   .module-list{
     padding: 20px;
+    background-color: #FFFFFF;
 
     .list-title{
       height: 42px;
@@ -429,7 +462,11 @@
       }
       .co-title-content{
         padding-left: 20px;
-        width: 619px;
+        width: 599px;
+      }
+      .co-title-action{
+        width: 139px;
+        text-align: center;
       }
     }
 
@@ -438,11 +475,11 @@
       .tender-item{
         border: 1px solid #e5e5e5;
         margin-top: 20px;
+        color: #333;
 
         .head{
           height: 42px;
           background-color: #f4f4f4;
-          color: #09f;
           line-height: 42px;
           padding-left: 20px;
         }
@@ -492,9 +529,18 @@
   }
 }
 
+.case-img-tip{
+  color: #b2b2b2;
+  margin-bottom: 10px;
+}
+
 .error-tips{
   margin-left: 10px;
 }
 .ml-120{
   margin-left: 120px;
+}
+
+.concat-label, .Check-box-group{
+  color: #333333;
 }

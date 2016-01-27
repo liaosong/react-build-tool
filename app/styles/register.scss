@@ -7,6 +7,7 @@
 
 .header-top{
   background-color: #fff;
+  border-bottom: none;
   .s-logo{
     background-image: url(../images/logo-back.png);
     cursor: pointer;
@@ -14,7 +15,7 @@
   .system-info{
     display: inline-block;
     line-height: 60px;
-    font-size: 16px;
+    font-size: 14px;
     color: #4c4c4c;
   }
   .right-side{
@@ -24,6 +25,7 @@
     .apply-btn{
       color: #3bf;
       border-color: #3bf;
+
     }
   }
   .login-component{
@@ -41,7 +43,7 @@
     height: 140px;
 
     .title{
-      margin-top: 50px;
+      margin-top: 40px;
       font-size: 18px;
       color: #4c4c4c;
       text-align: center;
@@ -66,7 +68,7 @@
     border-radius: 3px;
     background-color: #0af;
     color: #fff;
-    border: 1px solid #09f;
+    border: none;
   }
   .captcha{
     height: 50px;
@@ -86,11 +88,11 @@
     .err-tips{
       color: #f00;
       margin-left: 15px;
+      font-size: 12px;
     }
     label{
       font-size: 16px;
       color: #4c4c4c;
-      font-weight: bold;
       display: block;
     }
     .code-button{

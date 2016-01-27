@@ -30,8 +30,8 @@ class Header extends React.Component {
             <div className="header-top">
                 <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <ul className="right-side">
-                    <li><a href="/home">{ currentUser.phone_number}</a></li>
-                    <li><a href="javascript:;" onClick={this.logout.bind(this)}>退出</a></li>
+                    <li className="phone-number"><a href="/home">{ currentUser.phone_number}</a></li>
+                    <li className="block-item"><a href="/logout">退出</a></li>
                 </ul>
             </div>
         );
@@ -43,12 +43,12 @@ class Header extends React.Component {
                 <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <div className="system-type">
                     <span>参展商管理系统</span>
-                    <span className="ml-10">|</span>
+                    <span className="ml-10 split-line">|</span>
                     <span className="ml-10">欢迎</span>
                 </div>
                 <ul className="right-side">
-                    <li><a href="">{ currentUser.phone_number}</a></li>
-                    <li><a href="javascript:;" onClick={this.logout.bind(this)}>退出</a></li>
+                    <li className="phone-number"><a href="">{ currentUser.phone_number}</a></li>
+                    <li className="block-item"><a href="/logout">退出</a></li>
                 </ul>
             </div>
         );
@@ -60,12 +60,12 @@ class Header extends React.Component {
                 <div className="s-logo" onClick={this.goHome.bind(this)}></div>
                 <div className="system-type">
                     <span>服务商管理系统</span>
-                    <span className="ml-10">|</span>
+                    <span className="ml-10 split-line">|</span>
                     <span className="ml-10">欢迎</span>
                 </div>
                 <ul className="right-side">
-                    <li><a href="">{ currentUser.phone_number}</a></li>
-                    <li><a href="javascript:;" onClick={this.logout.bind(this)}>退出</a></li>
+                    <li className="phone-number"><a href="">{ currentUser.phone_number}</a></li>
+                    <li className="block-item"><a href="/logout">退出</a></li>
                 </ul>
             </div>
         );
@@ -121,8 +121,8 @@ class Header extends React.Component {
                 <div className="s-logo" onClick={this.goHome.bind(this)} ></div>
                 <ul className="right-side">
                     <li><a href="/company/register"><button className="apply-btn">成为服务商</button></a></li>
-                    <li><a href="/user/register">注册</a></li>
-                    <li>
+                    <li className="block-item"><a href="/user/register">注册</a></li>
+                    <li className="block-item">
                         <Login registerUrl={this.props.registerUrl}></Login>
                     </li>
                 </ul>

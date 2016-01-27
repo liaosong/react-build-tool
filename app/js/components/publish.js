@@ -62,7 +62,9 @@ class Publish extends React.Component{
                 height: '360px',
                 top: "calc(50% - 180px)",
                 left: "calc(50% - 300px)",
-                border: 'none'
+                border: 'none',
+                borderRadius: 'none',
+                boxShadow: '0px 1px 5px rgba(0,0,0,.3)'
             },
             overlay:{
                 backgroundColor: 'rgba(0, 0, 0, 0.5)'
@@ -75,7 +77,9 @@ class Publish extends React.Component{
                 height: '240px',
                 top: "calc(50% - 120px)",
                 left: "calc(50% - 300px)",
-                border: 'none'
+                border: 'none',
+                borderRadius: 'none',
+                boxShadow: '0px 1px 5px rgba(0,0,0,.3)'
             },
             overlay:{
                 backgroundColor: 'rgba(0, 0, 0, 0.5)'
@@ -84,7 +88,7 @@ class Publish extends React.Component{
 
         return (
             <div className="publish inline-b">
-                <button onClick={this.onCreateTender.bind(this)}>发布需求</button>
+                <button onClick={this.onCreateTender.bind(this)} className="publish-button g-blue-button">发布需求</button>
                 <Modal isOpen={this.state.tenderDialogOpen} style={dialogStyle} className="tender-type-container">
                     <div className="head">请选择需求类型</div>
                     <div className="type-container">

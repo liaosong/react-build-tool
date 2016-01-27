@@ -59,7 +59,8 @@ export class CaseShow extends Component{
                 bottom: "initial",
                 marginBottom: '60px',
                 padding: 0,
-                borderRadius: 'none'
+                borderRadius: 'none',
+                boxShadow: '0px 1px 5px rgba(0,0,0,.3)'
             },
             overlay:{
                 backgroundColor: 'rgba(246, 246, 246, 0.9)',
@@ -79,6 +80,11 @@ export class CaseShow extends Component{
                 <div className="no-case"></div>
             );
         }
+
+        var description = caseInfo._description || '';
+        description = description.split(/\n/).map((item, index) => {
+            return <p key={index}>{item}</p>
+        });
 
 
 
@@ -106,7 +112,7 @@ export class CaseShow extends Component{
                                 <div className="value inline-b">{caseInfo.service_type.join(' ')}</div>
                             </div>
 
-                            <div className="description">{caseInfo._description}</div>
+                            <div className="description">{description}</div>
 
                         </div>
                     </div>

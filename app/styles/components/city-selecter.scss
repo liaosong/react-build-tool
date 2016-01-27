@@ -4,15 +4,16 @@
 
   .city-container{
     background-color: #fff;
-    width: 480px;
+    width: 453px;
     height: 150px;
     margin-left: -11px;
-    padding: 5px 5px 15px 15px;
+    padding: 6px 5px 16px 16px;
     margin-top: 3px;
     display: none;
+    box-shadow: 0px 1px 5px rgba(0,0,0,.3);
 
     li{
-      width: 108px;
+      width: 101px;
       height: 38px;
       display: block;
       line-height: 38px;
@@ -25,10 +26,13 @@
       cursor: pointer;
       border: 1px solid #d9d9d9;
 
-      &.selected{
+      &:hover, &.selected{
         background-color: #00aaff;
         color: #fff;
+        border-color: #0af;
       }
+
+
 
     }
   }
@@ -38,12 +42,12 @@
   .arrow{
     width:0;
     height:0;
-    border-width:10px 10px 0;
+    border-width:6px 6px 0;
     border-style:solid;
-    border-color:#aaa transparent transparent;/*灰 透明 透明 */
+    border-color:#b2b2b2 transparent transparent;/*灰 透明 透明 */
     margin:40px auto;
     position: absolute;
-    top: -26px;
+    top: -23px;
     right: 10px;
     cursor: pointer;
   }

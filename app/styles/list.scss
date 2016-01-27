@@ -7,6 +7,7 @@
 
 .header-top{
   background-color: #fff;
+  border-bottom: none;
   .s-logo{
     background-image: url(../images/logo-back.png);
     cursor: pointer;
@@ -32,6 +33,7 @@
 .search-and-tool{
   height: 40px;
   padding-bottom: 30px;
+  color: #333333;
 
   input{
     height: 36px;
@@ -46,6 +48,7 @@
     border-radius: 3px;
     background-color: #0af;
     border: 1px solid #0af;
+    width: 120px;
   }
   .search-input{
     width: 673px;
@@ -82,20 +85,19 @@
     line-height: 40px;
     font-size: 14px;
     color: #4c4c4c;
-    width: 63px;
+    width: 75px;
     text-align: center;
   }
 }
 .filter-group {
-  height: 54px;
   border-top: 1px solid #f4f4f4;
   line-height: 54px;
   
   .filter-title{
     display: inline-block;
-    color: #4c4c4c;
+    color: #333;
     font-size: 14px;
-    
+
   }
   .filter-container{
     display: inline-block;
@@ -106,11 +108,30 @@
       text-align: center;
       display: inline-block;
       color: #4c4c4c;
-      padding: 2px 5px;
+      padding: 0px 10px;
       
-      &.active{
-        color: #0af;
+      &:hover, &.active{
+        color: #fff;
+        background-color: #0af;
+
       }
+    }
+  }
+
+  &.types{
+    line-height: normal;
+    padding-top: 10px;
+    padding-bottom: 15px;
+
+    .filter-title{
+      margin-top: 5px;
+    }
+    .filter-container{
+      width: 928px;
+      .filter-item{
+        margin-top: 5px;
+      }
+
     }
   }
   
@@ -121,6 +142,7 @@
 
   .search-result-num{
     font-size: 14px;
+    color: #4c4c4c;
   }
 
   .companies-list{
@@ -129,9 +151,9 @@
   }
 
   .companies-item{
-    margin-top: 4px;
+    margin-top: 3px;
     background-color: #fff;
-    padding: 30px 20px;
+    padding: 25px 20px;
     .company-name{
       font-size: 20px;
       color: #0af;
@@ -141,6 +163,7 @@
         cursor: pointer;
       }
       .collect{
+        cursor: pointer;
         width: 26px;
         height: 26px;
         background-image: url("../images/collect_icon.png");
@@ -152,6 +175,7 @@
         }
       }
       .collected{
+        cursor: pointer;
         width: 26px;
         height: 26px;
         background-image: url("../images/collect_icon_click.png");
@@ -174,6 +198,9 @@
       width: 155px;
       text-align: right;
       height: 107px;
+      .g-btn-primary{
+        height: 34px;
+      }
 
       button{
         width: 135px;
@@ -184,14 +211,23 @@
 
     .company-description{
       color: #808080;
-      max-height: 57px;
+      max-height: 60px;
       overflow: hidden;
+      padding-right: 20px;
+
+      p{
+        line-height: 20px;
+      }
     }
     .service-row{
       margin-top: 35px;
 
-      span{
+      .item-title{
         color: #333;
+      }
+
+      span{
+        color: #4c4c4c;
         margin-right: 12px;
         &:first-child{
           margin-left: 8px;
@@ -207,14 +243,18 @@
       .cases-num{
         color: #ff9801;
       }
+      .title{
+        color: #333333;
+      }
     }
     .inline-value{
       margin-left: 8px;
+      color: #4c4c4c;
     }
   }
 
   .company-pagination{
-    margin-top: 4px;
+    margin-top: 3px;
     height: 64px;
     background-color: #fff;
     padding-top: 30px;

@@ -7,6 +7,7 @@
 
 .header-top{
   background-color: #fff;
+  border-bottom: none;
   .s-logo{
     background-image: url(../images/logo-back.png);
     cursor: pointer;
@@ -25,6 +26,7 @@
     .apply-btn{
       color: #3bf;
       border-color: #3bf;
+
     }
   }
 }
@@ -41,13 +43,13 @@
       font-size: 30px;
       color: #4c4c4c;
       text-align: center;
-      margin-top: 40px;
+      margin-top: 30px;
     }
     p{
       font-size: 14px;
       color: #4c4c4c;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 15px;
     }
   }
 
@@ -63,10 +65,14 @@
 
   .tender-form{
 
+    label{
+      color: #4c4c4c;
+    }
+
     .error-tips{
       color: #ff0000;
       margin-left: 15px;
-      font-size: 14px;
+      font-size: 12px;
     }
     .concats-info{
       .error-tips{
@@ -92,6 +98,7 @@
     input{
       padding-left: 10px;
       outline: none;
+
     }
     .unit{
       margin-left: 10px;
@@ -102,11 +109,15 @@
       height: 140px;
       padding: 10px;
       outline: none;
+      border-radius: 3px;
+      font-size: 14px;
     }
 
     .control-input{
       border: 2px solid #ccc;
       height: 44px;
+      font-size: 14px;
+      border-radius: 3px;
       font-size: 14px;
 
       .date-input{
@@ -118,7 +129,6 @@
     .control-label{
       font-size: 16px;
       color: #4c4c4c;
-      font-weight: bold;
       display: block;
       margin-bottom: 7px;
 
@@ -150,7 +160,7 @@
 
     hr{
       border-top: 1px solid #f4f4f4;
-      margin-top: 40px;
+      margin-top: 20px;
       margin-bottom: 40px;
     }
 
@@ -160,8 +170,19 @@
       color: #fff;
       background-color: #0af;
       font-size: 16px;
-      font-weight: bold;
       border-radius: 3px;
+      margin-top: 10px;
+
+      &:hover{
+        background-color: #1ab3ff;
+        border-color: #1ab3ff;
+
+      }
+
+      &:focus, &:visited{
+        background-color: #08c;
+        border-color: #08c;
+      }
     }
   }
 }
@@ -170,7 +191,7 @@
   .arrow{
     width:0;
     height:0;
-    border-width:8px 8px 0;
+    border-width:6px 6px 0;
     border-style:solid;
     border-color:#aaa transparent transparent;/*灰 透明 透明 */
     margin:40px auto;
@@ -194,6 +215,7 @@
     height: 100%;
     font-size: 14px;
     width: 100%;
+    border-radius: 3px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;

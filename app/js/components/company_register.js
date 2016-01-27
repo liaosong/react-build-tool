@@ -21,17 +21,17 @@ class Wizard extends React.Component{
         return (
             <div className="wizard-container">
                 <ul className="apply-wizard cleanfix">
-                    <li className={classNames('step', {'active': step == 1})}>
+                    <li className={classNames('step', {'active': step == 1, 'node-complete': step > 1})}>
                         <div className={classNames('step-number', {'complete': step > 1})}>{step > 1 ? '': 1}</div>
                         <div className="step-name">申请注册</div>
                     </li>
                     <li className="line"></li>
-                    <li className={classNames('step', {'active': step == 2})}>
+                    <li className={classNames('step', {'active': step == 2, 'node-complete': step > 2})}>
                         <div className={classNames('step-number', {'complete': step > 2})}>{step > 2 ? '': 2}</div>
                         <div className="step-name">填写资料</div>
                     </li>
                     <li className="line"></li>
-                    <li className={classNames('step', {'active': step == 3})}>
+                    <li className={classNames('step', {'active': step == 3, 'node-complete': step > 3})}>
                         <div className={classNames('step-number', {'complete': step > 3})}>{step > 3 ? '': 3}</div>
                         <div className="step-name">审核</div>
                     </li>
@@ -219,29 +219,29 @@ class Step1 extends React.Component{
                 <form onSubmit={this.companyApply.bind(this)}>
                     <div className="form-group">
                         <label htmlFor="phone_number">手机号</label>
-                        <input type="text" className="row-input" ref="phoneNumber" onBlur={this.phoneNumberCheck.bind(this)}/>
+                        <input type="text" className="row-input" ref="phoneNumber" onBlur={this.phoneNumberCheck.bind(this)} placeholder="请输入手机号"/>
                         <span className="err-tips">{this.state.phoneNumberTips}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone_number">图形验证码</label>
-                        <input type="text" className="part-row-input" ref="captcha" onBlur={this.checkCaptcha.bind(this)}/>
+                        <input type="text" className="part-row-input" ref="captcha" onBlur={this.checkCaptcha.bind(this)} placeholder="请输入图形验证码"/>
                         <img src={this.state.captchaUrl} alt="" className="inline captcha" onClick={this.changeCaptcha.bind(this)}/>
                         <span className="err-tips">{this.state.captchaTips}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone_number">手机验证码</label>
-                        <input type="text" className="part-row-input" ref="code" onBlur={this.codeCheck.bind(this)}/>
+                        <input type="text" className="part-row-input" ref="code" onBlur={this.codeCheck.bind(this)} placeholder="请输入手机验证码"/>
                         <CodeButton onGetCode={this.onGetCode.bind(this)}></CodeButton>
                         <span className="err-tips">{this.state.codeTips}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone_number">设置密码</label>
-                        <input type="password" className="row-input" ref="password" onBlur={this.passwordCheck.bind(this)}/>
+                        <input type="password" className="row-input" ref="password" onBlur={this.passwordCheck.bind(this)} placeholder="请输入密码"/>
                         <span className="err-tips">{this.state.passwordTips}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone_number">重新输入密码</label>
-                        <input type="password" className="row-input" ref="passwordRef" onBlur={this.passwordRefCheck.bind(this)}/>
+                        <input type="password" className="row-input" ref="passwordRef" onBlur={this.passwordRefCheck.bind(this)} placeholder="请再次输入您的密码"/>
                         <span className="err-tips">{this.state.passwordRefTips}</span>
                     </div>
                     <div className="submit-group">
@@ -279,7 +279,7 @@ class Step2 extends React.Component{
                 address: this.refs.address.value,
                 type: this.state.type,
                 contacts: this.refs.contacts.value,
-                phone_number: this.refs.tel.value,
+                phone_number: this.refs.phoneNumber.value,
                 email: this.refs.email.value
             }
             onFillCompanyInfo(company._id, companyInfo);
@@ -397,7 +397,7 @@ class Step2 extends React.Component{
                 <form onSubmit={this.companyInfo.bind(this)}>
                     <div className="form-group">
                         <label htmlFor="company-name">公司名称<span className="required">*</span></label>
-                        <input type="text" className="row-input" ref="companyName" onBlur={this.checkName.bind(this)}/>
+                        <input type="text" className="row-input" ref="companyName" onBlur={this.checkName.bind(this)} placeholder="请输入您公司的名称"/>
                         <span className="err-tips">{this.state.companyNameTips}</span>
                     </div>
                     <div className="from-group-container">
@@ -409,7 +409,7 @@ class Step2 extends React.Component{
 
                         <div className="form-group inline">
                             <label htmlFor="address">详细地址<span  className="required">*</span></label>
-                            <input type="text" className="row-input" ref="address" onBlur={this.checkAddress.bind(this)}/>
+                            <input type="text" className="row-input" ref="address" onBlur={this.checkAddress.bind(this)} placeholder="请输入您公司的详细地址"/>
                             <span className="err-tips">{this.state.addressTips}</span>
                         </div>
                     </div>
@@ -420,14 +420,14 @@ class Step2 extends React.Component{
                     </div>
                     <div className="form-group">
                         <label htmlFor="contacts">联系人<span  className="required">*</span></label>
-                        <input type="text" className="row-input" ref="contacts" onBlur={this.checkContacts.bind(this)}/>
+                        <input type="text" className="row-input" ref="contacts" onBlur={this.checkContacts.bind(this)} placeholder="请输入联系人姓名"/>
                         <span className="err-tips">{this.state.contactsTips}</span>
                     </div>
                     <div className="from-group-container">
                         <div className="form-group inline row-group mr-20">
-                            <label htmlFor="tel">固定电话</label>
-                            <input type="text" className="row-input" ref="tel"/>
-                            <span className="err-tips">{this.state.telTips}</span>
+                            <label htmlFor="tel">联系方式</label>
+                            <input type="text" className="row-input" ref="phoneNumber"/>
+                            <span className="err-tips">{this.state.phoneNumberTips}</span>
                         </div>
                         <div className="form-group inline row-group">
                             <label htmlFor="email">邮箱</label>

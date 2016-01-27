@@ -11,15 +11,22 @@
 
   padding-left: 50px;
   padding-right: 50px;
+  padding-bottom: 20px;
+  color: #4c4c4c;
   .title{
     text-align: center;
+    margin-top: 20px;
+
   }
 
   .comment-form-group{
-    margin-top: 20px;
 
     .inline{
       vertical-align: middle;
+    }
+
+    &.score-group{
+      margin-top: 40px;
     }
   }
 
@@ -27,11 +34,14 @@
     display: block;
     resize: none;
     width: 478px;
-    height: 98px;
+    height: 78px;
     border: 1px solid #ccc;
     padding: 10px;
     outline: none;
     margin-top: 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #4c4c4c;
   }
 
   .btn-group{
@@ -45,6 +55,13 @@
       border-radius: 3px;
       background-color: #FFFFFF;
       color: #808080;
+      font-size: 14px;
+
+      &:hover{
+        background-color: #0af;
+        color: #fff;
+        border-color: #0af;
+      }
     }
 
     .submit{

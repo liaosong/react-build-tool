@@ -16,17 +16,17 @@ class Wizard extends React.Component{
         return (
             <div className="wizard-container">
                 <ul className="apply-wizard cleanfix">
-                    <li className={classNames('step', {'active': step == 1})}>
+                    <li className={classNames('step', {'active': step == 1, 'node-complete': step > 1})}>
                         <div className={classNames('step-number', {'complete': step > 1})}>{step > 1 ? '': 1}</div>
                         <div className="step-name">验证身份</div>
                     </li>
                     <li className="line"></li>
-                    <li className={classNames('step', {'active': step == 2})}>
+                    <li className={classNames('step', {'active': step == 2, 'node-complete': step > 2})}>
                         <div className={classNames('step-number', {'complete': step > 2})}>{step > 2 ? '': 2}</div>
                         <div className="step-name">重置密码</div>
                     </li>
                     <li className="line"></li>
-                    <li className={classNames('step', {'active': step == 3})}>
+                    <li className={classNames('step', {'active': step == 3, 'node-complete': step > 3})}>
                         <div className={classNames('step-number', {'complete': step > 3})}>{step > 3 ? '': 3}</div>
                         <div className="step-name">完成</div>
                     </li>
@@ -270,7 +270,7 @@ class Step2 extends Component{
                         <div className="error-tips">{this.state.passwordRepTips}</div>
                     </div>
 
-                    <button type="submit" className="g-btn-primary">下一步</button>
+                    <button type="submit" className="g-btn-primary">提 交</button>
                 </form>
             </div>
         );
