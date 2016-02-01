@@ -17,7 +17,6 @@
     display: inline-block;
     line-height: 60px;
     margin-left: 10px;
-    font-size: 16px;
     color: #4c4c4c;
   }
   .right-side{
@@ -72,9 +71,20 @@
     background-color: #edefed;
     padding-left: 20px;
 
+    .to-right{
+      display: inline-block;
+      text-align: right;
+      width: 400px;
+
+      .show{
+        font-size: 14px;
+        color: #0af;
+      }
+
+    }
+
     .info-index{
       display: inline-block;
-
 
       a{
         display: block;

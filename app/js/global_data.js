@@ -33,6 +33,7 @@ var cities = [
     '不限','北京','上海','广州','深圳','天津','杭州','南京','武汉','重庆','成都','西安'
 ];
 
+
 var cityObjArray = [
     {value:'', label: '不限'},
     {value:'北京', label: '北京'},
@@ -47,9 +48,15 @@ var cityObjArray = [
     {value:'成都', label: '成都'},
     {value:'西安', label: '西安'}];
 
+
+
 var pageSize = 10;
 
+const COMPANY_DEFAULT_LOGO = 'images/company-logo.png';
+const COMPANY_DEFAULT_WEB_IMG = 'images/web-company-img.png';
+const COMPANY_DEFAULT_BANNER = 'images/banner-normal.png';
 
 
 
-export {service_types, cities, pageSize, cityObjArray, service_types_filter}
+
+export {service_types, cities, pageSize, cityObjArray, service_types_filter, COMPANY_DEFAULT_LOGO, COMPANY_DEFAULT_WEB_IMG, COMPANY_DEFAULT_BANNER}

@@ -7,6 +7,9 @@ import { Link, IndexLink} from 'react-router';
 class Management extends Component{
 
     render(){
+        var companyUrl;
+        var {company} = this.props;
+        companyUrl = `/companies/${company._id}}`;
         return (
             <div className="w-800 module-container">
                 <ul className="info-indexs">
@@ -19,6 +22,9 @@ class Management extends Component{
                     <li className="info-index">
                         <Link to="/management/services" activeClassName="active">服务或产品</Link>
                     </li>
+                    <li className="to-right">
+                        <a href={companyUrl} className="show" target="_blank">预览</a>
+                    </li>
                 </ul>
                 <div className="info-content">
                     {this.props.children}
@@ -28,8 +34,10 @@ class Management extends Component{
     }
 }
 
-function mapStateToProps(state){
-    return state;
+function mapStateToProps({companyHome}){
+    return {
+        company: companyHome.company
+    };
 }
 export default connect(mapStateToProps, {
     pushState: pushState

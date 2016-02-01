@@ -104,7 +104,7 @@ $x-value-color: #333333;
 
       }
 
-      &:focus, &:visited{
+      &:active, &:visited{
         background-color: #08c;
         border-color: #08c;
       }

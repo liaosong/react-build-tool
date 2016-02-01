@@ -324,9 +324,9 @@ class Index extends React.Component {
                 <header className="cleanfix">
                     <Header></Header>
 
-                    <h1 className="title-welcome">系统公测中</h1>
+                    <h1 className="title-welcome">服务商招募中</h1>
 
-                    <p className="site-title">欢迎使用神州会展！元月1日至31日系统公测中，2月1日正式上线，敬请期待！！！</p>
+                    <p className="site-title">神州会展服务平台已上线，先计划招募首批200家有着会展服务商，期待您的加入！</p>
 
                     <div className="header-bottom">
                         <div className="w-1000 s-center">

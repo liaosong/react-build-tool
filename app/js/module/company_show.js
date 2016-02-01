@@ -10,6 +10,8 @@ import moment from 'moment';
 import {CaseShow} from './case_show';
 import classNames from 'classnames';
 
+import {COMPANY_DEFAULT_LOGO, COMPANY_DEFAULT_BANNER} from '../global_data';
+
 const casePageSize = 6;
 const quotationPageSize = 8;
 const commentPageSize = 10;
@@ -364,9 +366,14 @@ class CompanyShow extends React.Component{
         description = description.split(/\n/).map((item, index) => {
             return <p key={index}>{item}</p>
         });
+        var logoUrl, webImgUrl;
+        logoUrl = company.company_logo || COMPANY_DEFAULT_LOGO;
+        webImgUrl = company.web_company_img || COMPANY_DEFAULT_BANNER;
         var companyImgStyle = {
-            backgroundImage: `url(/${company.web_company_img})`
+            backgroundImage: `url(/${webImgUrl})`
         };
+
+
         return (
             <div className="container">
                 <Header></Header>
@@ -376,7 +383,7 @@ class CompanyShow extends React.Component{
                         <div className="company-info w-1000 s-center inline-container">
                             <div className="left-side inline">
                                 <div className="company-logo inline">
-                                    <img src={'/' + company.company_logo} alt="" className="logo"/>
+                                    <img src={'/' + logoUrl} alt="" className="logo"/>
                                 </div>
                                 <div className="name-and-service inline">
                                     <div className="name">{company.name}</div>

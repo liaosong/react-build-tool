@@ -16,6 +16,11 @@
       text-align: center;
       border-radius: 3px;
       border: 1px solid #cccccc;
+
+      &:hover{
+        border-color: #0af;
+        color: #0af;
+      }
     }
 
 
@@ -48,10 +53,52 @@
     background-position: 50% 50%;
     background-repeat: no-repeat;
   }
+  .previous{
+    &.disabled{
+      a:hover{
+        border-color: #cccccc;
+      }
+    }
+
+    &:hover{
+      .previous-icon{
+        background-image: url(../images/previous_hover_icon.png);
+
+      }
+    }
+
+    a:hover{
+      border-color: #0af;
+
+    }
+
+  }
+  .next{
+
+    &:hover{
+      .next-icon{
+        background-image: url(../images/next_hover_icon.png);
+
+      }
+    }
+    &.disabled{
+      a:hover{
+        border-color: #cccccc;
+      }
+    }
+
+    a:hover{
+      border-color: #0af;
+    }
+
+  }
+
+
+
+
 
   .next-icon{
     background-image: url(../images/next_normal_icon.png);
-
   }
   .previous-icon{
     background-image: url(../images/previous_normal_icon.png);
@@ -61,13 +108,14 @@
 
     a{
       cursor: default;
+
     }
     .next-icon{
-      background-image: url(../images/next_disable_icon.png);
+      background-image: url(../images/next_disable_icon.png) !important;
 
     }
     .previous-icon{
-      background-image: url(../images/prervious_disable_icon.png);
+      background-image: url(../images/prervious_disable_icon.png) !important;
     }
   }
 

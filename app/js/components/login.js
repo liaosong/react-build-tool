@@ -24,11 +24,30 @@ class Login extends React.Component{
                 },
                 overlay:{
                     backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                    overflowY: 'scroll',
+                    width: '100%',
+                    height: '100%',
                 }
             }
         };
 
 
+    }
+
+    componentWillReceiveProps(nextProps){
+        let {dialogOpen} = nextProps;
+
+        this.toggleClass2body(dialogOpen);
+    }
+
+    toggleClass2body(open){
+        var className = document.body.className;
+        var classStr = 'modal-open';
+        if(open){
+            document.body.className = className.replace(new RegExp(classStr), '') + ' ' + classStr;
+        }else{
+            document.body.className = className.replace(new RegExp(classStr), '');
+        }
     }
 
 

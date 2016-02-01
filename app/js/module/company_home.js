@@ -32,6 +32,7 @@ class CompanyHome extends React.Component {
                 <div className="w-1000 s-center company-home-container">
                     <ul className="index-container inline">
                         {links}
+
                     </ul>
                     <div className="content-container inline">
                         {this.props.children}

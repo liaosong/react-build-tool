@@ -8,7 +8,7 @@ import Upload from '../../../components/upload';
 import CheckBoxGroup from '../../../components/checkbox_group';
 
 import {updateCompany} from '../../../actions/company_actions';
-import {service_types} from '../../../global_data';
+import {service_types, COMPANY_DEFAULT_LOGO, COMPANY_DEFAULT_WEB_IMG} from '../../../global_data';
 
 function updateView(){
     return dispatch =>{
@@ -140,20 +140,24 @@ class CompanyInfo extends Component{
         description = description.split(/\n/).map((item, index) => {
             return <p key={index}>{item}</p>
         });
+
+        var logoUrl, webImgUrl;
+        logoUrl = company.company_logo || COMPANY_DEFAULT_LOGO;
+        webImgUrl = company.web_company_img || COMPANY_DEFAULT_WEB_IMG;
         return (
             <div className="company-info-container show-info">
                 <div className="x-form">
                     <div className="c-row">
                         <div className="c-label">公司Logo</div>
                         <div className="c-value">
-                            <img src={'/' + company.company_logo} alt="" className="company-logo" ref="test"/>
+                            <img src={'/' + logoUrl} alt="" className="company-logo" ref="test"/>
                         </div>
                     </div>
 
                     <div className="c-row">
                         <div className="c-label">公司宣传图</div>
                         <div className="c-value">
-                            <img src={'/' + company.web_company_img} alt="" className="company-img"/>
+                            <img src={'/' + webImgUrl} alt="" className="company-img"/>
                         </div>
                     </div>
                     <div className="c-row">

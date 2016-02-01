@@ -10,6 +10,16 @@ class Publish extends React.Component{
         }
     }
 
+    toggleClass2body(open){
+        var className = document.body.className;
+        var classStr = 'modal-open';
+        if(open){
+            document.body.className = className.replace(new RegExp(classStr), '') + ' ' + classStr;
+        }else{
+            document.body.className = className.replace(new RegExp(classStr), '');
+        }
+    }
+
 
     onCreateTender(){
         var {currentUser, dispatch} = this.props;
@@ -56,6 +66,11 @@ class Publish extends React.Component{
 
 
     render(){
+        if(this.state.errorDialogOpen || this.state.tenderDialogOpen){
+            this.toggleClass2body(true);
+        }else{
+            this.toggleClass2body(false);
+        }
         var dialogStyle = {
             content:{
                 width: '600px',
@@ -64,10 +79,14 @@ class Publish extends React.Component{
                 left: "calc(50% - 300px)",
                 border: 'none',
                 borderRadius: 'none',
-                boxShadow: '0px 1px 5px rgba(0,0,0,.3)'
+                boxShadow: '0px 1px 5px rgba(0,0,0,.3)',
+
             },
             overlay:{
-                backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                overflowY: 'scroll',
+                width: '100%',
+                height: '100%',
             }
         }
 
@@ -82,7 +101,10 @@ class Publish extends React.Component{
                 boxShadow: '0px 1px 5px rgba(0,0,0,.3)'
             },
             overlay:{
-                backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                overflowY: 'scroll',
+                width: '100%',
+                height: '100%',
             }
         }
 

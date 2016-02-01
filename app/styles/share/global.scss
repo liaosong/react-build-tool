@@ -1,3 +1,5 @@
+$site-font-family: "Microsoft YaHei", "微软雅黑", helvetica, arial, verdana, tahoma, sans-serif;
+
 body{
   margin: 0;
   padding: 0;
@@ -10,6 +12,22 @@ body{
 
 input, button{
   font-family: "Microsoft YaHei", "微软雅黑", helvetica, arial, verdana, tahoma, sans-serif !important;
+}
+
+input::-webkit-input-placeholder {
+  font-family: $site-font-family;
+}
+
+input:-ms-input-placeholder {
+  font-family: $site-font-family;
+}
+
+input:-moz-placeholder {
+  font-family: $site-font-family;
+}
+
+input::-moz-placeholder {
+  font-family: $site-font-family;
 }
 ul{
   margin: 0;
@@ -167,7 +185,7 @@ li{
 
   }
 
-  &:focus, &:visited{
+  &:active, &:visited{
     background-color: #08c;
     border-color: #08c;
   }
