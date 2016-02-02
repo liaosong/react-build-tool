@@ -34,9 +34,9 @@
       <div class="w-1000 s-center">
         <div class="search-and-tool">
           <div class="inline">
-            <input class="search-input" placeholder="您需要什么服务?"/>
+            <input class="search-input" placeholder="您需要什么服务?" id="searchText"/>
             <div class="city-selecter inline">
-              <input type="text" value="不限" readOnly class="value"/>
+              <input type="text" value="不限" readOnly class="value" id="cityVal"/>
               <ul class="city-container cleanfix">
                 <li class="selected">成都</li>
                 <li>北京</li>
@@ -44,7 +44,7 @@
               </ul>
               <div class="arrow"></div>
             </div>
-            <button class="search-button g-blue-button">搜索</button>
+            <button class="search-button g-blue-button" id="search">搜索</button>
           </div>
           <span class="text-split">或者</span>
 
@@ -115,6 +115,9 @@
       </div>
     </div>
   </footer>
+  <div id="dialog" title="Basic dialog">
+    <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+  </div>
 
 </div>
 <script src="/js/index.js">
