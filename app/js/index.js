@@ -1,10 +1,11 @@
 import $ from 'jquery';
 
 import citySelecter from '../js/components/jquery_city_selecter';
-
-import dialog from 'jquery-ui/dialog';
+import Login from '../js/components/jquery_login';
+import Modal from '../js/components/jquery.dialog';
 
 $.fn.citySelecter = citySelecter;
+$.fn.modal = Modal;
 
 $(function(){
     $(".city-selecter").citySelecter();
@@ -15,5 +16,8 @@ $(function(){
         location.href = encodeURI(`/search?q=${inputVal || ''}&city=${cityVal || ''}`);
     });
 
-    $("#dialog").dialog({modal: true});
+
+    $("#loginButton").click(function(e){
+        Login($("#loginDialog"));
+    })
 });

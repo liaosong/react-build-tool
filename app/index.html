@@ -19,7 +19,7 @@
       <ul class="right-side">
         <li><a href="/company/register"><button class="apply-btn">成为服务商</button></a></li>
         <li class="block-item"><a href="/user/register">注册</a></li>
-        <li class="block-item">
+        <li class="block-item" id="loginButton">
           <a href="javascript:;">登录</a>
         </li>
       </ul>
@@ -115,8 +115,25 @@
       </div>
     </div>
   </footer>
-  <div id="dialog" title="Basic dialog">
-    <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+  <div id="loginDialog">
+    <div class="login-container">
+      <div class="logo"></div>
+      <p class="login-error"></p>
+      <form method="POST" id="loginForm">
+        <input id="phoneNumber" type="text" class="phone-number" placeholder="手机号码"/>
+        <div class="tips"></div>
+        <input id="password" type="password" class="password" placeholder="密码"/>
+        <div class="tips"></div>
+        <a href="/user/forget_password" class="reset-password">忘记密码？</a>
+
+        <button type="submit">登 录</button>
+      </form>
+      <hr/>
+      <div class="reg-ref">
+        <span>还没有账号？</span>
+        <a href="/user/register">注册</a>
+      </div>
+    </div>
   </div>
 
 </div>
