@@ -326,7 +326,7 @@ class Index extends React.Component {
 
                     <h1 className="title-welcome">服务商招募中</h1>
 
-                    <p className="site-title">神州会展服务平台已上线，先计划招募首批200家有着会展服务商，期待您的加入！</p>
+                    <p className="site-title">神州会展服务平台已上线，现计划招募首批200家优质会展服务商，期待您的加入！</p>
 
                     <div className="header-bottom">
                         <div className="w-1000 s-center">
