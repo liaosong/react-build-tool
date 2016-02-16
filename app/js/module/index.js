@@ -77,7 +77,7 @@ class HireCompany extends React.Component {
 
                 <div className="company-info">
                     <div className="company-name" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
-                    <div className="company-cases">{quotations.join(' ')}</div>
+                    <div className="company-cases overflow-ellipsis">{quotations.join(' ')}</div>
                 </div>
             </div>
         );
