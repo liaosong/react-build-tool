@@ -16,19 +16,17 @@
   <header class="cleanfix">
     <div class="header-top">
       <div class="s-logo" onClick={this.goHome.bind(this)} ></div>
-      <ul class="right-side">
-        <li><a href="/company/register"><button class="apply-btn">成为服务商</button></a></li>
-        <li class="block-item"><a href="/user/register">注册</a></li>
-        <li class="block-item" id="loginButton">
-          <a href="javascript:;">登录</a>
-        </li>
-      </ul>
+      <% if(user){%>
+      <%- include components/header-authed.html %>
+      <%}else{%>
+      <%- include components/header-unauth.html %>
+      <%}%>
 
     </div>
 
-    <h1 class="title-welcome">系统公测中</h1>
+    <h1 class="title-welcome">服务商招募中</h1>
 
-    <p class="site-title">欢迎使用神州会展！元月1日至31日系统公测中，2月1日正式上线，敬请期待！！！</p>
+    <p class="site-title">神州会展服务平台已上线，现计划招募首批200家优质会展服务商，期待您的加入！</p>
 
     <div class="header-bottom">
       <div class="w-1000 s-center">
@@ -48,7 +46,7 @@
           </div>
           <span class="text-split">或者</span>
 
-          <button class="publish-button g-blue-button">发布需求</button>
+          <button class="publish-button g-blue-button" id="publish">发布需求</button>
         </div>
         <div class="hot-word-tool">
           <div class="tool-title inline">热门搜索：</div>
@@ -118,12 +116,12 @@
   <div id="loginDialog">
     <div class="login-container">
       <div class="logo"></div>
-      <p class="login-error"></p>
-      <form method="POST" id="loginForm">
+      <p class="login-error" id="loginTips"></p>
+      <form id="loginForm">
         <input id="phoneNumber" type="text" class="phone-number" placeholder="手机号码"/>
-        <div class="tips"></div>
+        <div class="tips" id="phoneTips"></div>
         <input id="password" type="password" class="password" placeholder="密码"/>
-        <div class="tips"></div>
+        <div class="tips" id="passwordTips"></div>
         <a href="/user/forget_password" class="reset-password">忘记密码？</a>
 
         <button type="submit">登 录</button>
@@ -135,6 +133,7 @@
       </div>
     </div>
   </div>
+  <%- include components/publish-dialog.html %>
 
 </div>
 <script src="/js/index.js">

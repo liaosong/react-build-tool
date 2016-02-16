@@ -20,4 +20,14 @@ $(function(){
     $("#loginButton").click(function(e){
         Login($("#loginDialog"));
     })
+
+    $("#publish").click(function(e){
+        var isLogin = $("#authedPhone").length > 0 ? true: false;
+        if(isLogin){
+            $("#publishDialog").modal({width: 600}).open();
+        }else{
+            Login($("#loginDialog"));
+        }
+    })
+
 });

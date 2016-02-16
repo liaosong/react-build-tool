@@ -201,7 +201,7 @@ gulp.task('express', function(){
 
   router.get('/', function(req, res){
     var user = {"_id":"55e450bfa02797ea0448b183","tel":"xxx","contact_way":"xxx","contact":"xxx","company_name":"xxx","status":"normal","volume":0,"created_at":"2015-08-31T13:03:59.153Z","phone_number":"17131338013","username":"","avatar":"","email":"xxxx","name":"流浪的鱼"};
-    res.render('index',{user: undefined});
+    res.render('index',{user: user});
   });
 
   router.all('/user_home/*', function(req, res){
