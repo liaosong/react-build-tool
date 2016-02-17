@@ -15,7 +15,7 @@
 <div class="container">
   <header class="cleanfix">
     <div class="header-top">
-      <div class="s-logo" onClick={this.goHome.bind(this)} ></div>
+      <a class="block s-logo" href="/"></a>
       <% if(user){%>
       <%- include components/header-authed.html %>
       <%}else{%>
@@ -133,7 +133,11 @@
       </div>
     </div>
   </div>
+  <%if(user && user.u_type == "user"){%>
   <%- include components/publish-dialog.html %>
+  <%}else if(user){%>
+  <%- include components/publish-tips.html %>
+  <%}%>
 
 </div>
 <script src="/js/index.js">

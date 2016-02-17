@@ -23,11 +23,25 @@ $(function(){
 
     $("#publish").click(function(e){
         var isLogin = $("#authedPhone").length > 0 ? true: false;
+        var publishDialog = $("#publishDialog");
         if(isLogin){
-            $("#publishDialog").modal({width: 600}).open();
+            if(publishDialog.hasClass("tender-type-container")){
+                publishDialog.modal({width: 600, height: 400}).open();
+            }else{
+                publishDialog.modal({width: 600, height: 240}).open();
+            }
         }else{
             Login($("#loginDialog"));
         }
+
+        var closeEle = $("#publishDialog").find(".close");
+        if(closeEle){
+            closeEle.click(function(e){
+                $("#publishDialog").modal({width: 600, height: 400}).close();
+            });
+        }
     })
+
+
 
 });
