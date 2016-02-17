@@ -17,8 +17,8 @@ class Footer extends React.Component {
         <div className={classNames("f-about-us")}>
           <div className={classNames("concat-us", "inline-flow")}>
             <h3>我们期待您的声音</h3>
-            <p>客户服务电话：15928124305</p>
-            <p>客户服务邮箱：szhz86@163.com</p>
+            <p>客户服务电话：028-86939655</p>
+            <p>客户服务邮箱：support@szhz86.com</p>
           </div>
           <div className={classNames("company-info", "inline-flow")}>
             <h3>成都快乐马儿网络科技有限公司</h3>
