@@ -34,6 +34,7 @@
   height: 40px;
   padding-bottom: 30px;
   color: #333333;
+  font-size: 0;
 
   input{
     height: 36px;
@@ -92,6 +93,7 @@
 .filter-group {
   border-top: 1px solid #f4f4f4;
   line-height: 54px;
+  font-size: 0;
   
   .filter-title{
     display: inline-block;
@@ -110,6 +112,7 @@
       color: #4c4c4c;
       padding: 0px 10px;
       margin-left: 5px;
+      font-size: 14px;
       
       &:hover, &.active{
         color: #fff;
@@ -155,13 +158,17 @@
     margin-top: 3px;
     background-color: #fff;
     padding: 25px 20px;
+    font-size: 0;
+
     .company-name{
-      font-size: 20px;
-      color: #0af;
+      font-size: 0;
 
       .name{
         width: 934px;
         cursor: pointer;
+        font-size: 20px;
+        color: #0af;
+
       }
       .collect{
         cursor: pointer;
@@ -188,12 +195,11 @@
 
     .company-body{
       margin-top: 25px;
-
     }
     .info{
       width: 804px;
       border-right: 1px solid #f4f4f4;
-
+      font-size: 14px;
     }
     .action{
       width: 155px;
@@ -263,4 +269,11 @@
 
   }
 
+}
+
+#loginDialog{
+  display: none;
+}
+#publishDialog{
+  display: none;
 }

@@ -9,12 +9,148 @@
   <script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
 
   <link rel="stylesheet" type="text/css" href="styles/list.css">
-  <script>
-    window.INIT_DATA = <%-JSON.stringify(initData)%>
-  </script>
+
 </head>
 <body>
-<div id="container"></div>
+<div class="container">
+  <div class="header-top">
+    <a class="block s-logo" href="/"></a>
+    <% if(user){%>
+    <%- include components/header-authed.html %>
+    <%}else{%>
+    <%- include components/header-unauth.html %>
+    <%}%>
+
+  </div>
+  <div class="search-container">
+    <div class="search-bar w-1000 s-center">
+      <div class="search-and-tool">
+        <div class="inline">
+          <input class="search-input" placeholder="您需要什么服务?" id="searchText"/>
+          <button class="search-button g-blue-button" id="search">搜索</button>
+        </div>
+        <span class="text-split">或者</span>
+        <button class="publish-button g-blue-button" id="publish">发布需求</button>
+      </div>
+      <div class="filter-group citys">
+        <div class="filter-title inline">服务城市：</div>
+        <div class="filter-container">
+          <%cities.forEach(function(city){%>
+          <a class="filter-item"><%=city%></a>
+          <%})%>
+        </div>
+      </div>
+      <div class="filter-group types">
+        <div class="filter-title inline">服务类型：</div>
+        <div class="filter-container">
+          <%cities.forEach(function(city){%>
+          <a class="filter-item"><%=city%></a>
+          <%})%>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="list-container w-1000 s-center mb-70">
+    <div class="search-result-num">全部结果（{count}）</div>
+    <div class="companies-list">
+      <div class="companies-item")}>
+        <div class="company-name">
+          <div class="name inline" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
+          <div class="inline collect" onClick={this.beforeEnshrined.bind(this, company)}></div>
+
+        </div>
+        <div class="company-body ">
+          <div class="info left-side inline">
+            <div class="company-description">
+              {description || '介绍无'}
+            </div>
+            <div class="service-row">
+              <div class="item-title inline">服务项目：</div>
+              <div class="item-container inline">
+
+                {services}
+              </div>
+            </div>
+            <div class="concat-and-case-row">
+              <div class="concat-container inline">
+                <div class="inline title">联系方式：</div>
+                <div class="inline inline-value">{company.phone_number}</div>
+              </div>
+              <div class="case-container inline">
+                <div class="inline title">成功案例：</div>
+                <div class="inline inline-value cases-num">{this.state.caseNum}</div>
+              </div>
+            </div>
+          </div>
+          <div class="right-side action inline">
+            <button class="g-btn-primary" onClick={this.showCompany.bind(this, company)}>查看详情</button>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+    <Pagination pageNum={pageNum} className="company-pagination" clickCallback={this.loadPage.bind(this)} initialSelected={initialSelected}></Pagination>
+
+  </div>
+
+  <footer>
+    <div class="f-service-container">
+      <a class="service-item" href="/about">关于我们</a>
+      <a class="service-item" href="/statement">服务条款</a>
+      <a class="service-item" href="/privacy">隐私政策</a>
+      <a class="service-item" href="">常见问题</a>
+    </div>
+    <div class="f-about-us">
+      <div class="concat-us inline-flow">
+        <h3>我们期待您的声音</h3>
+        <p>客户服务电话：15928124305</p>
+        <p>客户服务邮箱：szhz86@163.com</p>
+      </div>
+      <div class="company-info inline-flow">
+        <h3>成都快乐马儿网络科技有限公司</h3>
+        <p>Copyright©2015 Happy Horse Team All Right Reserved</p>
+        <p>蜀ICP备15026503号-1</p>
+      </div>
+      <div class="wechat-fllow inline-flow">
+        <h3>请关注我们</h3>
+        <img src="/images/wechat.png"/>
+
+      </div>
+    </div>
+  </footer>
+
+  <div id="loginDialog">
+    <div class="login-container">
+      <div class="logo"></div>
+      <p class="login-error" id="loginTips"></p>
+      <form id="loginForm">
+        <input id="phoneNumber" type="text" class="phone-number" placeholder="手机号码"/>
+        <div class="tips" id="phoneTips"></div>
+        <input id="password" type="password" class="password" placeholder="密码"/>
+        <div class="tips" id="passwordTips"></div>
+        <a href="/user/forget_password" class="reset-password">忘记密码？</a>
+
+        <button type="submit">登 录</button>
+      </form>
+      <hr/>
+      <div class="reg-ref">
+        <span>还没有账号？</span>
+        <a href="/user/register">注册</a>
+      </div>
+    </div>
+  </div>
+  <%if(user && user.u_type == "user"){%>
+  <%- include components/publish-dialog.html %>
+  <%}else if(user){%>
+  <%- include components/publish-tips.html %>
+  <%}%>
+
+</div>
 <script type="text/javascript" src="js/company_list.js"></script>
 </body>
 

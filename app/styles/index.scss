@@ -219,6 +219,7 @@ header{
 
 .company-list{
   margin-top: 10px;
+  font-size: 0;
 
 
   .company-item{
@@ -320,4 +321,14 @@ header{
 
 }
 
+.ui-dialog-titlebar{
+  display: none;
+}
+
+#loginDialog{
+  display: none;
+}
+#publishDialog{
+  display: none;
+}
 

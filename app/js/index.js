@@ -1,33 +1,47 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import thunk from 'redux-thunk';
-import { compose, createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import IndexReducers from './reducers/index';
-import Index from './module/index';
-import { devTools, persistState } from 'redux-devtools';
+import $ from 'jquery';
 
-//let store = createStore(IndexReducers);
-const finalCreateStore = compose(
-    // Enables your middleware:
-    applyMiddleware(thunk), // any Redux middleware, e.g. redux-thunk
-    // Provides support for DevTools:
-    devTools()
-    // Lets you write ?debug_session=<name> in address bar to persist debug sessions
-    //persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
-)(createStore);
+import citySelecter from '../js/components/jquery_city_selecter';
+import Login from '../js/components/jquery_login';
+import Modal from '../js/components/jquery.dialog';
 
-const store = finalCreateStore(IndexReducers);
+$.fn.citySelecter = citySelecter;
+$.fn.modal = Modal;
 
-var currentUser = undefined;
+$(function(){
+    $(".city-selecter").citySelecter();
 
-if(window.CURRENT_USER) {
-    currentUser = window.CURRENT_USER;
-}
-let rootElement = document.getElementById('container');
-ReactDom.render(
-    <Provider store={store} >
-      <Index initUser={currentUser}/>
-    </Provider>,
-    rootElement
-);
+    $("#search").click(function(e){
+        var inputVal = $("#searchText").val();
+        var cityVal = $("#cityVal").val();
+        location.href = encodeURI(`/search?q=${inputVal || ''}&city=${cityVal || ''}`);
+    });
+
+
+    $("#loginButton").click(function(e){
+        Login($("#loginDialog"));
+    })
+
+    $("#publish").click(function(e){
+        var isLogin = $("#authedPhone").length > 0 ? true: false;
+        var publishDialog = $("#publishDialog");
+        if(isLogin){
+            if(publishDialog.hasClass("tender-type-container")){
+                publishDialog.modal({width: 600, height: 400}).open();
+            }else{
+                publishDialog.modal({width: 600, height: 240}).open();
+            }
+        }else{
+            Login($("#loginDialog"));
+        }
+
+        var closeEle = $("#publishDialog").find(".close");
+        if(closeEle){
+            closeEle.click(function(e){
+                $("#publishDialog").modal({width: 600, height: 400}).close();
+            });
+        }
+    })
+
+
+
+});
