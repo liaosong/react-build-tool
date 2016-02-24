@@ -13,6 +13,7 @@ $(function(){
     $("#search").click(function(e){
         var inputVal = $("#searchText").val();
         var cityVal = $("#cityVal").val();
+        cityVal = cityVal == '不限' ? '': cityVal;
         location.href = encodeURI(`/search?q=${inputVal || ''}&city=${cityVal || ''}`);
     });
 

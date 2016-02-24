@@ -15,8 +15,8 @@ $.fn.citySelecter = citySelecter;
 $.fn.modal = Modal;
 
 
-const CASE_PAGE_SIZE = 6;
-const QUOTATION_SIZE = 8;
+const CASE_PAGE_SIZE = 1;
+const QUOTATION_SIZE = 1;
 const COMMENT_SIZE = 10;
 
 
@@ -56,7 +56,7 @@ class CaseContainer extends Component{
         super(props);
         this.state = {
             caseShowOpen: false,
-            selectCase: {},
+            selectCase: null,
             cases: this.props.cases || []
         }
     }
@@ -229,7 +229,25 @@ class CommentContainer extends Component{
 
     }
     loadMoreComment(){
+        var {companyId, commentsCount} = this.props;
+        if(this.state.comments.length >= commentsCount){
+            return;
+        }
+        var page = Math.floor(this.state.comments.length/COMMENT_SIZE) + 1;
+        request.get(`/api/companies/${companyId}/comments?page_size=${COMMENT_SIZE}&page=${page}`)
+            .end((err, res) => {
+                if(err){
+                    return console.log(err);
+                }
 
+                if(res.body.status == 0){
+                    this.setState({
+                        comments: this.state.comments.concat(res.body.data)
+                    });
+                }else{
+                    console.log(res.body.message);
+                }
+            });
     }
     hideCommentAdd(){
         this.setState({
