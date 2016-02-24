@@ -1,33 +1,97 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import thunk from 'redux-thunk';
-import { compose, createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import ListReducers from './reducers/list';
-import SearchList from './module/search_list';
-import { devTools, persistState } from 'redux-devtools';
+import $ from 'jquery';
 
-//let store = createStore(IndexReducers);
-const finalCreateStore = compose(
-    // Enables your middleware:
-    applyMiddleware(thunk), // any Redux middleware, e.g. redux-thunk
-    // Provides support for DevTools:
-    devTools()
-    // Lets you write ?debug_session=<name> in address bar to persist debug sessions
-    //persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
-)(createStore);
+import Login from '../js/components/jquery_login';
+import request from 'superagent';
 
-const store = finalCreateStore(ListReducers);
+function enshrines(companyId, cb){
+    request.post("/api/client/enshrines").send({company: companyId})
+        .end((err, res) => {
+            if(err){
+                return console.log(err);
+            }
 
-var initData = {};
+            if(res.body.status == 0){
+                cb();
+            }else{
+                console.log(res.body.message);
+            }
+        });
 
-if(window.INIT_DATA) {
-    initData = window.INIT_DATA;
 }
-let rootElement = document.getElementById('container');
-ReactDom.render(
-    <Provider store={store} >
-      <SearchList initData={initData}/>
-    </Provider>,
-    rootElement
-);
+function unEnshrines(companyId, cb){
+    request.del('/api/client/enshrines/cancel')
+        .send({company: companyId})
+        .end((err, res) => {
+            if(err){
+                return console.log(err);
+            }
+
+            if(res.body.status == 0){
+                cb();
+            }else{
+                console.log(res.body.message);
+            }
+        });
+}
+
+$(function(){
+
+    $("#search").click(function(e){
+        var inputVal = $("#searchText").val();
+        var cityVal = $("#cityVal").val();
+        location.href = encodeURI(`/search?q=${inputVal || ''}&city=${cityVal || ''}`);
+    });
+
+
+    $("#loginButton").click(function(e){
+        Login($("#loginDialog"));
+    })
+
+    $(".c-enshrine").click(function(e){
+        var self = $(this);
+        var isLogin = $("#authedPhone").length > 0 ? true: false;
+        if(isLogin){
+            var companyId = $(e.target).prev().attr('href').split('/')[2];
+            if(self.hasClass('collected')){
+                //已被收藏, 取消收藏
+                unEnshrines(companyId, function(){
+                    self.removeClass('collected');
+                    self.addClass('collect');
+                });
+            }else{
+                //未被收藏，收藏
+                enshrines(companyId, function(){
+                    self.removeClass('collect');
+                    self.addClass('collected');
+                });
+            }
+
+        }else{
+            Login($("#loginDialog"));
+        }
+    });
+
+    $("#publish").click(function(e){
+        var isLogin = $("#authedPhone").length > 0 ? true: false;
+        var publishDialog = $("#publishDialog");
+        if(isLogin){
+            if(publishDialog.hasClass("tender-type-container")){
+                publishDialog.modal({width: 600, height: 400}).open();
+            }else{
+                publishDialog.modal({width: 600, height: 240}).open();
+            }
+        }else{
+            Login($("#loginDialog"));
+        }
+
+        var closeEle = $("#publishDialog").find(".close");
+        if(closeEle){
+            closeEle.click(function(e){
+                $("#publishDialog").modal({width: 600, height: 400}).close();
+            });
+        }
+    })
+
+
+
+});
