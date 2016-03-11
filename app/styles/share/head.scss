@@ -3,6 +3,7 @@ $header_top_height: 60px;
 .header-top{
   height: $header_top_height;
   border-bottom: 1px solid #e6e6e6;
+  min-width: 1000px;
 
   .s-logo{
     background-image: url(../images/logo.png);

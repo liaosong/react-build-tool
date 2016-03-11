@@ -95,6 +95,7 @@ li{
 .white-bg{
   background-color: #fff;
 }
+
 .ml-10{
   margin-left: 10px;
 }
@@ -109,6 +110,9 @@ li{
 }
 .ml-20{
   margin-left: 20px;
+}
+.mt-20{
+  margin-top: 20px;
 }
 .mt-15{
   margin-top: 15px;
@@ -280,4 +284,19 @@ p{
 }
 .ui-dialog-titlebar{
   display: none;
+}
+
+
+.x-row:after{
+  visibility: hidden;
+  display: block;
+  content: ".";
+  clear: both;
+  height: 0px;
+}
+.x-row{
+
+  .row-item{
+    float: left;
+  }
 }

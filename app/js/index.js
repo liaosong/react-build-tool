@@ -8,7 +8,7 @@ $.fn.citySelecter = citySelecter;
 $.fn.modal = Modal;
 
 $(function(){
-    $(".city-selecter").citySelecter();
+    var citySelecterObj = $(".city-selecter").citySelecter();
 
     $("#search").click(function(e){
         var inputVal = $("#searchText").val();
@@ -43,6 +43,7 @@ $(function(){
         }
     })
 
+    $('body').click(citySelecterObj.hidden);
 
 
 });

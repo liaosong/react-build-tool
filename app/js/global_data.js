@@ -1,33 +1,31 @@
 
 
 var service_types = [
-    {value:'场地搭建', label:'场地搭建'},
+    {value:'设计搭建', label:'设计搭建'},
+    {value:'展览工厂', label:'展览工厂'},
     {value:'公关策划', label:'公关策划'},
-    {value:'展位设计', label:'展位设计'},
-    {value:'设备租赁', label:'设备租赁'},
     {value:'篷房展具租赁', label:'篷房展具租赁'},
-    {value:'礼仪模特', label:'礼仪模特'},
+    {value:'AV设备租赁', label:'AV设备租赁'},
+    {value:'物流仓储', label:'物流仓储'},
     {value:'摄影摄像', label:'摄影摄像'},
-    {value:'物流', label:'物流'},
-    {value:'仓储', label:'仓储'},
     {value:'植物租赁', label:'植物租赁'},
-    {value:'安保服务', label:'安保服务'},
-    {value:'速记翻译', label:'速记翻译'}];
+    {value:'礼仪模特', label:'礼仪模特'},
+    {value:'速记翻译', label:'速记翻译'},
+    {value:'安保服务', label:'安保服务'}];
 
 var service_types_filter = [
-    {value: 'full', label: '综合/一站式服务'},
-    {value:'展位设计', label:'展位设计'},
+    {value:'设计搭建', label:'设计搭建'},
+    {value:'展览工厂', label:'展览工厂'},
     {value:'公关策划', label:'公关策划'},
-    {value:'场地搭建', label:'场地搭建'},
-    {value:'设备租赁', label:'设备租赁'},
     {value:'篷房展具租赁', label:'篷房展具租赁'},
-    {value:'礼仪模特', label:'礼仪模特'},
+    {value:'AV设备租赁', label:'AV设备租赁'},
+    {value:'物流仓储', label:'物流仓储'},
     {value:'摄影摄像', label:'摄影摄像'},
-    {value:'物流', label:'物流'},
-    {value:'仓储', label:'仓储'},
     {value:'植物租赁', label:'植物租赁'},
-    {value:'安保服务', label:'安保服务'},
-    {value:'速记翻译', label:'速记翻译'}];
+    {value:'礼仪模特', label:'礼仪模特'},
+    {value:'速记翻译', label:'速记翻译'},
+    {value:'安保服务', label:'安保服务'}];
+
 
 var cities = [
     '不限','北京','上海','广州','深圳','天津','杭州','南京','武汉','重庆','成都','西安'

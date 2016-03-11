@@ -17,6 +17,7 @@ var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 const PROXY_URL = 'http://127.0.0.1:4000/api';
 const UPLOAD_URL= 'http://127.0.0.1:4000/uploads';
+const WEBSTATICS_URL = 'HTTP://127.0.0.1:4000/web_statics';
 const PATHS = {
   src: 'app',
   html: ['app/*.html', 'app/*/*.html'],
@@ -196,6 +197,10 @@ gulp.task('express', function(){
   var uploadsOptions = url.parse(UPLOAD_URL);
   uploadsOptions.route = '/uploads';
   app.use(proxy(uploadsOptions));
+
+  var webstaticsOptions = url.parse(WEBSTATICS_URL);
+  webstaticsOptions.route = '/web_statics';
+  app.use(proxy(webstaticsOptions));
 
 
 

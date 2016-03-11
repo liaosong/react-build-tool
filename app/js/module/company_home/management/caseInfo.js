@@ -97,30 +97,21 @@ export class CaseInfo extends React.Component{
                     this.setState({
                         dateTips: ''
                     });
-                    return true;
                 }else{
                     this.setState({
                         dateTips: '结束日期不能在开始日期之前'
                     });
                     return false;
                 }
-            }else{
-                this.setState({
-                    dateTips: '结束日期必填'
-                });
-                return false;
             }
-        }else{
-            this.setState({
-                dateTips: '开始日期必填'
-            });
-            return false;
         }
+        return true;
 
     }
 
     checkJoinedNum(){
         var {joinedNum} = this.refs;
+        if(!joinedNum.value) return true;
         if(/[1-9]\d*/.test(joinedNum.value)){
             this.setState({
                 joinNumTips: ''
@@ -131,12 +122,10 @@ export class CaseInfo extends React.Component{
                 this.setState({
                     joinNumTips: '参加人数必须为数字，且不能为0'
                 });
+                return false;
             }else{
-                this.setState({
-                    joinNumTips: '参加人数不能为空'
-                });
+                return true;
             }
-            return false;
         }
     }
 
@@ -198,7 +187,6 @@ export class CaseInfo extends React.Component{
                         <div className="form-row-group">
                             <label className="j8-label">
                                 <span>举办日期</span>
-                                <span className="required">*</span>
                             </label>
                             <Datepicker className="half-w inline-b" ref="beginDate" defaultValue={caseObj.begin_date}></Datepicker>
                             <label className="concat-label">至</label>
@@ -208,7 +196,6 @@ export class CaseInfo extends React.Component{
                         <div className="form-row-group">
                             <label className="j8-label">
                                 <span>参加人数</span>
-                                <span className="required">*</span>
                             </label>
                             <input type="text" className="form-row-control j8-input half-w" ref="joinedNum" defaultValue={caseObj.joined_num}/>
                             <span className="error-tips">{this.state.joinNumTips}</span>

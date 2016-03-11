@@ -15,8 +15,8 @@ $.fn.citySelecter = citySelecter;
 $.fn.modal = Modal;
 
 
-const CASE_PAGE_SIZE = 1;
-const QUOTATION_SIZE = 1;
+const CASE_PAGE_SIZE = 6;
+const QUOTATION_SIZE = 8;
 const COMMENT_SIZE = 10;
 
 
@@ -105,7 +105,7 @@ class CaseContainer extends Component{
             return (
                 <div className="case-item inline" onClick={this.showCase.bind(this, caseInfo)} key={index}>
                     <img src={caseImg} alt="" className="case-img"/>
-                    <div className="case-title">{caseInfo.title}</div>
+                    <div className="case-title overflow-ellipsis">{caseInfo.title}</div>
                 </div>
             );
 
@@ -165,7 +165,7 @@ class QuotationContainer extends Component{
                 <div className="quotation-item inline" key={index}>
                     <img src={quotationImg} alt="" className="quotation-img"/>
                     <div className="quotation-info">
-                        <div className="name">{quotation.name}</div>
+                        <div className="name overflow-ellipsis">{quotation.name}</div>
                         <div className="price">{quotation.price}</div>
                     </div>
                 </div>
@@ -328,26 +328,32 @@ $(function(){
 
 
     var caseContainer = document.getElementById('caseContainer');
-    var casesData = JSON.parse($("#caseContainer").attr("data-cases"));
-    var casesCount = JSON.parse($("#caseContainer").attr("data-count"));
-    var companyId = $("#caseContainer").attr("data-company-id");
+    if(caseContainer){
+        var casesData = JSON.parse($("#caseContainer").attr("data-cases"));
+        var casesCount = JSON.parse($("#caseContainer").attr("data-count"));
+        var companyId = $("#caseContainer").attr("data-company-id");
 
 
-    ReactDom.render(
-        <CaseContainer cases={casesData} casesCount={casesCount} companyId={companyId}></CaseContainer>
-        ,
-        caseContainer
-    );
+        ReactDom.render(
+            <CaseContainer cases={casesData} casesCount={casesCount} companyId={companyId}></CaseContainer>
+            ,
+            caseContainer
+        );
+    }
+
 
     var quotationContainer = document.getElementById('quotationContainer');
-    var quotations = JSON.parse($("#quotationContainer").attr("data-quotations"));
-    var quotationsCount = parseInt($("#quotationContainer").attr("data-count"));
-    var companyId = $("#quotationContainer").attr("data-company-id");
-    ReactDom.render(
-        <QuotationContainer quotations={quotations} quotationsCount={quotationsCount} companyId={companyId}></QuotationContainer>
-        ,
-        quotationContainer
-    );
+    if(quotationContainer){
+        var quotations = JSON.parse($("#quotationContainer").attr("data-quotations"));
+        var quotationsCount = parseInt($("#quotationContainer").attr("data-count"));
+        var companyId = $("#quotationContainer").attr("data-company-id");
+        ReactDom.render(
+            <QuotationContainer quotations={quotations} quotationsCount={quotationsCount} companyId={companyId}></QuotationContainer>
+            ,
+            quotationContainer
+        );
+    }
+
 
     var commentContainer = document.getElementById('commentContainer');
     var comments = JSON.parse($("#commentContainer").attr("data-comments"));

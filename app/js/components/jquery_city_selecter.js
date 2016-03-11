@@ -31,16 +31,20 @@ export default function citySelecter(){
 
     this.click(function(e){
         var isOpen = cityContainer.hasClass('show');
+        e.stopPropagation();
         if(e.target.nodeName === 'LI'){
             setSelected(e.target.innerHTML);
             hidden(e);
         }
         else if(isOpen){
-            e.stopPropagation();
+            return;
         }else{
             init();
             show();
         }
 
     });
+
+    return {hidden: hidden}
+
 }

@@ -12,20 +12,45 @@ header{
   background-position: 50% 50%;
   background-repeat: no-repeat;
   position: relative;
+  min-width: 1000px;
 
   .title-welcome{
-    font-size: 72px;
+    font-size: 36px;
     color: #fff;
     text-align: center;
-    margin-top: 100px;
-    font-weight: normal;
+    margin-top: 70px;
+    font-weight: bold;
   }
 
   .site-title{
-    font-size: 24px;
+    font-size: 16px;
     color: #fff;
     text-align: center;
-    margin-top: 18px;
+    font-weight: bold;
+  }
+  .be-a-company{
+    margin-top: 80px;
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: bold;
+    height: 44px;
+    background-color: #0af;
+    text-align: center;
+    line-height: 44px;
+    border-radius: 3px;
+
+    &:hover{
+      background-color: #1ab3ff;
+
+    }
+    &:active{
+      background-color: #08c;
+    }
+
   }
 
   .header-bottom{
@@ -90,6 +115,8 @@ header{
 
         .value{
           height: 35px;
+          font-size: 16px;
+          width: 130px;
         }
 
         .search-city{
@@ -157,6 +184,7 @@ header{
       color: #fff;
       line-height: normal;
       background-color: rgba(255, 255, 255, .2);
+      filter:alpha(opacity=20);
       cursor: pointer;
       &:hover{
         background-color: rgba(0, 0, 0, .2);
@@ -181,7 +209,7 @@ header{
 .companies{
 
   section{
-    margin-top: 60px;
+    margin-top: 55px;
     color: #4c4c4c;
 
     .section-head{
@@ -193,23 +221,27 @@ header{
       margin-top: 20px;
     }
   }
+  .index-section{
+    margin-top: 50px;
+  }
 
 
   .load-more{
     display: block;
     width: 160px;
-    height: 40px;
-    margin: 60px auto 70px auto;
+    margin: 45px auto 55px auto;
     color: #0af;
-    background-color: #fff;
     font-size: 14px;
-    border: 1px solid #0af;
     outline: none;
-    border-radius: 3px;
+    text-align: center;
+    font-weight: bold;
 
     &:hover{
-      background-color: #0af;
-      color: #fff;
+      text-decoration: underline;
+    }
+
+    &.mb-100{
+      margin-bottom: 100px;
     }
   }
 }
@@ -222,26 +254,41 @@ header{
   font-size: 0;
 
 
+  .company-item:first-child{
+    margin-left: 0;
+  }
+
   .company-item{
-    width: 485px;
+    width: 320px;
     background-color: #fff;
     display: inline-block;
     vertical-align: top;
-    margin-left: 30px;
-    margin-top: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
     overflow: hidden;
+    height: 360px;
 
-    &:nth-child(odd){
-      margin-left: 0px;
+    &.main-item{
+      width: 660px;
+
+      .company-img{
+        height: 240px;
+        width: 100%;
+        cursor: pointer;
+        display: block;
+      }
+    }
+    &.ml-0{
+      margin-left: 0;
     }
 
     .company-info{
-      padding: 20px;
+      padding: 15px 20px;
       background-color: #fff;
     }
     .company-img{
       height: 240px;
-      width: 485px;
+      width: 320px;
       cursor: pointer;
       display: block;
     }
@@ -256,16 +303,17 @@ header{
     .company-tags{
       font-size: 14px;
       color: #808080;
-      padding-top: 15px;
+      padding-top: 10px;
       display: block;
       white-space: nowrap;
       overflow: hidden;
+      height: 19px;
       text-overflow: ellipsis;
     }
     .company-cases{
       font-size: 14px;
       color: #808080;
-      padding-top: 15px;
+      padding-top: 10px;
 
       .cases-num{
         color: #ff9801;
@@ -280,6 +328,7 @@ header{
 
 .row-list{
   margin-top: 40px;
+  font-size: 0;
   .company-item{
     width: 320px;
     display: inline-block;
@@ -298,8 +347,9 @@ header{
     }
 
     .company-info{
-      height: 50px;
-      padding: 20px;
+      height: 55px;
+      padding: 15px 20px;
+      font-size: 14px;
 
       .company-name{
         font-size: 20px;
@@ -319,6 +369,123 @@ header{
     }
   }
 
+}
+
+
+.cities-index{
+  width: 660px;
+  height: 360px;
+  background-image: url("/images/city-bg.jpg");
+  background-repeat: no-repeat;
+
+  .title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .cities{
+    font-size: 0;
+    text-align: center;
+
+    a{
+      color: #FFFFFF;
+      font-weight: bold;
+      display: inline-block;
+      border-right: 2px solid #fff;
+    }
+
+    &.main-cities{
+      margin-top: 70px;
+      a{
+        font-size: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      a:last-child{
+        border-right: none;
+      }
+    }
+
+    &.other-cities{
+      margin-top: 30px;
+      a{
+        font-size: 24px;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+      a:last-child{
+        border-right: none;
+      }
+    }
+
+
+  }
+}
+.types-index{
+  width: 300px;
+  height: 360px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #FFFFFF;
+
+  .w-99{
+    width: 99px;
+  }
+  .w-149{
+    width: 149px;
+  }
+
+
+  .title{
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ca6c57;
+    text-align: center;
+  }
+
+  .type-container{
+
+    a{
+      font-size: 16px;
+      font-weight: bold;
+      color: #4c4c4c;
+      line-height: 48px;
+      border-bottom: 2px solid #e6e6e6;
+      display: inline-block;
+      text-align: center;
+      border-right: 2px solid #e6e6e6;
+
+      &:hover{
+        color: #FFFFFF;
+        background-color: #ea6c57;
+      }
+    }
+
+    .type-row{
+      font-size: 0px;
+
+      &:last-child{
+        a{
+          border-bottom: none;
+        }
+      }
+
+      &.type-3{
+        a:last-child{
+          width: 98px;
+        }
+
+      }
+
+      a:last-child{
+        border-right: none;
+      }
+    }
+  }
 }
 
 .ui-dialog-titlebar{

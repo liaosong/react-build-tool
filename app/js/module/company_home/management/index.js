@@ -9,7 +9,7 @@ class Management extends Component{
     render(){
         var companyUrl;
         var {company} = this.props;
-        companyUrl = `/companies/${company._id}}`;
+        companyUrl = `/companies/${company._id}`;
         return (
             <div className="w-800 module-container">
                 <ul className="info-indexs">

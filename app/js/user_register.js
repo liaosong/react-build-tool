@@ -5,13 +5,13 @@ import { compose, createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import IndexReducers from './reducers/index';
 import UserRegister from './module/user_register';
-import { devTools, persistState } from 'redux-devtools';
+//import { devTools, persistState } from 'redux-devtools';
 
 const finalCreateStore = compose(
     // Enables your middleware:
-    applyMiddleware(thunk), // any Redux middleware, e.g. redux-thunk
+    applyMiddleware(thunk) // any Redux middleware, e.g. redux-thunk
     // Provides support for DevTools:
-    devTools()
+    //devTools()
     // Lets you write ?debug_session=<name> in address bar to persist debug sessions
     //persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
 )(createStore);
