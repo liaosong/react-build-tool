@@ -12,10 +12,11 @@
 
 </head>
 <body>
+
 <div class="container">
-  <header class="header cleanfix">
+  <header class="header cleanfix" id="carousel">
     <div class="header-top">
-      <a class="block s-logo" href="/"></a>
+      <a class="block s-logo logo-big" href="/"></a>
       <% if(user){%>
       <%- include components/header-authed.html %>
       <%}else{%>
@@ -70,18 +71,18 @@
       <div class="row-item cities-index">
         <div class="title">我们的服务遍布11个热门会展城市</div>
         <div class="cities main-cities">
-          <a href="/search?city=北京">北京</a>
-          <a href="/search?city=上海">上海</a>
-          <a href="/search?city=广州">广州</a>
+          <a href="/search?city=北京">北京</a><span class="v-line"></span>
+          <a href="/search?city=上海">上海</a><span class="v-line"></span>
+          <a href="/search?city=广州">广州</a><span class="v-line"></span>
           <a href="/search?city=深圳">深圳</a>
         </div>
         <div class="cities other-cities">
-          <a href="/search?city=天津">天津</a>
-          <a href="/search?city=杭州">杭州</a>
-          <a href="/search?city=南京">南京</a>
-          <a href="/search?city=武汉">武汉</a>
-          <a href="/search?city=重庆">重庆</a>
-          <a href="/search?city=成都">成都</a>
+          <a href="/search?city=天津">天津</a><span class="v-line"></span>
+          <a href="/search?city=杭州">杭州</a><span class="v-line"></span>
+          <a href="/search?city=南京">南京</a><span class="v-line"></span>
+          <a href="/search?city=武汉">武汉</a><span class="v-line"></span>
+          <a href="/search?city=重庆">重庆</a><span class="v-line"></span>
+          <a href="/search?city=成都">成都</a><span class="v-line"></span>
           <a href="/search?city=西安">西安</a>
         </div>
       </div>

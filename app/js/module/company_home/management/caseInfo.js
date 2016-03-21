@@ -42,6 +42,7 @@ export class CaseInfo extends React.Component{
         this.setState({
             isOpen: false
         });
+        this.toggleClass2body(false);
     }
 
 

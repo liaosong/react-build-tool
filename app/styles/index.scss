@@ -6,6 +6,36 @@
 $header_height: 600px;
 $header_top_height: 60px;
 
+
+@-webkit-keyframes BackgroundChange {
+  0% {
+    background-image: url(../images/banner_img.jpg);
+  }
+  20%{
+    background-image: url(../images/banner_img.jpg);
+  }
+
+  25% {
+    background-image: url(../images/banner_img2.jpg);
+  }
+  45%{
+    background-image: url(../images/banner_img2.jpg);
+  }
+  50% {
+    background-image: url(../images/banner_img3.jpg);
+  }
+  70% {
+    background-image: url(../images/banner_img3.jpg);
+  }
+  75% {
+    background-image: url(../images/banner_img4.jpg);
+  }
+  100%{
+    background-image: url(../images/banner_img4.jpg);
+  }
+}
+
+
 header{
   height: $header_height;
   background-image: url(../images/banner_img.jpg);
@@ -13,6 +43,14 @@ header{
   background-repeat: no-repeat;
   position: relative;
   min-width: 1000px;
+
+  &.carousel{
+    -webkit-animation: BackgroundChange 20s infinite;
+    -moz-animation: BackgroundChange 20s infinite;
+    animation: BackgroundChange 20s infinite;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
 
   .title-welcome{
     font-size: 36px;
@@ -117,6 +155,7 @@ header{
           height: 35px;
           font-size: 16px;
           width: 130px;
+          padding-left: 0px;
         }
 
         .search-city{
@@ -162,6 +201,13 @@ header{
     width: 160px;
     cursor: pointer;
     background-size: 100%;
+
+    &.logo-big{
+      margin-top: 10px;
+      background-image: url(../images/logo-big.png);
+      height: 70px;
+      width: 220px;
+    }
   }
 
   .right-side{
@@ -390,11 +436,23 @@ header{
     font-size: 0;
     text-align: center;
 
+    .v-line{
+      display: inline-block;
+      height: 20px;
+      width: 2px;
+      background-color: rgba(255,255,255,.5);
+      vertical-align: middle;
+    }
+
     a{
       color: #FFFFFF;
       font-weight: bold;
       display: inline-block;
-      border-right: 2px solid #fff;
+      vertical-align: middle;
+
+      &:hover{
+        text-decoration: underline;
+      }
     }
 
     &.main-cities{
@@ -407,6 +465,8 @@ header{
       a:last-child{
         border-right: none;
       }
+
+
     }
 
     &.other-cities{

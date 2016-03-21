@@ -143,11 +143,11 @@ class Cases extends Component{
         });
     }
     onDialogClose(){
-        //this.setState({
-        //    dialogOptions: {
-        //        isOpen: false
-        //    }
-        //});
+        this.setState({
+            dialogOptions: {
+                isOpen: false
+            }
+        });
         console.log('cloase');
     }
     onSave(id, info){

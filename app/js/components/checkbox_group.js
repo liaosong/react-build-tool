@@ -36,7 +36,7 @@ class CheckBoxGroup extends Component{
                 checked = true;
             }
             return (
-                <CheckBox checked={checked} value={item.value} label={item.label} key={index} className="group-item" onAdd={this.onAdd.bind(this)} onSubtract={this.onSubtract.bind(this)}></CheckBox>
+                <CheckBox checked={checked} value={item.value} tips={item.tips} label={item.label} key={index} className="group-item" onAdd={this.onAdd.bind(this)} onSubtract={this.onSubtract.bind(this)}></CheckBox>
             );
         })
 

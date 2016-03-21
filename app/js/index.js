@@ -7,8 +7,17 @@ import Modal from '../js/components/jquery.dialog';
 $.fn.citySelecter = citySelecter;
 $.fn.modal = Modal;
 
+const carouselImgs = [
+    '/images/banner_img.jpg',
+    '/images/banner_img2.jpg',
+    '/images/banner_img3.jpg',
+    '/images/banner_img4.jpg',
+];
+
 $(function(){
     var citySelecterObj = $(".city-selecter").citySelecter();
+
+    var carousel = $("#carousel");
 
     $("#search").click(function(e){
         var inputVal = $("#searchText").val();
@@ -44,6 +53,37 @@ $(function(){
     })
 
     $('body').click(citySelecterObj.hidden);
+
+
+    //carousel header background
+
+    function loadImg(url){
+        var deferred = $.Deferred();
+        var img = new Image();
+        img.onload = function(){
+            deferred.resolve(url + "加载完毕");
+        }
+        img.onerror = function(){
+            deferred.reject("图片" + url + "加载失败");
+        }
+        img.src = url;
+
+        return deferred;
+    }
+
+    function loadImgs(){
+        var promises = carouselImgs.map(function(item){
+            return loadImg(item);
+        })
+        $.when.apply(this, promises).done(function(){
+            carousel.addClass("carousel");
+        }).fail(function(err){
+            console.log(err);
+        });
+
+    }
+
+    loadImgs();
 
 
 });

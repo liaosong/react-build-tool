@@ -29,13 +29,16 @@ class CheckBox extends Component{
         var className= this.props.className || "";
         className = "Checkbox " + className;
 
-        var {label} = this.props;
+        var {label, tips} = this.props;
         return (
             <div className={className}>
-                <input ref="checkbox" type="checkbox" checked={this.state.checked} onChange={this.onChange.bind(this)}/>
-                <div className="checkbox-label">
-                    {label}
+                <div className="content">
+                    <input ref="checkbox" type="checkbox" checked={this.state.checked} onChange={this.onChange.bind(this)}/>
+                    <div className="checkbox-label">
+                        {label}
+                    </div>
                 </div>
+                <div className="item-tips">{tips}</div>
             </div>
         );
     }

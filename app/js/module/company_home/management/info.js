@@ -105,17 +105,17 @@ class CompanyInfo extends Component{
                             {companyImgTips}
                         </div>
                     </div>
-                    <div className="c-row">
-                        <div className="c-label">关键词</div>
-                        <div className="c-value">
-                            <input type="text" ref="keywords" className="c-input" defaultValue={company.keywords.join(',')}/>
-                            <div className="block-tips">填写跟您业务相关的关键词，以便用户在搜索时能够找到您的公司，如果多个关键词，请用“,”分割开。</div>
-                        </div>
-                    </div>
+
                     <div className="c-row no-padding-top">
-                        <div className="c-label pt-20">服务项目</div>
+                        <div className="c-label pt-20">服务范围</div>
                         <div className="c-value pt-5">
                             <CheckBoxGroup ref="servicesType" group={services} value={company.services_type}></CheckBoxGroup>
+                        </div>
+                    </div>
+                    <div className="c-row">
+                        <div className="c-label">主营业务标签</div>
+                        <div className="c-value">
+
                         </div>
                     </div>
                     <div className="c-row">

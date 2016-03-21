@@ -40,6 +40,7 @@ export class ServiceInfo extends React.Component{
         this.setState({
             isOpen: false
         });
+        this.toggleClass2body(false);
     }
 
 

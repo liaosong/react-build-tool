@@ -93,14 +93,19 @@
 }
 .filter-group {
   border-top: 1px solid #f4f4f4;
-  line-height: 54px;
   font-size: 0;
+  padding-top: 15px;
+  margin-bottom: 15px;
   
   .filter-title{
     display: inline-block;
     color: #333;
     font-size: 14px;
+    line-height: 24px;
 
+  }
+  .filter-city-title{
+    line-height: 24px;
   }
   .filter-container{
     display: inline-block;
@@ -123,10 +128,12 @@
     }
   }
 
+
   &.types{
     line-height: normal;
     padding-top: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
 
     .filter-title{
       margin-top: 5px;

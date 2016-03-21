@@ -225,9 +225,18 @@
 }
 
 .group-item{
-  display: inline-block;
-  width: 160px;
   margin-top: 15px;
+
+  .content{
+    width: 140px;
+    display: inline-block;
+    font-size: 14px;
+  }
+  .item-tips{
+    display: inline-block;
+    font-size: 14px;
+    color: #808080;
+  }
 }
 
 
