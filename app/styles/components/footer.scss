@@ -23,8 +23,15 @@ footer{
   }
 
   .inline-flow{
-    display: inline-block;
-    vertical-align: top;
+    display: block;
+    float: left;
+  }
+  .inline-flow:after{
+    display: block;
+    clear: both;
+    content: ".";
+    visibility: hidden;
+    height: 0px;
   }
   .f-about-us{
     width: $content_width;

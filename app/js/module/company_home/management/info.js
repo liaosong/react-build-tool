@@ -8,7 +8,7 @@ import Upload from '../../../components/upload';
 import CheckBoxGroup from '../../../components/checkbox_group';
 
 import {updateCompany} from '../../../actions/company_actions';
-import {service_types, COMPANY_DEFAULT_LOGO, COMPANY_DEFAULT_WEB_IMG} from '../../../global_data';
+import {service_types, COMPANY_DEFAULT_LOGO, COMPANY_DEFAULT_WEB_IMG, TAGS_COLOR} from '../../../global_data';
 
 function updateView(){
     return dispatch =>{
@@ -29,6 +29,18 @@ function showView(){
 class CompanyInfo extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            tags: [],
+            tagsError: ""
+        }
+    }
+
+    componentDidMount(){
+        var tags = this.props.company.tags || [];
+
+        this.setState({
+            tags: tags
+        });
     }
 
     onStatusChange(res){
@@ -59,13 +71,10 @@ class CompanyInfo extends Component{
         e.preventDefault();
         var {company, updateCompany} = this.props;
 
-        let keywords = this.refs.keywords.value;
-        keywords = keywords.replace(/ /, '').replace(/，/, ',').split(',');
-
         var companyInfo = {
             company_logo: this.refs.logo.value,
             web_company_img: this.refs.companyImg.value,
-            keywords: keywords,
+            tags: this.state.tags,
             services_type: this.refs.servicesType.value,
             _description: this.refs.description.value
         }
@@ -75,6 +84,34 @@ class CompanyInfo extends Component{
 
 
     }
+    addTag(){
+        var tagVal = this.refs.tag.value;
+
+        if(!tagVal){ return;}
+
+        if(this.state.tags.length >= 10){
+            this.setState({
+                tagsError: "您最多只能为自己添加10个标签"
+            });
+            return;
+        }
+
+        if(this.state.tags.indexOf(tagVal) === -1){
+            this.state.tags.push(tagVal)
+            this.setState({
+                tags: this.state.tags
+            });
+            this.refs.tag.value = "";
+        }
+
+    }
+    removeTag(index){
+        var tags = this.state.tags;
+        tags.splice(index, 1);
+        this.setState({
+            tags: tags
+        });
+    }
 
     renderEdit(){
         var logoStyle = {width: '100px', height: '100px', backgroundColor: '#eee', border: '2px solid #e5e5e5'};
@@ -82,11 +119,16 @@ class CompanyInfo extends Component{
         var {company} = this.props;
         var services = service_types;
 
-        let logImgTips, companyImgTips;
+        let logImgTips, companyImgTips, tags;
 
         logImgTips = (<div className="tips">只支持JPG、PNG、GIF、文件不超过5M</div>);
 
         companyImgTips = (<div className="block-tips">图片大小为1920*420px，只支持JPG、PNG、GIF、文件不超过5M</div>);
+        tags = this.state.tags.map((item, index) => {
+            return (
+                <li className="tag-item" key={index}><i className="delete" onClick={this.removeTag.bind(this, index)}></i><span className="tag-name">{item}</span></li>
+            );
+        });
         return (
             <div className="company-info-container">
                 <form className="x-form" onSubmit={this.onDataSubmit.bind(this)}>
@@ -115,7 +157,17 @@ class CompanyInfo extends Component{
                     <div className="c-row">
                         <div className="c-label">主营业务标签</div>
                         <div className="c-value">
+                            <div className="tag-tool">
+                                <input type="text" className="box-input" ref="tag"/>
+                                <button className="blue-button g-blue-button" onClick={this.addTag.bind(this)} type="button">添加新标签</button>
+                            </div>
+                            <div className="tag-tips">
+                                <a href="">您为什么要添加业务标签？</a><span>{this.state.tagsError}</span>
+                            </div>
 
+                            <ul className="tags-container cleanfix">
+                                {tags}
+                            </ul>
                         </div>
                     </div>
                     <div className="c-row">
@@ -141,9 +193,20 @@ class CompanyInfo extends Component{
             return <p key={index}>{item}</p>
         });
 
-        var logoUrl, webImgUrl;
+        var logoUrl, webImgUrl, tags;
         logoUrl = company.company_logo || COMPANY_DEFAULT_LOGO;
         webImgUrl = company.web_company_img || COMPANY_DEFAULT_WEB_IMG;
+        var colorArr = TAGS_COLOR;
+        var firstIndex = Math.floor(Math.random() * colorArr.length);
+        tags = this.state.tags.map((item, index) => {
+            let currentIndex = firstIndex + index;
+            var style = {
+                backgroundColor: colorArr[currentIndex % colorArr.length]
+            }
+            return (
+                <li style={style} key={index}>{item}</li>
+            );
+        })
         return (
             <div className="company-info-container show-info">
                 <div className="x-form">
@@ -160,16 +223,19 @@ class CompanyInfo extends Component{
                             <img src={'/' + webImgUrl} alt="" className="company-img"/>
                         </div>
                     </div>
-                    <div className="c-row">
-                        <div className="c-label">关键词</div>
-                        <div className="c-value">
-                            <div className="keywords">{company.keywords? company.keywords.join(','):''}</div>
-                        </div>
-                    </div>
+
                     <div className="c-row no-padding-top">
-                        <div className="c-label pt-20">服务项目</div>
+                        <div className="c-label pt-20">服务范围</div>
                         <div className="c-value pt-20">
                             {company.services_type? company.services_type.join(' '):''}
+                        </div>
+                    </div>
+                    <div className="c-row">
+                        <div className="c-label">主营业务标签</div>
+                        <div className="c-value">
+                            <ul className="tag-show-container cleanfix">
+                                {tags}
+                            </ul>
                         </div>
                     </div>
                     <div className="c-row">

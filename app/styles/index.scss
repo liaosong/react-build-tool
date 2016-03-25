@@ -141,6 +141,8 @@ header{
         outline: none;
         font-size: 16px;
         color: #333333;
+        display: block;
+        float: left;
       }
       .city-selecter{
         height: 38px;
@@ -150,6 +152,7 @@ header{
         padding-left: 10px;
         width: 148px;
         font-size: 14px;
+        float: left;
 
         .value{
           height: 35px;
@@ -173,10 +176,12 @@ header{
       .publish{
         width: 120px;
         vertical-align: top;
-        display: inline-block;
+        display: block;
+        float: left;
       }
       .text-split{
-        display: inline-block;
+        display: block;
+        float: left;
         vertical-align: top;
         height: 40px;
         line-height: 40px;
@@ -184,6 +189,10 @@ header{
         color: #b2b2b2;
         width: 72px;
         text-align: center;
+      }
+
+      .search{
+        float: left;
       }
     }
   }
@@ -274,7 +283,7 @@ header{
 
   .load-more{
     display: block;
-    width: 160px;
+    width: 200px;
     margin: 45px auto 55px auto;
     color: #0af;
     font-size: 14px;
@@ -307,7 +316,8 @@ header{
   .company-item{
     width: 320px;
     background-color: #fff;
-    display: inline-block;
+    display: block;
+    float: left;
     vertical-align: top;
     margin-left: 20px;
     margin-top: 20px;
@@ -377,7 +387,8 @@ header{
   font-size: 0;
   .company-item{
     width: 320px;
-    display: inline-block;
+    display: block;
+    float: left;
     margin-left: 20px;
     background-color: #FFFFFF;
     vertical-align: top;
@@ -515,7 +526,8 @@ header{
       color: #4c4c4c;
       line-height: 48px;
       border-bottom: 2px solid #e6e6e6;
-      display: inline-block;
+      display: block;
+      float: left;
       text-align: center;
       border-right: 2px solid #e6e6e6;
 

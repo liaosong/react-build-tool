@@ -53,8 +53,9 @@ var pageSize = 10;
 const COMPANY_DEFAULT_LOGO = 'images/company-logo.png';
 const COMPANY_DEFAULT_WEB_IMG = 'images/web-company-img.png';
 const COMPANY_DEFAULT_BANNER = 'images/banner-normal.png';
+const TAGS_COLOR = ['#ee8979', '#b3a6cd', '#7cc9b5', '#79c6e1', '#8bc881'];
 
 
 
 
-export {service_types, cities, pageSize, cityObjArray, service_types_filter, COMPANY_DEFAULT_LOGO, COMPANY_DEFAULT_WEB_IMG, COMPANY_DEFAULT_BANNER}
+export {service_types, cities, pageSize, cityObjArray, service_types_filter, COMPANY_DEFAULT_LOGO, COMPANY_DEFAULT_WEB_IMG, COMPANY_DEFAULT_BANNER, TAGS_COLOR}

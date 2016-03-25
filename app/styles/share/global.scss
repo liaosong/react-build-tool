@@ -68,6 +68,10 @@ h1,h2,h3,h4,h5,p{
   display: inline-block;
   vertical-align: top;
 }
+.f-inline{
+  display: block;
+  float: left;
+}
 .block{
   display: block;
 }
@@ -183,7 +187,13 @@ li{
     color: #fff;
   }
 }
-
+.blue-button{
+  background-color: #0af;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+}
 .g-blue-button{
   &:hover{
     background-color: #1ab3ff;
@@ -299,4 +309,8 @@ p{
   .row-item{
     float: left;
   }
+}
+
+.box-input{
+  box-sizing: border-box;
 }

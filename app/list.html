@@ -55,42 +55,65 @@
   <div class="list-container w-1000 s-center mb-70">
     <div class="search-result-num">全部结果（{count}）</div>
     <div class="companies-list">
-      <div class="companies-item")}>
-        <div class="company-name">
-          <div class="name inline" onClick={this.showCompany.bind(this, company)}>{company.name}</div>
-          <div class="inline collect" onClick={this.beforeEnshrined.bind(this, company)}></div>
 
+      <div class="company-item cleanfix">
+        <div class="company-logo f-inline">
+          <a href=""><img src="/images/company-logo.png" alt="公司logo"/></a>
         </div>
-        <div class="company-body ">
-          <div class="info left-side inline">
-            <div class="company-description">
-              {description || '介绍无'}
-            </div>
-            <div class="service-row">
-              <div class="item-title inline">服务项目：</div>
-              <div class="item-container inline">
+        <div class="company-info f-inline">
+          <div class="head cleanfix">
+            <a class="name f-inline">普锐斯会展服务有限公司</a>
+            <div class="c-enshrine collected"></div>
+          </div>
 
-                {services}
-              </div>
-            </div>
-            <div class="concat-and-case-row">
-              <div class="concat-container inline">
-                <div class="inline title">联系方式：</div>
-                <div class="inline inline-value">{company.phone_number}</div>
-              </div>
-              <div class="case-container inline">
-                <div class="inline title">成功案例：</div>
-                <div class="inline inline-value cases-num">{this.state.caseNum}</div>
-              </div>
+          <ul class="tags-container cleanfix">
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+            <li>展览展示设计</li>
+          </ul>
+
+          <div class="row-info services cleanfix">
+            <div class="label-name f-inline">服务：</div>
+            <div class="service-container f-inline">
+              <li>设计大奖</li>
+              <li>展览工</li>
+              <li>设计大奖</li>
+              <li>设计大奖</li>
+              <li>展览工</li>
+              <li>设计大奖</li>
+              <li>设计大奖</li>
+              <li>展览工</li>
+              <li>设计大奖</li>
+              <li>设计大奖</li>
+              <li>展览工</li>
+              <li>设计大奖</li>
+              <li>设计大奖</li>
+              <li>展览工</li>
+              <li>设计大奖</li>
+              <li>设计大奖</li>
+              <li>展览工</li>
+              <li>设计大奖</li>
             </div>
           </div>
-          <div class="right-side action inline">
-            <button class="g-btn-primary" onClick={this.showCompany.bind(this, company)}>查看详情</button>
-          </div>
-        </div>
 
+          <div class="row-info cases cleanfix">
+            <div class="label-name f-inline">案例：</div>
+            <div class="values f-inline">15</div>
+          </div>
+
+        </div>
       </div>
-
 
 
     </div>

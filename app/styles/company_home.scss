@@ -563,3 +563,86 @@
 .concat-label, .Check-box-group{
   color: #333333;
 }
+
+
+
+.tag-tool{
+
+
+  input{
+    height: 40px;
+    width: 360px;
+    border-radius: 3px;
+    border: 1px solid #e5e5e5;
+    padding-left: 10px;
+    font-size: 14px;
+  }
+
+  button{
+    height: 40px;
+    width: 160px;
+    margin-left: 20px;
+  }
+
+
+}
+
+.tag-tips{
+  margin-top: 8px;
+  font-size: 14px;
+
+  a{
+    color: #0af;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+  span{
+    color: #ff0000;
+  }
+}
+
+.tags-container{
+  color: #333333;
+
+  .delete{
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    margin-top: 1px;
+
+    background-image: url("/images/delete-icon-normal.png");
+
+    &:hover{
+      background-image: url("/images/delete-icon-hover.png");
+    }
+  }
+
+  .tag-name{
+    margin-left: 25px;
+  }
+
+  .tag-item{
+    float: left;
+    width: 180px;
+    margin-top: 16px;
+  }
+
+}
+
+.tag-show-container{
+  margin-left: -2px;
+  margin-top: -2px;
+
+  li{
+    float: left;
+    height: 24px;
+    margin-left: 2px;
+    padding: 0px 4px;
+    color: #fff;
+    line-height: 24px;
+    margin-top: 2px;
+  }
+}
